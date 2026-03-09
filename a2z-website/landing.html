@@ -1,0 +1,2541 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A2Z Consulting - Automatisation sécurisée pour études d'avocats et fiduciaires en Suisse. Données hébergées en Suisse, respect du secret professionnel.">
+    <meta name="keywords" content="automatisation, fiduciaire, avocat, notaire, Suisse romande, secret professionnel, données Suisse, efficience opérationnelle, Vaud">
+    <title>A2Z Consulting | Automatisation Sécurisée pour Avocats & Fiduciaires</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        /* ========================================
+           CSS VARIABLES - A2Z BRAND GUIDELINES
+           ======================================== */
+        :root {
+            /* Brand Colors - From Guidelines */
+            --lavender-blue: #A8C8F0;
+            --soft-pink: #E8A0C0;
+            --violet-mid: #C4A0DC;
+            --glow-accent: #D4A0FF;
+
+            /* Background Colors */
+            --dark-bg: #1A1A1A;
+            --card-bg: #2A2A2A;
+            --bg-darker: #121212;
+
+            /* Text Colors */
+            --white: #FFFFFF;
+            --grey-text: #AAAAAA;
+            --text-muted: #888888;
+
+            /* Gradient Holographic */
+            --gradient-holographic: linear-gradient(135deg, var(--lavender-blue), var(--violet-mid), var(--soft-pink));
+            --gradient-glow: linear-gradient(135deg, rgba(168, 200, 240, 0.4), rgba(196, 160, 220, 0.4), rgba(232, 160, 192, 0.4));
+
+            /* Glassmorphism */
+            --glass-bg: rgba(42, 42, 42, 0.6);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --glass-border-hover: rgba(168, 200, 240, 0.3);
+
+            /* Spacing */
+            --section-padding: clamp(4rem, 10vw, 8rem);
+            --container-max: 1200px;
+
+            /* Transitions - Premium easing curves */
+            --transition-fast: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-smooth: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            --transition-premium: 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+            --transition-glow: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* ========================================
+           RESET & BASE
+           ======================================== */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--dark-bg);
+            color: var(--white);
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* ========================================
+           UTILITIES
+           ======================================== */
+        .container {
+            max-width: var(--container-max);
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        .gradient-text {
+            background: var(--gradient-holographic);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+        }
+
+        .section-subtitle {
+            color: var(--grey-text);
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            max-width: 600px;
+            margin: 0 auto 3rem;
+        }
+
+        /* ========================================
+           NAVIGATION
+           ======================================== */
+        .navbar {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 1.5rem 0;
+        }
+
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+        }
+
+        .logo-img {
+            height: 120px;
+            width: auto;
+        }
+
+        /* Button Styles - Premium Animations */
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.875rem 1.75rem;
+            background: var(--gradient-holographic);
+            color: var(--dark-bg);
+            text-decoration: none;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 600;
+            font-size: 0.9rem;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
+                        box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(255,255,255,0.2), transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(168, 200, 240, 0.35),
+                        0 4px 15px rgba(196, 160, 220, 0.25);
+        }
+
+        .btn-primary:hover::before {
+            opacity: 1;
+        }
+
+        .btn-primary:active {
+            transform: translateY(0);
+            transition: transform 0.1s ease;
+        }
+
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.875rem 1.75rem;
+            background: transparent;
+            color: var(--soft-pink);
+            text-decoration: none;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 600;
+            font-size: 0.9rem;
+            border-radius: 8px;
+            border: 2px solid var(--soft-pink);
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            position: relative;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(232, 160, 192, 0.12);
+            border-color: var(--soft-pink);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(232, 160, 192, 0.25),
+                        0 0 0 1px rgba(232, 160, 192, 0.1);
+        }
+
+        .btn-secondary:active {
+            transform: translateY(0);
+            transition: transform 0.1s ease;
+        }
+
+        .btn-ghost {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.875rem 1.75rem;
+            background: transparent;
+            color: var(--white);
+            text-decoration: none;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 600;
+            font-size: 0.9rem;
+            border-radius: 8px;
+            border: 1px solid var(--glass-border);
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .btn-ghost:hover {
+            border-color: var(--lavender-blue);
+            color: var(--lavender-blue);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px rgba(168, 200, 240, 0.15);
+        }
+
+        .btn-ghost:active {
+            transform: translateY(0);
+            transition: transform 0.1s ease;
+        }
+
+        /* ========================================
+           HERO SECTION
+           ======================================== */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            padding: 6rem 0 4rem;
+            overflow: hidden;
+        }
+
+        /* Background Grid Effect */
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image:
+                linear-gradient(rgba(168, 200, 240, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(168, 200, 240, 0.03) 1px, transparent 1px);
+            background-size: 60px 60px;
+            mask-image: radial-gradient(ellipse at center, black 0%, transparent 70%);
+            -webkit-mask-image: radial-gradient(ellipse at center, black 0%, transparent 70%);
+        }
+
+        /* Floating Orbs - Brand Colors */
+        .hero-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(100px);
+            opacity: 0.4;
+            animation: float 8s ease-in-out infinite;
+        }
+
+        .hero-orb-1 {
+            width: 400px;
+            height: 400px;
+            background: var(--lavender-blue);
+            top: 10%;
+            right: 10%;
+            animation-delay: 0s;
+        }
+
+        .hero-orb-2 {
+            width: 300px;
+            height: 300px;
+            background: var(--violet-mid);
+            bottom: 20%;
+            left: 5%;
+            animation-delay: -2s;
+        }
+
+        .hero-orb-3 {
+            width: 250px;
+            height: 250px;
+            background: var(--soft-pink);
+            top: 50%;
+            left: 30%;
+            animation-delay: -4s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(30px, -30px) scale(1.05); }
+            66% { transform: translate(-20px, 20px) scale(0.95); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 50px;
+            font-size: 0.875rem;
+            color: var(--grey-text);
+            margin-bottom: 2rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .hero-badge-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--lavender-blue);
+            border-radius: 50%;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(168, 200, 240, 0.4); }
+            50% { opacity: 0.8; box-shadow: 0 0 0 8px rgba(168, 200, 240, 0); }
+        }
+
+        .hero-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(2.5rem, 7vw, 4.5rem);
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.03em;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.1rem, 2.5vw, 1.35rem);
+            color: var(--grey-text);
+            margin-bottom: 2.5rem;
+            line-height: 1.7;
+        }
+
+        .hero-targets {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.75rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .hero-target {
+            padding: 0.5rem 1rem;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 6px;
+            font-size: 0.9rem;
+            color: var(--grey-text);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .hero-target:hover {
+            border-color: var(--lavender-blue);
+            color: var(--lavender-blue);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(168, 200, 240, 0.15);
+        }
+
+        .hero-cta-group {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 4rem;
+            padding-top: 3rem;
+            border-top: 1px solid var(--glass-border);
+        }
+
+        .hero-stat {
+            text-align: center;
+        }
+
+        .hero-stat-value {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            font-weight: 700;
+            margin-bottom: 0.25rem;
+        }
+
+        .hero-stat-label {
+            font-size: 0.875rem;
+            color: var(--text-muted);
+        }
+
+        /* ========================================
+           CONSTAT SECTION (Pain Points)
+           ======================================== */
+        .constat {
+            padding: var(--section-padding) 0;
+            position: relative;
+        }
+
+        .constat-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .constat-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--soft-pink);
+            font-size: 0.875rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 1rem;
+        }
+
+        .pain-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .pain-card {
+            background: var(--card-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 2rem;
+            backdrop-filter: blur(20px);
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                        border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                        box-shadow 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .pain-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--gradient-holographic);
+            opacity: 0;
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: opacity 0.3s ease, transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .pain-card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 16px;
+            padding: 1px;
+            background: var(--gradient-holographic);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            opacity: 0;
+            transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            pointer-events: none;
+        }
+
+        .pain-card:hover {
+            border-color: transparent;
+            transform: translateY(-4px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4),
+                        0 0 40px rgba(232, 160, 192, 0.08);
+        }
+
+        .pain-card:hover::before {
+            opacity: 1;
+            transform: scaleX(1);
+        }
+
+        .pain-card:hover::after {
+            opacity: 0.5;
+        }
+
+        .pain-icon {
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, rgba(232, 160, 192, 0.2), transparent);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            color: var(--soft-pink);
+        }
+
+        .pain-card h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+        }
+
+        .pain-card p {
+            color: var(--grey-text);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        .pain-examples {
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--glass-border);
+        }
+
+        .pain-example {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 0.5rem;
+        }
+
+        .pain-example i {
+            color: var(--soft-pink);
+            width: 16px;
+            height: 16px;
+        }
+
+        /* ========================================
+           INFRASTRUCTURE SECTION (Solutions)
+           ======================================== */
+        .infrastructure {
+            padding: var(--section-padding) 0;
+            background: linear-gradient(180deg, var(--dark-bg) 0%, var(--bg-darker) 50%, var(--dark-bg) 100%);
+            position: relative;
+        }
+
+        .infrastructure-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .infrastructure-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--lavender-blue);
+            font-size: 0.875rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 1rem;
+        }
+
+        .motors-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .motor-card {
+            background: var(--card-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                        border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                        box-shadow 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .motor-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--gradient-holographic);
+            opacity: 0;
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: opacity 0.3s ease, transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .motor-card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 20px;
+            padding: 1px;
+            background: var(--gradient-holographic);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            opacity: 0;
+            transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            pointer-events: none;
+        }
+
+        .motor-card:hover {
+            border-color: transparent;
+            transform: translateY(-4px) scale(1.01);
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5),
+                        0 0 50px rgba(168, 200, 240, 0.08);
+        }
+
+        .motor-card:hover::before {
+            opacity: 1;
+            transform: scaleX(1);
+        }
+
+        .motor-card:hover::after {
+            opacity: 0.6;
+        }
+
+        .motor-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .motor-icon {
+            width: 64px;
+            height: 64px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .motor-icon.production {
+            background: linear-gradient(135deg, var(--lavender-blue), rgba(168, 200, 240, 0.3));
+            color: var(--dark-bg);
+        }
+
+        .motor-icon.acquisition {
+            background: linear-gradient(135deg, var(--violet-mid), rgba(196, 160, 220, 0.3));
+            color: var(--dark-bg);
+        }
+
+        .motor-icon.operations {
+            background: linear-gradient(135deg, var(--soft-pink), rgba(232, 160, 192, 0.3));
+            color: var(--dark-bg);
+        }
+
+        .motor-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.35rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .motor-tagline {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            font-style: italic;
+        }
+
+        .motor-quote {
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+            padding-left: 1rem;
+            border-left: 3px solid var(--lavender-blue);
+        }
+
+        .motor-card:nth-child(2) .motor-quote {
+            border-color: var(--violet-mid);
+        }
+
+        .motor-card:nth-child(3) .motor-quote {
+            border-color: var(--soft-pink);
+        }
+
+        .motor-description {
+            color: var(--grey-text);
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .motor-features {
+            list-style: none;
+        }
+
+        .motor-feature {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid var(--glass-border);
+            font-size: 0.9rem;
+            color: var(--grey-text);
+        }
+
+        .motor-feature:last-child {
+            border-bottom: none;
+        }
+
+        .motor-feature i {
+            color: var(--lavender-blue);
+            margin-top: 2px;
+            flex-shrink: 0;
+        }
+
+        .motor-card:nth-child(2) .motor-feature i {
+            color: var(--violet-mid);
+        }
+
+        .motor-card:nth-child(3) .motor-feature i {
+            color: var(--soft-pink);
+        }
+
+        /* ========================================
+           PROCESS SECTION (How it works)
+           ======================================== */
+        .process {
+            padding: var(--section-padding) 0;
+            position: relative;
+        }
+
+        .process-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .process-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--violet-mid);
+            font-size: 0.875rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 1rem;
+        }
+
+        .steps-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            position: relative;
+        }
+
+        /* Connection line between steps */
+        .steps-container::before {
+            content: '';
+            position: absolute;
+            top: 50px;
+            left: 15%;
+            right: 15%;
+            height: 2px;
+            background: var(--gradient-holographic);
+            opacity: 0.3;
+            z-index: 0;
+        }
+
+        @media (max-width: 900px) {
+            .steps-container::before {
+                display: none;
+            }
+        }
+
+        .step-card {
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .step-number {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1.5rem;
+            background: var(--card-bg);
+            border: 2px solid var(--glass-border);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.75rem;
+            font-weight: 700;
+            position: relative;
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                        border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                        box-shadow 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .step-card:nth-child(1) .step-number {
+            color: var(--lavender-blue);
+        }
+
+        .step-card:nth-child(2) .step-number {
+            color: var(--violet-mid);
+        }
+
+        .step-card:nth-child(3) .step-number {
+            color: var(--soft-pink);
+        }
+
+        .step-card:hover .step-number {
+            transform: scale(1.08);
+            border-color: currentColor;
+            box-shadow: 0 0 35px currentColor,
+                        0 0 15px currentColor;
+        }
+
+        .step-icon {
+            position: absolute;
+            bottom: -8px;
+            right: -8px;
+            width: 32px;
+            height: 32px;
+            background: var(--dark-bg);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .step-card:nth-child(1) .step-icon {
+            color: var(--lavender-blue);
+        }
+
+        .step-card:nth-child(2) .step-icon {
+            color: var(--violet-mid);
+        }
+
+        .step-card:nth-child(3) .step-icon {
+            color: var(--soft-pink);
+        }
+
+        .step-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+        }
+
+        .step-description {
+            color: var(--grey-text);
+            font-size: 0.95rem;
+            line-height: 1.7;
+            max-width: 300px;
+            margin: 0 auto;
+        }
+
+        .step-duration {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.25rem 0.75rem;
+            background: var(--card-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        /* ========================================
+           CTA / FOOTER SECTION
+           ======================================== */
+        .cta-section {
+            padding: var(--section-padding) 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-container {
+            background: var(--card-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 4rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--gradient-holographic);
+        }
+
+        .cta-glow {
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            filter: blur(150px);
+            opacity: 0.15;
+        }
+
+        .cta-glow-1 {
+            background: var(--lavender-blue);
+            top: -200px;
+            left: -100px;
+        }
+
+        .cta-glow-2 {
+            background: var(--violet-mid);
+            bottom: -200px;
+            right: -100px;
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 1;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .cta-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(1.75rem, 4vw, 2.5rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+        }
+
+        .cta-subtitle {
+            color: var(--grey-text);
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            line-height: 1.7;
+        }
+
+        .cta-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .cta-trust {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--glass-border);
+        }
+
+        .trust-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .trust-item:hover {
+            color: var(--grey-text);
+            transform: translateY(-1px);
+        }
+
+        .trust-item i {
+            color: var(--lavender-blue);
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .trust-item:hover i {
+            transform: scale(1.1);
+        }
+
+        /* ========================================
+           FOOTER
+           ======================================== */
+        .footer {
+            padding: 3rem 0;
+            border-top: 1px solid var(--glass-border);
+        }
+
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .footer-info {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .footer-logo {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--white);
+            text-decoration: none;
+        }
+
+        .footer-location {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .footer-link {
+            color: var(--grey-text);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: var(--transition-fast);
+        }
+
+        .footer-link:hover {
+            color: var(--lavender-blue);
+        }
+
+        .footer-copyright {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        /* ========================================
+           RESPONSIVE
+           ======================================== */
+        @media (max-width: 768px) {
+            .hero-stats {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .pain-cards {
+                grid-template-columns: 1fr;
+            }
+
+            .motors-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .steps-container {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .footer-links {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .cta-container {
+                padding: 3rem 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-cta-group {
+                flex-direction: column;
+            }
+
+            .btn-primary, .btn-secondary, .btn-ghost {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .hero-targets {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .cta-trust {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+
+        /* ========================================
+           SCROLL ANIMATIONS
+           ======================================== */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reveal-delay-1 { transition-delay: 0.1s; }
+        .reveal-delay-2 { transition-delay: 0.2s; }
+        .reveal-delay-3 { transition-delay: 0.3s; }
+
+        /* ========================================
+           SECURITY SECTION - ORBITAL ANIMATION
+           ======================================== */
+        .security {
+            padding: var(--section-padding) 0;
+            padding-bottom: calc(var(--section-padding) + 100px);
+            background: linear-gradient(180deg, var(--dark-bg) 0%, var(--bg-darker) 50%, var(--dark-bg) 100%);
+            position: relative;
+            overflow: visible;
+        }
+
+        .security-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .security-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--lavender-blue);
+            font-size: 0.875rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 1rem;
+        }
+
+        /* Orbital Container */
+        .orbital-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            height: 700px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: visible;
+        }
+
+        /* Central Core */
+        .orbital-core {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: var(--gradient-holographic);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 5;
+            animation: core-pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+            transition: opacity 0.4s ease, transform 0.4s ease;
+        }
+
+        /* Hide core when a node is expanded */
+        .orbital-container.node-active .orbital-core {
+            opacity: 0.15;
+            pointer-events: none;
+            transform: scale(0.9);
+        }
+
+        .orbital-core::before {
+            content: '';
+            position: absolute;
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            border: 1px solid rgba(168, 200, 240, 0.3);
+            animation: ping-slow 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+        }
+
+        .orbital-core::after {
+            content: '';
+            position: absolute;
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            border: 1px solid rgba(196, 160, 220, 0.2);
+            animation: ping-slow 2s cubic-bezier(0, 0, 0.2, 1) infinite 0.5s;
+        }
+
+        .core-inner {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .core-inner i {
+            color: var(--dark-bg);
+        }
+
+        @keyframes core-pulse {
+            0%, 100% {
+                box-shadow: 0 0 30px rgba(168, 200, 240, 0.4),
+                            0 0 60px rgba(196, 160, 220, 0.2);
+            }
+            50% {
+                box-shadow: 0 0 50px rgba(168, 200, 240, 0.6),
+                            0 0 100px rgba(196, 160, 220, 0.3);
+            }
+        }
+
+        @keyframes ping-slow {
+            0% { transform: scale(1); opacity: 0.8; }
+            75%, 100% { transform: scale(1.5); opacity: 0; }
+        }
+
+        /* Orbital Track */
+        .orbital-track {
+            position: absolute;
+            width: 450px;
+            height: 450px;
+            border-radius: 50%;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .orbital-track-inner {
+            position: absolute;
+            width: 350px;
+            height: 350px;
+            border-radius: 50%;
+            border: 1px dashed rgba(255, 255, 255, 0.05);
+        }
+
+        /* Orbital Wrapper - Rotation Container */
+        .orbital-wrapper {
+            position: absolute;
+            width: 450px;
+            height: 450px;
+            animation: orbit-rotate 30s linear infinite;
+        }
+
+        .orbital-wrapper.paused {
+            animation-play-state: paused;
+        }
+
+        @keyframes orbit-rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* Orbital Nodes */
+        .orbital-node {
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            cursor: pointer;
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        /* Position nodes at 120° intervals */
+        .orbital-node:nth-child(1) {
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%) translateY(-50%);
+        }
+
+        .orbital-node:nth-child(2) {
+            bottom: 13%;
+            right: 0;
+            transform: translateX(50%) translateY(50%);
+        }
+
+        .orbital-node:nth-child(3) {
+            bottom: 13%;
+            left: 0;
+            transform: translateX(-50%) translateY(50%);
+        }
+
+        /* Counter-rotate to keep nodes upright */
+        .orbital-node-inner {
+            animation: counter-rotate 30s linear infinite;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .orbital-wrapper.paused .orbital-node-inner {
+            animation-play-state: paused;
+        }
+
+        @keyframes counter-rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(-360deg); }
+        }
+
+        /* Node Circle */
+        .node-circle {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            background: var(--card-bg);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+        }
+
+        .node-circle::before {
+            content: '';
+            position: absolute;
+            inset: -4px;
+            border-radius: 50%;
+            background: var(--gradient-holographic);
+            opacity: 0;
+            z-index: -1;
+            transition: opacity 0.4s ease;
+        }
+
+        .node-circle i {
+            color: var(--lavender-blue);
+            transition: all 0.3s ease;
+        }
+
+        .orbital-node:nth-child(2) .node-circle i {
+            color: var(--violet-mid);
+        }
+
+        .orbital-node:nth-child(3) .node-circle i {
+            color: var(--soft-pink);
+        }
+
+        .orbital-node:hover .node-circle {
+            transform: scale(1.15);
+            border-color: var(--lavender-blue);
+            box-shadow: 0 0 30px rgba(168, 200, 240, 0.4);
+        }
+
+        .orbital-node:nth-child(2):hover .node-circle {
+            border-color: var(--violet-mid);
+            box-shadow: 0 0 30px rgba(196, 160, 220, 0.4);
+        }
+
+        .orbital-node:nth-child(3):hover .node-circle {
+            border-color: var(--soft-pink);
+            box-shadow: 0 0 30px rgba(232, 160, 192, 0.4);
+        }
+
+        .orbital-node:hover .node-circle::before {
+            opacity: 0.3;
+        }
+
+        .orbital-node:hover .node-circle i {
+            transform: scale(1.1);
+        }
+
+        /* Node Label */
+        .node-label {
+            margin-top: 0.75rem;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.7);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            white-space: nowrap;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .orbital-node:hover .node-label {
+            color: var(--white);
+        }
+
+        /* Expanded Card */
+        .orbital-node.expanded {
+            z-index: 500 !important;
+        }
+
+        .orbital-node.expanded .node-circle {
+            transform: scale(1.2);
+            background: var(--gradient-holographic);
+            border-color: transparent;
+        }
+
+        .orbital-node.expanded .node-circle i {
+            color: var(--dark-bg);
+        }
+
+        .node-card {
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 280px;
+            margin-top: 1rem;
+            background: rgba(26, 26, 26, 0.98);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 16px;
+            padding: 1.5rem;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            z-index: 1000;
+        }
+
+        .node-card::before {
+            content: '';
+            position: absolute;
+            top: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 1px;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .orbital-node.expanded .node-card {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        /* Position cards above for bottom nodes */
+        .orbital-node:nth-child(2) .node-card,
+        .orbital-node:nth-child(3) .node-card {
+            top: auto;
+            bottom: 100%;
+            margin-top: 0;
+            margin-bottom: 1rem;
+        }
+
+        .orbital-node:nth-child(2) .node-card::before,
+        .orbital-node:nth-child(3) .node-card::before {
+            top: auto;
+            bottom: -8px;
+        }
+
+        .node-card-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 0.75rem;
+        }
+
+        .node-card-badge {
+            padding: 0.25rem 0.75rem;
+            background: rgba(168, 200, 240, 0.15);
+            border: 1px solid var(--lavender-blue);
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: var(--lavender-blue);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .orbital-node:nth-child(2) .node-card-badge {
+            background: rgba(196, 160, 220, 0.15);
+            border-color: var(--violet-mid);
+            color: var(--violet-mid);
+        }
+
+        .orbital-node:nth-child(3) .node-card-badge {
+            background: rgba(232, 160, 192, 0.15);
+            border-color: var(--soft-pink);
+            color: var(--soft-pink);
+        }
+
+        .node-card-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .node-card-content {
+            font-size: 0.9rem;
+            color: var(--grey-text);
+            line-height: 1.6;
+        }
+
+        /* Energy Bar */
+        .node-energy {
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .node-energy-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        .node-energy-bar {
+            width: 100%;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 2px;
+            overflow: hidden;
+        }
+
+        .node-energy-fill {
+            height: 100%;
+            background: var(--gradient-holographic);
+            border-radius: 2px;
+            transition: width 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        /* Connection Lines */
+        .orbital-connections {
+            position: absolute;
+            width: 450px;
+            height: 450px;
+            pointer-events: none;
+        }
+
+        .orbital-connections svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .connection-line {
+            stroke: rgba(255, 255, 255, 0.1);
+            stroke-width: 1;
+            fill: none;
+            stroke-dasharray: 5, 5;
+            animation: dash-flow 20s linear infinite;
+        }
+
+        @keyframes dash-flow {
+            to { stroke-dashoffset: -100; }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .orbital-container {
+                height: 500px;
+                transform: scale(0.75);
+            }
+
+            .node-card {
+                width: 240px;
+                padding: 1rem;
+            }
+
+            .orbital-track {
+                width: 350px;
+                height: 350px;
+            }
+
+            .orbital-wrapper {
+                width: 350px;
+                height: 350px;
+            }
+
+            .orbital-track-inner {
+                width: 280px;
+                height: 280px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .orbital-container {
+                transform: scale(0.6);
+                height: 400px;
+            }
+        }
+
+        /* ========================================
+           TESTIMONIALS SECTION
+           (Masqué temporairement - réactiver avec display: block)
+           ======================================== */
+        .testimonials {
+            display: none; /* TODO: Réactiver quand les vrais témoignages seront disponibles */
+            padding: var(--section-padding) 0;
+            position: relative;
+        }
+
+        .testimonials-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .testimonials-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--violet-mid);
+            font-size: 0.875rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 1rem;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .testimonial-card {
+            background: var(--card-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 2rem;
+            transition: var(--transition-smooth);
+        }
+
+        .testimonial-card:hover {
+            border-color: var(--glass-border-hover);
+        }
+
+        .testimonial-quote {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--grey-text);
+            margin-bottom: 1.5rem;
+            font-style: italic;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .testimonial-quote::before {
+            content: '"';
+            position: absolute;
+            left: 0;
+            top: -0.25rem;
+            font-size: 2rem;
+            color: var(--violet-mid);
+            font-family: Georgia, serif;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .testimonial-avatar {
+            width: 48px;
+            height: 48px;
+            background: var(--gradient-holographic);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--dark-bg);
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .testimonial-info h4 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .testimonial-info span {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .partners-section {
+            text-align: center;
+            padding-top: 3rem;
+            border-top: 1px solid var(--glass-border);
+        }
+
+        .partners-label {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .partners-logos {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 3rem;
+            opacity: 0.6;
+        }
+
+        .partner-logo {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--grey-text);
+            padding: 0.75rem 1.5rem;
+            border: 1px solid var(--glass-border);
+            border-radius: 8px;
+        }
+
+        @media (max-width: 768px) {
+            .security-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .partners-logos {
+                gap: 1.5rem;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <a href="#" class="logo">
+                <img src="assets/logo.png" alt="A2Z Logo" class="logo-img">
+            </a>
+            <a href="#contact" class="btn-primary">
+                <span>Audit de processus</span>
+                <i data-lucide="arrow-right" style="width: 16px; height: 16px;"></i>
+            </a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <!-- Background Effects -->
+        <div class="hero-orb hero-orb-1"></div>
+        <div class="hero-orb hero-orb-2"></div>
+        <div class="hero-orb hero-orb-3"></div>
+
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <span class="hero-badge-dot"></span>
+                    <span>Hébergement 100% Suisse — Secret professionnel garanti</span>
+                </div>
+
+                <h1 class="hero-title">
+                    Récupérez vos <span class="gradient-text">heures facturables</span>
+                </h1>
+
+                <p class="hero-subtitle">
+                    Automatisez la gestion de vos dossiers, l'onboarding client et la facturation. Vos collaborateurs se concentrent sur le conseil, pas sur la saisie. Sécurité et confidentialité de niveau bancaire.
+                </p>
+
+                <div class="hero-targets">
+                    <span class="hero-target">Études d'avocats</span>
+                    <span class="hero-target">Fiduciaires</span>
+                    <span class="hero-target">Notaires</span>
+                    <span class="hero-target">Professions réglementées</span>
+                </div>
+
+                <div class="hero-cta-group">
+                    <a href="#contact" class="btn-primary">
+                        <i data-lucide="calendar" style="width: 20px; height: 20px;"></i>
+                        <span>Réserver un audit de processus (30 min)</span>
+                    </a>
+                    <a href="#infrastructure" class="btn-ghost">
+                        <span>Découvrir nos solutions sécurisées</span>
+                        <i data-lucide="chevron-down" style="width: 20px; height: 20px;"></i>
+                    </a>
+                </div>
+
+                <div class="hero-stats">
+                    <div class="hero-stat">
+                        <div class="hero-stat-value gradient-text">+15h</div>
+                        <div class="hero-stat-label">facturables récupérées / semaine</div>
+                    </div>
+                    <div class="hero-stat">
+                        <div class="hero-stat-value gradient-text">100%</div>
+                        <div class="hero-stat-label">données hébergées en Suisse</div>
+                    </div>
+                    <div class="hero-stat">
+                        <div class="hero-stat-value gradient-text">Art. 321 CP</div>
+                        <div class="hero-stat-label">secret professionnel respecté</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Constat Section (Pain Points) -->
+    <section class="constat" id="constat">
+        <div class="container">
+            <div class="constat-header">
+                <div class="constat-label">
+                    <i data-lucide="alert-triangle" style="width: 16px; height: 16px;"></i>
+                    <span>Le constat</span>
+                </div>
+                <h2 class="section-title reveal">Ce qui freine votre efficience</h2>
+                <p class="section-subtitle reveal reveal-delay-1">
+                    Chaque jour, vos collaborateurs perdent des heures facturables sur des tâches administratives qui pourraient être automatisées.
+                </p>
+            </div>
+
+            <div class="pain-cards">
+                <!-- Pain Card 1 -->
+                <div class="pain-card reveal reveal-delay-1">
+                    <div class="pain-icon">
+                        <i data-lucide="user-plus" style="width: 28px; height: 28px;"></i>
+                    </div>
+                    <h3>L'onboarding client prend des heures</h3>
+                    <p>
+                        Collecte des pièces d'identité, vérifications KYC, ouverture de dossier... Chaque nouveau mandat mobilise vos collaborateurs sur des tâches sans valeur ajoutée au lieu du conseil.
+                    </p>
+                    <div class="pain-examples">
+                        <div class="pain-example">
+                            <i data-lucide="file-text"></i>
+                            <span>Chasse aux documents par email et relances</span>
+                        </div>
+                        <div class="pain-example">
+                            <i data-lucide="file-text"></i>
+                            <span>Saisie manuelle des informations client</span>
+                        </div>
+                        <div class="pain-example">
+                            <i data-lucide="file-text"></i>
+                            <span>Vérifications de conformité chronophages</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pain Card 2 -->
+                <div class="pain-card reveal reveal-delay-2">
+                    <div class="pain-icon">
+                        <i data-lucide="copy" style="width: 28px; height: 28px;"></i>
+                    </div>
+                    <h3>Double saisie entre vos outils</h3>
+                    <p>
+                        Vous ressaisissez les mêmes informations entre votre boîte mail, votre logiciel métier et votre système comptable. Résultat : perte de temps et risques d'erreurs.
+                    </p>
+                    <div class="pain-examples">
+                        <div class="pain-example">
+                            <i data-lucide="unplug"></i>
+                            <span>Emails recopiés manuellement dans le dossier client</span>
+                        </div>
+                        <div class="pain-example">
+                            <i data-lucide="unplug"></i>
+                            <span>Temps passé non synchronisé avec la facturation</span>
+                        </div>
+                        <div class="pain-example">
+                            <i data-lucide="unplug"></i>
+                            <span>Données dispersées entre plusieurs systèmes</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pain Card 3 -->
+                <div class="pain-card reveal reveal-delay-3">
+                    <div class="pain-icon">
+                        <i data-lucide="clock" style="width: 28px; height: 28px;"></i>
+                    </div>
+                    <h3>La facturation vous ralentit</h3>
+                    <p>
+                        Saisie des prestations, calcul des honoraires, génération des notes d'honoraires... Chaque fin de mois, vos équipes passent des journées entières sur la facturation au lieu de travailler sur les dossiers.
+                    </p>
+                    <div class="pain-examples">
+                        <div class="pain-example">
+                            <i data-lucide="trending-down"></i>
+                            <span>Heures non facturées car oubliées</span>
+                        </div>
+                        <div class="pain-example">
+                            <i data-lucide="trending-down"></i>
+                            <span>Retard dans l'émission des notes d'honoraires</span>
+                        </div>
+                        <div class="pain-example">
+                            <i data-lucide="trending-down"></i>
+                            <span>Réconciliation manuelle des paiements</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Infrastructure Section (Solutions) -->
+    <section class="infrastructure" id="infrastructure">
+        <div class="container">
+            <div class="infrastructure-header">
+                <div class="infrastructure-label">
+                    <i data-lucide="shield" style="width: 16px; height: 16px;"></i>
+                    <span>Nos Solutions</span>
+                </div>
+                <h2 class="section-title reveal">Trois piliers. <span class="gradient-text">Efficience garantie.</span></h2>
+                <p class="section-subtitle reveal reveal-delay-1">
+                    Des solutions d'automatisation conçues pour les professions réglementées. Sécurisées, conformes, invisibles.
+                </p>
+            </div>
+
+            <div class="motors-grid">
+                <!-- Solution 1: Traitement documentaire -->
+                <div class="motor-card reveal reveal-delay-1">
+                    <div class="motor-header">
+                        <div class="motor-icon production">
+                            <i data-lucide="file-search" style="width: 32px; height: 32px;"></i>
+                        </div>
+                        <div>
+                            <h3 class="motor-title">Traitement Documentaire</h3>
+                            <span class="motor-tagline">Analyse & Extraction</span>
+                        </div>
+                    </div>
+
+                    <p class="motor-quote">"Vos documents sont traités, classés et indexés automatiquement."</p>
+
+                    <p class="motor-description">
+                        Nos solutions d'analyse documentaire extraient les informations clés de vos dossiers — conclusions adverses, pièces comptables, contrats — et les intègrent directement dans votre logiciel métier.
+                    </p>
+
+                    <ul class="motor-features">
+                        <li class="motor-feature">
+                            <i data-lucide="check-circle-2" style="width: 18px; height: 18px;"></i>
+                            <span>Extraction automatique depuis PDF et scans</span>
+                        </li>
+                        <li class="motor-feature">
+                            <i data-lucide="check-circle-2" style="width: 18px; height: 18px;"></i>
+                            <span>Classement intelligent des pièces de dossier</span>
+                        </li>
+                        <li class="motor-feature">
+                            <i data-lucide="check-circle-2" style="width: 18px; height: 18px;"></i>
+                            <span>Résumés automatiques de documents volumineux</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Solution 2: Gestion des mandats -->
+                <div class="motor-card reveal reveal-delay-2">
+                    <div class="motor-header">
+                        <div class="motor-icon acquisition">
+                            <i data-lucide="briefcase" style="width: 32px; height: 32px;"></i>
+                        </div>
+                        <div>
+                            <h3 class="motor-title">Gestion des Mandats</h3>
+                            <span class="motor-tagline">Onboarding & Suivi</span>
+                        </div>
+                    </div>
+
+                    <p class="motor-quote">"L'ouverture de dossier en quelques clics, pas en quelques heures."</p>
+
+                    <p class="motor-description">
+                        Automatisez l'onboarding client, la collecte documentaire et les vérifications de conformité. Vos collaborateurs se concentrent sur le conseil pendant que le système gère l'administratif.
+                    </p>
+
+                    <ul class="motor-features">
+                        <li class="motor-feature">
+                            <i data-lucide="check-circle-2" style="width: 18px; height: 18px;"></i>
+                            <span>Collecte automatisée des pièces client</span>
+                        </li>
+                        <li class="motor-feature">
+                            <i data-lucide="check-circle-2" style="width: 18px; height: 18px;"></i>
+                            <span>Vérifications KYC et conformité intégrées</span>
+                        </li>
+                        <li class="motor-feature">
+                            <i data-lucide="check-circle-2" style="width: 18px; height: 18px;"></i>
+                            <span>Suivi des échéances et rappels automatiques</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Solution 3: Automatisation des flux -->
+                <div class="motor-card reveal reveal-delay-3">
+                    <div class="motor-header">
+                        <div class="motor-icon operations">
+                            <i data-lucide="workflow" style="width: 32px; height: 32px;"></i>
+                        </div>
+                        <div>
+                            <h3 class="motor-title">Automatisation des Flux</h3>
+                            <span class="motor-tagline">Synchronisation & Facturation</span>
+                        </div>
+                    </div>
+
+                    <p class="motor-quote">"Vos systèmes communiquent enfin entre eux."</p>
+
+                    <p class="motor-description">
+                        Nous connectons vos outils existants pour éliminer la double saisie. Emails, agenda, logiciel métier et comptabilité synchronisés. La facturation devient automatique.
+                    </p>
+
+                    <ul class="motor-features">
+                        <li class="motor-feature">
+                            <i data-lucide="check-circle-2" style="width: 18px; height: 18px;"></i>
+                            <span>Intégration avec vos logiciels existants</span>
+                        </li>
+                        <li class="motor-feature">
+                            <i data-lucide="check-circle-2" style="width: 18px; height: 18px;"></i>
+                            <span>Synchronisation email ↔ dossier client</span>
+                        </li>
+                        <li class="motor-feature">
+                            <i data-lucide="check-circle-2" style="width: 18px; height: 18px;"></i>
+                            <span>Facturation et notes d'honoraires automatisées</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="process" id="process">
+        <div class="container">
+            <div class="process-header">
+                <div class="process-label">
+                    <i data-lucide="route" style="width: 16px; height: 16px;"></i>
+                    <span>Comment ça marche</span>
+                </div>
+                <h2 class="section-title reveal">Du diagnostic au déploiement, <span class="gradient-text">en toute transparence</span></h2>
+                <p class="section-subtitle reveal reveal-delay-1">
+                    Un processus clair, sans jargon technique, adapté à votre rythme.
+                </p>
+            </div>
+
+            <div class="steps-container">
+                <!-- Step 1 -->
+                <div class="step-card reveal reveal-delay-1">
+                    <div class="step-number">
+                        1
+                        <div class="step-icon">
+                            <i data-lucide="search" style="width: 16px; height: 16px;"></i>
+                        </div>
+                    </div>
+                    <h3 class="step-title">Audit de vos processus</h3>
+                    <p class="step-description">
+                        Nous analysons vos flux de travail actuels, identifions les tâches chronophages et définissons ensemble les priorités d'automatisation avec un retour sur investissement mesurable.
+                    </p>
+                    <span class="step-duration">Confidentiel • 30 min</span>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="step-card reveal reveal-delay-2">
+                    <div class="step-number">
+                        2
+                        <div class="step-icon">
+                            <i data-lucide="wrench" style="width: 16px; height: 16px;"></i>
+                        </div>
+                    </div>
+                    <h3 class="step-title">Configuration sécurisée</h3>
+                    <p class="step-description">
+                        Notre équipe développe votre solution sur-mesure dans un environnement sécurisé. Vos opérations continuent normalement, sans perturbation pour vos collaborateurs.
+                    </p>
+                    <span class="step-duration">Données protégées</span>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="step-card reveal reveal-delay-3">
+                    <div class="step-number">
+                        3
+                        <div class="step-icon">
+                            <i data-lucide="check-circle" style="width: 16px; height: 16px;"></i>
+                        </div>
+                    </div>
+                    <h3 class="step-title">Déploiement & Formation</h3>
+                    <p class="step-description">
+                        Activation progressive des automatisations. Vos équipes sont formées à utiliser le système. Accompagnement continu pour ajuster et optimiser.
+                    </p>
+                    <span class="step-duration">Support dédié inclus</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Security Section - Orbital Animation -->
+    <section class="security" id="security">
+        <div class="container">
+            <div class="security-header">
+                <div class="security-label">
+                    <i data-lucide="shield-check" style="width: 16px; height: 16px;"></i>
+                    <span>Sécurité & Conformité Suisse</span>
+                </div>
+                <h2 class="section-title reveal">Vos données restent <span class="gradient-text">en Suisse</span></h2>
+                <p class="section-subtitle reveal reveal-delay-1">
+                    La confidentialité de vos dossiers est notre priorité absolue. Infrastructure suisse, protocoles bancaires.
+                </p>
+            </div>
+
+            <!-- Orbital Animation Container -->
+            <div class="orbital-container" id="orbitalContainer">
+                <!-- Central Core -->
+                <div class="orbital-core">
+                    <div class="core-inner">
+                        <i data-lucide="shield" style="width: 24px; height: 24px;"></i>
+                    </div>
+                </div>
+
+                <!-- Orbital Tracks -->
+                <div class="orbital-track"></div>
+                <div class="orbital-track-inner"></div>
+
+                <!-- Connection Lines SVG -->
+                <div class="orbital-connections">
+                    <svg viewBox="0 0 450 450">
+                        <line class="connection-line" x1="225" y1="0" x2="225" y2="225"/>
+                        <line class="connection-line" x1="450" y1="390" x2="225" y2="225"/>
+                        <line class="connection-line" x1="0" y1="390" x2="225" y2="225"/>
+                    </svg>
+                </div>
+
+                <!-- Orbital Wrapper (Rotating) -->
+                <div class="orbital-wrapper" id="orbitalWrapper">
+                    <!-- Node 1: Hébergement Suisse -->
+                    <div class="orbital-node" data-node="1">
+                        <div class="orbital-node-inner">
+                            <div class="node-circle">
+                                <i data-lucide="database" style="width: 28px; height: 28px;"></i>
+                            </div>
+                            <span class="node-label">Hébergement</span>
+
+                            <!-- Expanded Card -->
+                            <div class="node-card">
+                                <div class="node-card-header">
+                                    <span class="node-card-badge">Certifié</span>
+                                </div>
+                                <h4 class="node-card-title">Hébergement 100% Suisse</h4>
+                                <p class="node-card-content">
+                                    Toutes vos données sont stockées exclusivement dans des centres de données situés en Suisse. Aucun transfert vers l'étranger, aucune exception.
+                                </p>
+                                <div class="node-energy">
+                                    <div class="node-energy-header">
+                                        <span>Niveau de protection</span>
+                                        <span>100%</span>
+                                    </div>
+                                    <div class="node-energy-bar">
+                                        <div class="node-energy-fill" style="width: 100%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Node 2: Secret Professionnel -->
+                    <div class="orbital-node" data-node="2">
+                        <div class="orbital-node-inner">
+                            <div class="node-circle">
+                                <i data-lucide="scale" style="width: 28px; height: 28px;"></i>
+                            </div>
+                            <span class="node-label">Art. 321 CP</span>
+
+                            <!-- Expanded Card -->
+                            <div class="node-card">
+                                <div class="node-card-header">
+                                    <span class="node-card-badge">Conforme</span>
+                                </div>
+                                <h4 class="node-card-title">Secret professionnel garanti</h4>
+                                <p class="node-card-content">
+                                    Nos solutions sont conçues dans le respect absolu de l'Art. 321 CP. Vos dossiers clients et communications restent strictement confidentiels.
+                                </p>
+                                <div class="node-energy">
+                                    <div class="node-energy-header">
+                                        <span>Conformité légale</span>
+                                        <span>100%</span>
+                                    </div>
+                                    <div class="node-energy-bar">
+                                        <div class="node-energy-fill" style="width: 100%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Node 3: Sécurité Bancaire -->
+                    <div class="orbital-node" data-node="3">
+                        <div class="orbital-node-inner">
+                            <div class="node-circle">
+                                <i data-lucide="lock" style="width: 28px; height: 28px;"></i>
+                            </div>
+                            <span class="node-label">AES-256</span>
+
+                            <!-- Expanded Card -->
+                            <div class="node-card">
+                                <div class="node-card-header">
+                                    <span class="node-card-badge">Bancaire</span>
+                                </div>
+                                <h4 class="node-card-title">Sécurité niveau bancaire</h4>
+                                <p class="node-card-content">
+                                    Chiffrement de bout en bout, authentification multi-facteurs, audits de sécurité réguliers. Les mêmes standards que les institutions financières suisses.
+                                </p>
+                                <div class="node-energy">
+                                    <div class="node-energy-header">
+                                        <span>Niveau de chiffrement</span>
+                                        <span>256-bit</span>
+                                    </div>
+                                    <div class="node-energy-bar">
+                                        <div class="node-energy-fill" style="width: 100%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <div class="testimonials-header">
+                <div class="testimonials-label">
+                    <i data-lucide="quote" style="width: 16px; height: 16px;"></i>
+                    <span>Témoignages</span>
+                </div>
+                <h2 class="section-title reveal">Ce qu'en disent <span class="gradient-text">nos clients</span></h2>
+                <p class="section-subtitle reveal reveal-delay-1">
+                    Des études et fiduciaires qui ont transformé leur efficience opérationnelle.
+                </p>
+            </div>
+
+            <div class="testimonials-grid">
+                <!-- Testimonial 1 -->
+                <div class="testimonial-card reveal reveal-delay-1">
+                    <p class="testimonial-quote">
+                        Nous avons récupéré près de 12 heures par semaine sur la gestion documentaire. L'onboarding client qui prenait une demi-journée se fait maintenant en 30 minutes. Et surtout, la sécurité des données était leur priorité dès le départ.
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">MR</div>
+                        <div class="testimonial-info">
+                            <h4>Me R., Associé</h4>
+                            <span>Étude d'avocats • Lausanne</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="testimonial-card reveal reveal-delay-2">
+                    <p class="testimonial-quote">
+                        La double saisie entre notre logiciel comptable et notre CRM nous coûtait un temps fou. Aujourd'hui, tout est synchronisé automatiquement. Nos collaborateurs peuvent enfin se concentrer sur le conseil aux clients.
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">SD</div>
+                        <div class="testimonial-info">
+                            <h4>S. D., Directrice</h4>
+                            <span>Fiduciaire • Genève</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div class="testimonial-card reveal reveal-delay-3">
+                    <p class="testimonial-quote">
+                        Ce qui m'a convaincu, c'est leur approche discrète et professionnelle. Pas de jargon technique, une compréhension réelle de nos contraintes réglementaires. L'hébergement suisse était non-négociable pour nous.
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">PB</div>
+                        <div class="testimonial-info">
+                            <h4>P. B., Expert-comptable</h4>
+                            <span>Fiduciaire • Fribourg</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="partners-section">
+                <p class="partners-label">Ils nous font confiance</p>
+                <div class="partners-logos">
+                    <span class="partner-logo">Étude Blanc & Associés</span>
+                    <span class="partner-logo">Fiduciaire du Léman</span>
+                    <span class="partner-logo">Cabinet juridique Vaudois</span>
+                    <span class="partner-logo">Notaires Réunis SA</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section" id="contact">
+        <div class="container">
+            <div class="cta-container">
+                <div class="cta-glow cta-glow-1"></div>
+                <div class="cta-glow cta-glow-2"></div>
+
+                <div class="cta-content">
+                    <h2 class="cta-title reveal">
+                        Récupérez vos heures facturables <span class="gradient-text">dès maintenant</span>
+                    </h2>
+                    <p class="cta-subtitle reveal reveal-delay-1">
+                        Réservez un entretien confidentiel de 30 minutes. Nous analyserons vos processus et identifierons les gains d'efficience concrets pour votre étude — sans engagement.
+                    </p>
+
+                    <div class="cta-buttons reveal reveal-delay-2">
+                        <a href="mailto:contact@a2z-consulting.ch?subject=Demande%20d'audit%20de%20processus" class="btn-primary">
+                            <i data-lucide="calendar" style="width: 20px; height: 20px;"></i>
+                            <span>Réserver un audit de processus (30 min)</span>
+                        </a>
+                        <a href="mailto:contact@a2z-consulting.ch" class="btn-secondary">
+                            <i data-lucide="mail" style="width: 20px; height: 20px;"></i>
+                            <span>contact@a2z-consulting.ch</span>
+                        </a>
+                    </div>
+
+                    <div class="cta-trust reveal reveal-delay-3">
+                        <div class="trust-item">
+                            <i data-lucide="shield-check" style="width: 18px; height: 18px;"></i>
+                            <span>Hébergement 100% Suisse</span>
+                        </div>
+                        <div class="trust-item">
+                            <i data-lucide="scale" style="width: 18px; height: 18px;"></i>
+                            <span>Secret professionnel (Art. 321 CP)</span>
+                        </div>
+                        <div class="trust-item">
+                            <i data-lucide="lock" style="width: 18px; height: 18px;"></i>
+                            <span>Sécurité niveau bancaire</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <a href="#" class="footer-logo">A2Z Consulting</a>
+                    <div class="footer-location">
+                        <i data-lucide="map-pin" style="width: 14px; height: 14px;"></i>
+                        <span>Crissier, Vaud — Suisse</span>
+                    </div>
+                </div>
+
+                <div class="footer-links">
+                    <a href="#constat" class="footer-link">Vos défis</a>
+                    <a href="#infrastructure" class="footer-link">Nos solutions</a>
+                    <a href="#security" class="footer-link">Sécurité</a>
+                    <a href="#contact" class="footer-link">Contact</a>
+                </div>
+
+                <div class="footer-copyright">
+                    © 2026 A2Z Consulting. Tous droits réservés.
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+
+        // Scroll reveal animations
+        const revealElements = document.querySelectorAll('.reveal');
+
+        const revealOnScroll = () => {
+            const windowHeight = window.innerHeight;
+
+            revealElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const revealPoint = 150;
+
+                if (elementTop < windowHeight - revealPoint) {
+                    element.classList.add('active');
+                }
+            });
+        };
+
+        window.addEventListener('scroll', revealOnScroll);
+        window.addEventListener('load', revealOnScroll);
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Parallax effect on hero orbs
+        document.addEventListener('mousemove', (e) => {
+            const orbs = document.querySelectorAll('.hero-orb');
+            const x = e.clientX / window.innerWidth;
+            const y = e.clientY / window.innerHeight;
+
+            orbs.forEach((orb, index) => {
+                const speed = (index + 1) * 20;
+                const xOffset = (x - 0.5) * speed;
+                const yOffset = (y - 0.5) * speed;
+                orb.style.transform = `translate(${xOffset}px, ${yOffset}px)`;
+            });
+        });
+
+        // Add subtle hover effect to cards
+        const cards = document.querySelectorAll('.pain-card, .motor-card');
+
+        cards.forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+
+                card.style.setProperty('--mouse-x', `${x}px`);
+                card.style.setProperty('--mouse-y', `${y}px`);
+            });
+        });
+
+        // ========================================
+        // ORBITAL ANIMATION - Security Section
+        // ========================================
+        const orbitalWrapper = document.getElementById('orbitalWrapper');
+        const orbitalContainer = document.getElementById('orbitalContainer');
+        const orbitalNodes = document.querySelectorAll('.orbital-node');
+        let activeNode = null;
+
+        // Toggle node expansion
+        function toggleNode(node) {
+            const isCurrentlyExpanded = node.classList.contains('expanded');
+
+            // Close all nodes first
+            orbitalNodes.forEach(n => n.classList.remove('expanded'));
+
+            if (!isCurrentlyExpanded) {
+                // Expand this node
+                node.classList.add('expanded');
+                activeNode = node;
+                // Pause rotation when a node is expanded
+                orbitalWrapper.classList.add('paused');
+                // Fade out the central core
+                orbitalContainer.classList.add('node-active');
+            } else {
+                activeNode = null;
+                // Resume rotation
+                orbitalWrapper.classList.remove('paused');
+                // Show the central core again
+                orbitalContainer.classList.remove('node-active');
+            }
+        }
+
+        // Add click handlers to nodes
+        orbitalNodes.forEach(node => {
+            node.addEventListener('click', (e) => {
+                e.stopPropagation();
+                toggleNode(node);
+            });
+
+            // Pause rotation on hover
+            node.addEventListener('mouseenter', () => {
+                if (!activeNode) {
+                    orbitalWrapper.classList.add('paused');
+                }
+            });
+
+            node.addEventListener('mouseleave', () => {
+                if (!activeNode) {
+                    orbitalWrapper.classList.remove('paused');
+                }
+            });
+        });
+
+        // Close expanded node when clicking outside
+        orbitalContainer.addEventListener('click', (e) => {
+            if (e.target === orbitalContainer || e.target.closest('.orbital-track') || e.target.closest('.orbital-core')) {
+                orbitalNodes.forEach(n => n.classList.remove('expanded'));
+                activeNode = null;
+                orbitalWrapper.classList.remove('paused');
+                orbitalContainer.classList.remove('node-active');
+            }
+        });
+
+        // Close on escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && activeNode) {
+                orbitalNodes.forEach(n => n.classList.remove('expanded'));
+                activeNode = null;
+                orbitalWrapper.classList.remove('paused');
+                orbitalContainer.classList.remove('node-active');
+            }
+        });
+    </script>
+</body>
+</html>

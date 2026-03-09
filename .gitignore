@@ -1,0 +1,15 @@
+# Temporary files
+Temporary_Screenshot/
+.tmp/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# Environment
+.env
+.env.local

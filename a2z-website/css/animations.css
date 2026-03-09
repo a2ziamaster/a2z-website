@@ -1,0 +1,510 @@
+/* ==========================================
+   ANIMATIONS & EFFECTS
+   ========================================== */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(168, 200, 240, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(168, 200, 240, 0.5);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes rotateIn {
+  from {
+    opacity: 0;
+    transform: rotate(-10deg);
+  }
+  to {
+    opacity: 1;
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes countUp {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes particles {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-100px);
+  }
+}
+
+/* ==========================================
+   SCROLL REVEAL CLASSES
+   ========================================== */
+
+.scroll-reveal {
+  opacity: 0;
+  animation: slideUp 0.8s ease-out forwards;
+}
+
+.scroll-reveal-delay-1 {
+  animation-delay: 0.1s;
+}
+
+.scroll-reveal-delay-2 {
+  animation-delay: 0.2s;
+}
+
+.scroll-reveal-delay-3 {
+  animation-delay: 0.3s;
+}
+
+.scroll-reveal-delay-4 {
+  animation-delay: 0.4s;
+}
+
+.scroll-reveal-delay-5 {
+  animation-delay: 0.5s;
+}
+
+.scroll-reveal-delay-6 {
+  animation-delay: 0.6s;
+}
+
+/* ==========================================
+   GRADIENT TEXT SHIMMER
+   ========================================== */
+
+.gradient-shimmer {
+  background-size: 200% 200%;
+  animation: gradientShift 3s ease-in-out infinite;
+}
+
+/* ==========================================
+   HOVER EFFECTS
+   ========================================== */
+
+.hover-scale {
+  transition: transform var(--transition-base);
+}
+
+.hover-scale:hover {
+  transform: scale(1.05);
+}
+
+.hover-glow {
+  transition: box-shadow var(--transition-base);
+}
+
+.hover-glow:hover {
+  box-shadow: 0 0 30px rgba(168, 200, 240, 0.4);
+}
+
+.hover-lift {
+  transition: transform var(--transition-base);
+}
+
+.hover-lift:hover {
+  transform: translateY(-4px);
+}
+
+.hover-underline {
+  position: relative;
+}
+
+.hover-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--gradient-primary);
+  transition: width var(--transition-base);
+}
+
+.hover-underline:hover::after {
+  width: 100%;
+}
+
+/* ==========================================
+   PARTICLES BACKGROUND
+   ========================================== */
+
+.particles-container {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.particle {
+  position: absolute;
+  bottom: 0;
+  pointer-events: none;
+}
+
+/* ==========================================
+   GLASSMORPHISM
+   ========================================== */
+
+.glass {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.glass-darker {
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* ==========================================
+   SECTION ANIMATIONS
+   ========================================== */
+
+section.animated {
+  animation: slideUp 0.8s ease-out;
+}
+
+/* ==========================================
+   LOADING ANIMATION
+   ========================================== */
+
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--bg-secondary) 0%,
+    var(--bg-tertiary) 50%,
+    var(--bg-secondary) 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+  border-radius: var(--radius-md);
+}
+
+/* ==========================================
+   ACCORDION ANIMATIONS
+   ========================================== */
+
+.accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height var(--transition-base) ease-out;
+}
+
+.accordion-content.open {
+  max-height: 500px;
+  transition: max-height var(--transition-base) ease-in;
+}
+
+/* ==========================================
+   TRANSITION UTILITIES
+   ========================================== */
+
+.transition-fast {
+  transition: all var(--transition-fast);
+}
+
+.transition-base {
+  transition: all var(--transition-base);
+}
+
+.transition-slow {
+  transition: all var(--transition-slow);
+}
+
+/* ==========================================
+   GRADIENT ANIMATIONS
+   ========================================== */
+
+.gradient-animate {
+  background-size: 300% 300%;
+  animation: gradientShift 6s ease infinite;
+}
+
+/* ==========================================
+   TEXT ANIMATIONS
+   ========================================== */
+
+.text-shimmer {
+  background: linear-gradient(
+    90deg,
+    var(--text-primary),
+    rgba(255, 255, 255, 0.5),
+    var(--text-primary)
+  );
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 3s infinite;
+}
+
+/* ==========================================
+   BUTTON ANIMATIONS
+   ========================================== */
+
+.btn-glow {
+  box-shadow: 0 0 20px rgba(168, 200, 240, 0.3);
+  transition: box-shadow var(--transition-base);
+}
+
+.btn-glow:hover {
+  box-shadow: 0 0 40px rgba(168, 200, 240, 0.6);
+}
+
+/* ==========================================
+   ICON ANIMATIONS
+   ========================================== */
+
+.icon-spin {
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.icon-bounce {
+  animation: bounce 1s ease-in-out infinite;
+}
+
+.icon-pulse {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+/* ==========================================
+   SHUTTER TEXT EFFECT (Navbar A2Z)
+   ========================================== */
+
+/* ==========================================
+   RAINBOW BUTTON
+   ========================================== */
+
+@keyframes rainbow {
+  0%   { background-position: 0% 50%;   }
+  100% { background-position: 200% 50%; }
+}
+
+/* ==========================================
+   SHUTTER TEXT EFFECT (Navbar A2Z)
+   ========================================== */
+
+@keyframes shutterBlurIn {
+  from {
+    opacity: 0;
+    filter: blur(8px);
+  }
+  to {
+    opacity: 1;
+    filter: blur(0px);
+  }
+}
+
+@keyframes shutterSliceLeft {
+  0%   { transform: translateX(-100%); opacity: 0; }
+  15%  { opacity: 1; }
+  85%  { opacity: 1; }
+  100% { transform: translateX(100%);  opacity: 0; }
+}
+
+@keyframes shutterSliceRight {
+  0%   { transform: translateX(100%);  opacity: 0; }
+  15%  { opacity: 1; }
+  85%  { opacity: 1; }
+  100% { transform: translateX(-100%); opacity: 0; }
+}
+
+.shutter-text-wrapper {
+  display: inline-flex;
+  align-items: center;
+}
+
+.shutter-char {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+}
+
+.shutter-main {
+  display: block;
+  opacity: 0;
+  animation: shutterBlurIn 0.8s ease-out forwards;
+  animation-delay: calc(var(--i, 0) * 40ms + 300ms);
+}
+
+.shutter-top,
+.shutter-mid,
+.shutter-bot {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: block;
+  pointer-events: none;
+  font-weight: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  font-family: inherit;
+  letter-spacing: inherit;
+  opacity: 0;
+  animation-fill-mode: both;
+  animation-timing-function: ease-in-out;
+  animation-duration: 0.7s;
+}
+
+.shutter-top {
+  color: #A8C8F0;
+  clip-path: polygon(0 0, 100% 0, 100% 35%, 0 35%);
+  animation-name: shutterSliceLeft;
+  animation-delay: calc(var(--i, 0) * 40ms + 50ms);
+}
+
+.shutter-mid {
+  color: #C4A0DC;
+  clip-path: polygon(0 35%, 100% 35%, 100% 65%, 0 65%);
+  animation-name: shutterSliceRight;
+  animation-delay: calc(var(--i, 0) * 40ms + 150ms);
+}
+
+.shutter-bot {
+  color: #E8A0C0;
+  clip-path: polygon(0 65%, 100% 65%, 100% 100%, 0 100%);
+  animation-name: shutterSliceLeft;
+  animation-delay: calc(var(--i, 0) * 40ms + 250ms);
+}
+
+/* ==========================================
+   RESPONSIVE ANIMATIONS
+   ========================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
