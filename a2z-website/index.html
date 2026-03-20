@@ -3901,9 +3901,9 @@
                         <polyline points="20 6 9 17 4 12"></polyline>
                     </svg>
                 </div>
-                <h3 class="success-title">Demande envoyée !</h3>
+                <h3 class="success-title">Demande envoyée avec succès !</h3>
                 <p class="success-message">
-                    Merci pour votre intérêt. Nous analyserons votre demande et vous recontacterons dans les 24h ouvrées pour planifier votre audit de processus.
+                    Merci pour votre confiance. Alec vous contactera sous 24h pour planifier votre audit de processus personnalisé.
                 </p>
                 <button class="success-close" onclick="closeAuditModal()">Fermer</button>
             </div>
@@ -3916,7 +3916,7 @@
         // AUDIT MODAL - Multi-step Form
         // ========================================
 
-        const WEBHOOK_URL = 'URL_A_REMPLACER'; // Replace with your actual webhook URL
+        const WEBHOOK_URL = 'https://a2ziamaster.app.n8n.cloud/webhook/audit-lead';
 
         let currentFormStep = 1;
         const totalSteps = 5;
