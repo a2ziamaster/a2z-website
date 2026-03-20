@@ -3657,18 +3657,18 @@
             </div>
 
             <!-- Form Steps -->
-            <form id="auditForm">
+            <form id="auditForm" novalidate>
                 <div class="form-content">
 
                     <!-- Step 1: Informations de contact -->
                     <div class="form-step active" data-step="1">
                         <div class="form-group">
                             <label class="form-label">Nom complet <span class="required">*</span></label>
-                            <input type="text" class="form-input" name="name" placeholder="Me Jean Dupont" required>
+                            <input type="text" class="form-input" name="name" placeholder="Me Jean Dupont" data-required="true">
                         </div>
                         <div class="form-group">
                             <label class="form-label">Email professionnel <span class="required">*</span></label>
-                            <input type="email" class="form-input" name="email" placeholder="jean.dupont@etude.ch" required>
+                            <input type="email" class="form-input" name="email" placeholder="jean.dupont@etude.ch" data-required="true">
                         </div>
                         <div class="form-group">
                             <label class="form-label">Téléphone</label>
@@ -3686,7 +3686,7 @@
                             <label class="form-label">Type d'activité <span class="required">*</span></label>
                             <div class="form-options">
                                 <label class="form-option">
-                                    <input type="radio" name="activity_type" value="avocat" required>
+                                    <input type="radio" name="activity_type" value="avocat" data-required="true">
                                     <span class="form-option-radio"></span>
                                     <span class="form-option-text">
                                         <span class="form-option-title">Étude d'avocats</span>
@@ -3724,7 +3724,7 @@
                         </div>
                         <div class="form-group">
                             <label class="form-label">Taille de l'équipe <span class="required">*</span></label>
-                            <select class="form-select" name="team_size" required>
+                            <select class="form-select" name="team_size" data-required="true">
                                 <option value="" disabled selected>Sélectionnez...</option>
                                 <option value="1-5">1 à 5 collaborateurs</option>
                                 <option value="6-15">6 à 15 collaborateurs</option>
@@ -3740,7 +3740,7 @@
                             <label class="form-label">Quel est votre principal défi actuel ? <span class="required">*</span></label>
                             <div class="form-options">
                                 <label class="form-option">
-                                    <input type="radio" name="main_challenge" value="onboarding" required>
+                                    <input type="radio" name="main_challenge" value="onboarding" data-required="true">
                                     <span class="form-option-radio"></span>
                                     <span class="form-option-text">
                                         <span class="form-option-title">Onboarding client trop long</span>
@@ -3824,7 +3824,7 @@
                             <label class="form-label">Quel est votre horizon de mise en place ? <span class="required">*</span></label>
                             <div class="form-options">
                                 <label class="form-option">
-                                    <input type="radio" name="timeline" value="asap" required>
+                                    <input type="radio" name="timeline" value="asap" data-required="true">
                                     <span class="form-option-radio"></span>
                                     <span class="form-option-text">
                                         <span class="form-option-title">Dès que possible</span>
@@ -3887,7 +3887,7 @@
                             <polyline points="9 18 15 12 9 6"></polyline>
                         </svg>
                     </button>
-                    <button type="submit" class="form-btn form-btn-submit" style="display: none;">
+                    <button type="button" class="form-btn form-btn-submit" onclick="submitAuditForm()" style="display: none;">
                         <span class="btn-text">Envoyer ma demande</span>
                         <span class="spinner" style="display: none;"></span>
                     </button>
@@ -4009,18 +4009,20 @@
             validateCurrentStep();
         }
 
-        // Validate Current Step
+        // Validate Current Step (using data-required instead of required to avoid HTML5 validation)
         function validateCurrentStep() {
             let isValid = true;
             const currentStepEl = document.querySelector(`.form-step[data-step="${currentFormStep}"]`);
 
-            // Check required fields in current step
-            const requiredInputs = currentStepEl.querySelectorAll('[required]');
+            // Check data-required fields in current step
+            const requiredInputs = currentStepEl.querySelectorAll('[data-required="true"]');
             requiredInputs.forEach(input => {
                 if (input.type === 'radio') {
                     const name = input.name;
-                    const checked = currentStepEl.querySelector(`input[name="${name}"]:checked`);
+                    const checked = document.querySelector(`input[name="${name}"]:checked`);
                     if (!checked) isValid = false;
+                } else if (input.tagName === 'SELECT') {
+                    if (!input.value || input.value === '') isValid = false;
                 } else if (!input.value.trim()) {
                     isValid = false;
                 }
@@ -4084,10 +4086,9 @@
             input.addEventListener('change', validateCurrentStep);
         });
 
-        // Form Submit
-        document.getElementById('auditForm').addEventListener('submit', async function(e) {
-            e.preventDefault();
-
+        // Form Submit (called manually via onclick, not via form submit event)
+        async function submitAuditForm() {
+            const form = document.getElementById('auditForm');
             const submitBtn = document.querySelector('.form-btn-submit');
             const btnText = submitBtn.querySelector('.btn-text');
             const spinner = submitBtn.querySelector('.spinner');
@@ -4098,7 +4099,7 @@
             spinner.style.display = 'inline-block';
 
             // Collect form data
-            const formData = new FormData(this);
+            const formData = new FormData(form);
             const data = {};
 
             formData.forEach((value, key) => {
@@ -4142,7 +4143,7 @@
                 // Or send via email backup
                 showSuccess();
             }
-        });
+        }
 
         // Show Success State
         function showSuccess() {
