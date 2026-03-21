@@ -462,6 +462,59 @@
             color: var(--text-muted);
         }
 
+        /* Blur In Animation */
+        @keyframes blurIn {
+            0% {
+                filter: blur(12px);
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            100% {
+                filter: blur(0px);
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .blur-in {
+            opacity: 0;
+            filter: blur(12px);
+            animation: blurIn 1s ease-out forwards;
+        }
+
+        .blur-in-delay-1 {
+            animation-delay: 0.2s;
+        }
+
+        .blur-in-delay-2 {
+            animation-delay: 0.4s;
+        }
+
+        .blur-in-delay-3 {
+            animation-delay: 0.6s;
+        }
+
+        .hero-stat {
+            opacity: 0;
+            filter: blur(12px);
+        }
+
+        .hero-stat.blur-animated {
+            animation: blurIn 1s ease-out forwards;
+        }
+
+        .hero-stat:nth-child(1).blur-animated {
+            animation-delay: 0.3s;
+        }
+
+        .hero-stat:nth-child(2).blur-animated {
+            animation-delay: 0.5s;
+        }
+
+        .hero-stat:nth-child(3).blur-animated {
+            animation-delay: 0.7s;
+        }
+
         /* ========================================
            CONSTAT SECTION (Pain Points)
            ======================================== */
@@ -2796,6 +2849,475 @@
             }
         }
 
+        /* ========================================
+           FAQ SECTION - MONOCHROME STYLE
+           ======================================== */
+
+        /* Animations */
+        @keyframes faq-fade-up {
+            0% { transform: translate3d(0, 20px, 0); opacity: 0; filter: blur(6px); }
+            60% { filter: blur(0); }
+            100% { transform: translate3d(0, 0, 0); opacity: 1; filter: blur(0); }
+        }
+
+        @keyframes faq-beam-spin {
+            0% { transform: rotate(0deg) scale(1); }
+            100% { transform: rotate(360deg) scale(1); }
+        }
+
+        @keyframes faq-pulse {
+            0% { transform: scale(0.7); opacity: 0.55; }
+            60% { opacity: 0.1; }
+            100% { transform: scale(1.25); opacity: 0; }
+        }
+
+        @keyframes faq-meter {
+            0%, 20% { transform: scaleX(0); transform-origin: left; }
+            45%, 60% { transform: scaleX(1); transform-origin: left; }
+            80%, 100% { transform: scaleX(0); transform-origin: right; }
+        }
+
+        @keyframes faq-tick {
+            0%, 30% { transform: translateX(-6px); opacity: 0.4; }
+            50% { transform: translateX(2px); opacity: 1; }
+            100% { transform: translateX(20px); opacity: 0; }
+        }
+
+        .faq-section {
+            position: relative;
+            min-height: auto;
+            width: 100%;
+            overflow: hidden;
+            background: var(--dark-bg);
+            color: var(--white);
+        }
+
+        .faq-aurora-bg {
+            display: none;
+        }
+
+        .faq-overlay {
+            display: none;
+        }
+
+        .faq-content {
+            position: relative;
+            z-index: 10;
+            max-width: 1024px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
+            padding: 6rem 1.5rem;
+        }
+
+        @media (min-width: 1024px) {
+            .faq-content {
+                max-width: 1100px;
+                padding: 6rem 3rem;
+            }
+        }
+
+        /* Intro Badge */
+        .faq-intro {
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 0.85rem;
+            padding: 0.85rem 1.4rem;
+            border-radius: 9999px;
+            overflow: hidden;
+            border: 1px solid rgba(168, 200, 240, 0.2);
+            background: rgba(42, 42, 42, 0.6);
+            color: var(--lavender-blue);
+            text-transform: uppercase;
+            letter-spacing: 0.35em;
+            font-size: 0.65rem;
+            width: 100%;
+            max-width: 24rem;
+            margin: 0 auto;
+            isolation: isolate;
+        }
+
+        .faq-intro__beam {
+            position: absolute;
+            inset: -110%;
+            pointer-events: none;
+            border-radius: 50%;
+            background: conic-gradient(from 160deg, rgba(168, 200, 240, 0.3), transparent 32%, rgba(196, 160, 220, 0.25) 58%, transparent 78%, rgba(232, 160, 192, 0.2));
+            animation: faq-beam-spin 18s linear infinite;
+            opacity: 0.6;
+        }
+
+        .faq-intro__pulse {
+            position: absolute;
+            inset: -110%;
+            pointer-events: none;
+            border-radius: 50%;
+            border: 1px solid var(--violet-mid);
+            opacity: 0.25;
+            animation: faq-pulse 3.4s ease-out infinite;
+        }
+
+        .faq-intro__label {
+            position: relative;
+            z-index: 1;
+            font-weight: 600;
+            letter-spacing: 0.4em;
+            background: var(--gradient-holographic);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .faq-intro__meter {
+            position: relative;
+            z-index: 1;
+            flex: 1 1 auto;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--lavender-blue) 35%, transparent 85%);
+            transform: scaleX(0);
+            transform-origin: left;
+            animation: faq-meter 5.8s ease-in-out infinite;
+            opacity: 0.7;
+        }
+
+        .faq-intro__tick {
+            position: relative;
+            z-index: 1;
+            width: 0.55rem;
+            height: 0.55rem;
+            border-radius: 9999px;
+            background: var(--gradient-holographic);
+            box-shadow: 0 0 8px rgba(168, 200, 240, 0.4);
+            animation: faq-tick 3.2s ease-in-out infinite;
+        }
+
+        /* Header */
+        .faq-header {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        @media (min-width: 768px) {
+            .faq-header {
+                flex-direction: row;
+                align-items: flex-end;
+                justify-content: space-between;
+            }
+        }
+
+        .faq-header-text {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .faq-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.35em;
+            color: var(--violet-mid);
+        }
+
+        .faq-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 600;
+            line-height: 1.1;
+            color: var(--white);
+        }
+
+        .faq-title .gradient-text {
+            background: var(--gradient-holographic);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .faq-subtitle {
+            max-width: 600px;
+            font-size: 1rem;
+            color: var(--grey-text);
+            line-height: 1.6;
+        }
+
+        /* FAQ List */
+        .faq-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .faq-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 24px;
+            border: 1px solid var(--glass-border);
+            background: var(--card-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            box-shadow: 0 36px 140px -60px rgba(10,10,10,0.95);
+            transition: all 0.5s ease, transform 0.3s ease;
+        }
+
+        .faq-item:hover {
+            transform: translateY(-2px);
+            border-color: var(--glass-border-hover);
+        }
+
+        .faq-item__glow {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            background: radial-gradient(240px circle at var(--faq-x, 50%) var(--faq-y, 50%), rgba(168, 200, 240, 0.1), transparent 70%);
+        }
+
+        .faq-item:hover .faq-item__glow,
+        .faq-item.active .faq-item__glow {
+            opacity: 1;
+        }
+
+        .faq-question {
+            position: relative;
+            display: flex;
+            width: 100%;
+            align-items: flex-start;
+            gap: 1.5rem;
+            padding: 1.75rem 2rem;
+            text-align: left;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            color: inherit;
+            font-family: inherit;
+            transition: color 0.3s ease;
+        }
+
+        .faq-question:focus-visible {
+            outline: 2px solid rgba(255, 255, 255, 0.35);
+            outline-offset: 4px;
+        }
+
+        .faq-icon-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 3rem;
+            height: 3rem;
+            flex-shrink: 0;
+            border-radius: 50%;
+            border: 1px solid var(--glass-border);
+            background: rgba(168, 200, 240, 0.05);
+            transition: transform 0.5s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .faq-item:hover .faq-icon-wrapper {
+            transform: scale(1.05);
+            border-color: var(--lavender-blue);
+            box-shadow: 0 0 20px rgba(168, 200, 240, 0.2);
+        }
+
+        .faq-icon-ping {
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+            border: 1px solid var(--violet-mid);
+            opacity: 0.3;
+            pointer-events: none;
+        }
+
+        .faq-item.active .faq-icon-ping {
+            animation: faq-pulse 1.5s ease-out infinite;
+        }
+
+        .faq-icon-svg {
+            position: relative;
+            width: 1.25rem;
+            height: 1.25rem;
+            color: var(--lavender-blue);
+            transition: transform 0.5s ease;
+        }
+
+        .faq-item.active .faq-icon-svg {
+            transform: rotate(45deg);
+            color: var(--soft-pink);
+        }
+
+        .faq-question-text {
+            display: flex;
+            flex: 1;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .faq-question-header {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        @media (min-width: 640px) {
+            .faq-question-header {
+                flex-direction: row;
+                align-items: center;
+                gap: 1rem;
+            }
+        }
+
+        .faq-question-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            font-weight: 500;
+            line-height: 1.3;
+            color: var(--white);
+            margin: 0;
+        }
+
+        .faq-meta {
+            display: inline-flex;
+            align-items: center;
+            width: fit-content;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            border: 1px solid rgba(196, 160, 220, 0.3);
+            font-size: 0.625rem;
+            text-transform: uppercase;
+            letter-spacing: 0.35em;
+            color: var(--violet-mid);
+            transition: opacity 0.3s ease, border-color 0.3s ease;
+        }
+
+        .faq-item:hover .faq-meta {
+            border-color: var(--violet-mid);
+        }
+
+        @media (min-width: 640px) {
+            .faq-meta {
+                margin-left: auto;
+            }
+        }
+
+        .faq-answer {
+            overflow: hidden;
+            max-height: 0;
+            transition: max-height 0.5s ease-out;
+            font-size: 0.9rem;
+            line-height: 1.7;
+            color: var(--grey-text);
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 16rem;
+        }
+
+        .faq-answer p {
+            padding: 0 2rem 1.75rem 4.5rem;
+            margin: 0;
+        }
+
+        /* FAQ CTA */
+        .faq-cta {
+            text-align: center;
+            padding: 3rem;
+            background: rgba(42, 42, 42, 0.4);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .faq-cta-text {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(1.25rem, 3vw, 1.5rem);
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: var(--white);
+        }
+
+        @media (max-width: 768px) {
+            .faq-content {
+                padding: 4rem 1rem;
+            }
+
+            .faq-question {
+                padding: 1.25rem 1.5rem;
+                gap: 1rem;
+            }
+
+            .faq-icon-wrapper {
+                width: 2.5rem;
+                height: 2.5rem;
+            }
+
+            .faq-answer p {
+                padding: 0 1.5rem 1.5rem 3.5rem;
+            }
+        }
+
+        /* Swiss Flag Text Effect - Hover White to Red with Wavy Underline */
+        .swiss-flag-text {
+            position: relative;
+            display: inline-block;
+            font-weight: 700;
+            cursor: default;
+            color: var(--white);
+            transition: color 0.5s ease;
+        }
+
+        /* Red gradient text overlay */
+        .swiss-flag-text::before {
+            content: 'Suisse';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: linear-gradient(135deg, #E85A5A, #C94040, #A82E2E);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        /* SVG wavy underline container */
+        .swiss-flag-text .swiss-underline {
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 100%;
+            height: 12px;
+            overflow: visible;
+        }
+
+        .swiss-flag-text .swiss-underline path {
+            stroke: url(#swiss-gradient);
+            stroke-width: 2.5;
+            fill: none;
+            stroke-dasharray: 300;
+            stroke-dashoffset: 300;
+            transition: stroke-dashoffset 0.8s ease-in-out, d 0.6s ease;
+        }
+
+        .swiss-flag-text:hover {
+            color: transparent;
+        }
+
+        .swiss-flag-text:hover::before {
+            opacity: 1;
+        }
+
+        .swiss-flag-text:hover .swiss-underline path {
+            stroke-dashoffset: 0;
+        }
+
     </style>
 </head>
 <body>
@@ -2859,7 +3381,7 @@
                     </div>
                     <div class="hero-stat">
                         <div class="hero-stat-value gradient-text">100%</div>
-                        <div class="hero-stat-label">données hébergées en Suisse</div>
+                        <div class="hero-stat-label">données hébergées en <span class="swiss-flag-text">Suisse</span></div>
                     </div>
                     <div class="hero-stat">
                         <div class="hero-stat-value gradient-text">Art. 321 CP</div>
@@ -3205,7 +3727,7 @@
                     <i data-lucide="shield-check" style="width: 16px; height: 16px;"></i>
                     <span>Sécurité & Conformité Suisse</span>
                 </div>
-                <h2 class="section-title reveal">Vos données restent <span class="gradient-text">en Suisse</span></h2>
+                <h2 class="section-title reveal">Vos données restent en <span class="swiss-flag-text">Suisse<svg class="swiss-underline" viewBox="0 0 300 20" preserveAspectRatio="none"><defs><linearGradient id="swiss-gradient" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" style="stop-color:#E85A5A"/><stop offset="50%" style="stop-color:#C94040"/><stop offset="100%" style="stop-color:#A82E2E"/></linearGradient></defs><path d="M 0,10 Q 75,0 150,10 Q 225,20 300,10"/></svg></span></h2>
                 <p class="section-subtitle reveal reveal-delay-1">
                     La confidentialité de vos dossiers est notre priorité absolue. Infrastructure suisse, protocoles bancaires.
                 </p>
@@ -3399,6 +3921,185 @@
         </div>
     </section>
 
+    <!-- FAQ Section - Monochrome Style -->
+    <section class="faq-section" id="faq">
+        <!-- Background -->
+        <div class="faq-aurora-bg"></div>
+        <div class="faq-overlay"></div>
+
+        <div class="faq-content">
+            <!-- Intro Badge -->
+            <div class="faq-intro">
+                <span class="faq-intro__beam" aria-hidden="true"></span>
+                <span class="faq-intro__pulse" aria-hidden="true"></span>
+                <span class="faq-intro__label">FAQ</span>
+                <span class="faq-intro__meter" aria-hidden="true"></span>
+                <span class="faq-intro__tick" aria-hidden="true"></span>
+            </div>
+
+            <!-- Header -->
+            <header class="faq-header">
+                <div class="faq-header-text">
+                    <p class="faq-label">Questions fréquentes</p>
+                    <h2 class="faq-title">Tout ce que vous devez <span class="gradient-text">savoir</span>.</h2>
+                    <p class="faq-subtitle">
+                        Les réponses aux questions les plus courantes sur nos solutions d'automatisation et notre approche.
+                    </p>
+                </div>
+            </header>
+
+            <!-- FAQ List -->
+            <ul class="faq-list">
+                <!-- FAQ Item 1 -->
+                <li class="faq-item" data-faq="0">
+                    <div class="faq-item__glow"></div>
+                    <button type="button" class="faq-question" aria-expanded="false" aria-controls="faq-panel-0">
+                        <span class="faq-icon-wrapper">
+                            <span class="faq-icon-ping"></span>
+                            <svg class="faq-icon-svg" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 5v14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                                <path d="M5 12h14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                            </svg>
+                        </span>
+                        <div class="faq-question-text">
+                            <div class="faq-question-header">
+                                <h3 class="faq-question-title">Quel est le gain de temps concret pour mon organisation ?</h3>
+                                <span class="faq-meta">Efficacité</span>
+                            </div>
+                            <div class="faq-answer" id="faq-panel-0" role="region">
+                                <p>En moyenne, nos automatisations permettent de libérer <strong>10 à 15 heures par semaine et par collaborateur</strong> sur les tâches administratives répétitives (saisie, classement, génération de documents).</p>
+                            </div>
+                        </div>
+                    </button>
+                </li>
+
+                <!-- FAQ Item 2 -->
+                <li class="faq-item" data-faq="1">
+                    <div class="faq-item__glow"></div>
+                    <button type="button" class="faq-question" aria-expanded="false" aria-controls="faq-panel-1">
+                        <span class="faq-icon-wrapper">
+                            <span class="faq-icon-ping"></span>
+                            <svg class="faq-icon-svg" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 5v14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                                <path d="M5 12h14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                            </svg>
+                        </span>
+                        <div class="faq-question-text">
+                            <div class="faq-question-header">
+                                <h3 class="faq-question-title">Où sont stockées nos données et celles de nos clients ?</h3>
+                                <span class="faq-meta">Souveraineté</span>
+                            </div>
+                            <div class="faq-answer" id="faq-panel-1" role="region">
+                                <p>La souveraineté est notre priorité. Toutes nos infrastructures de production sont <strong>hébergées en Suisse chez Infomaniak</strong> (Genève/Lausanne). Aucune donnée sensible n'est stockée de manière permanente sur des serveurs étrangers.</p>
+                            </div>
+                        </div>
+                    </button>
+                </li>
+
+                <!-- FAQ Item 3 -->
+                <li class="faq-item" data-faq="2">
+                    <div class="faq-item__glow"></div>
+                    <button type="button" class="faq-question" aria-expanded="false" aria-controls="faq-panel-2">
+                        <span class="faq-icon-wrapper">
+                            <span class="faq-icon-ping"></span>
+                            <svg class="faq-icon-svg" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 5v14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                                <path d="M5 12h14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                            </svg>
+                        </span>
+                        <div class="faq-question-text">
+                            <div class="faq-question-header">
+                                <h3 class="faq-question-title">Vos solutions sont-elles conformes à la nouvelle LPD suisse ?</h3>
+                                <span class="faq-meta">Conformité</span>
+                            </div>
+                            <div class="faq-answer" id="faq-panel-2" role="region">
+                                <p>Oui. Nos architectures sont conçues <strong>"Privacy by Design"</strong>. Nous intégrons les exigences de la Loi sur la Protection des Données (LPD) dès la phase d'audit pour garantir une conformité totale, particulièrement pour les professions soumises au secret professionnel.</p>
+                            </div>
+                        </div>
+                    </button>
+                </li>
+
+                <!-- FAQ Item 4 -->
+                <li class="faq-item" data-faq="3">
+                    <div class="faq-item__glow"></div>
+                    <button type="button" class="faq-question" aria-expanded="false" aria-controls="faq-panel-3">
+                        <span class="faq-icon-wrapper">
+                            <span class="faq-icon-ping"></span>
+                            <svg class="faq-icon-svg" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 5v14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                                <path d="M5 12h14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                            </svg>
+                        </span>
+                        <div class="faq-question-text">
+                            <div class="faq-question-header">
+                                <h3 class="faq-question-title">Est-ce que l'IA peut faire des erreurs dans mes documents ?</h3>
+                                <span class="faq-meta">Fiabilité</span>
+                            </div>
+                            <div class="faq-answer" id="faq-panel-3" role="region">
+                                <p>Nous implémentons des systèmes <strong>"Human-in-the-loop"</strong>. L'IA pré-construit, extrait et structure, mais une validation humaine (via une interface simple comme Slack ou un tableau de bord) reste toujours l'étape finale pour garantir une précision à 100%.</p>
+                            </div>
+                        </div>
+                    </button>
+                </li>
+
+                <!-- FAQ Item 5 -->
+                <li class="faq-item" data-faq="4">
+                    <div class="faq-item__glow"></div>
+                    <button type="button" class="faq-question" aria-expanded="false" aria-controls="faq-panel-4">
+                        <span class="faq-icon-wrapper">
+                            <span class="faq-icon-ping"></span>
+                            <svg class="faq-icon-svg" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 5v14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                                <path d="M5 12h14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                            </svg>
+                        </span>
+                        <div class="faq-question-text">
+                            <div class="faq-question-header">
+                                <h3 class="faq-question-title">Pouvez-vous automatiser nos logiciels actuels (Outlook, OneDrive, CRM) ?</h3>
+                                <span class="faq-meta">Intégration</span>
+                            </div>
+                            <div class="faq-answer" id="faq-panel-4" role="region">
+                                <p>Absolument. Notre expertise avec n8n nous permet de <strong>connecter plus de 400 applications professionnelles</strong> entre elles sans changer vos habitudes de travail.</p>
+                            </div>
+                        </div>
+                    </button>
+                </li>
+
+                <!-- FAQ Item 6 -->
+                <li class="faq-item" data-faq="5">
+                    <div class="faq-item__glow"></div>
+                    <button type="button" class="faq-question" aria-expanded="false" aria-controls="faq-panel-5">
+                        <span class="faq-icon-wrapper">
+                            <span class="faq-icon-ping"></span>
+                            <svg class="faq-icon-svg" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 5v14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                                <path d="M5 12h14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                            </svg>
+                        </span>
+                        <div class="faq-question-text">
+                            <div class="faq-question-header">
+                                <h3 class="faq-question-title">Pourquoi proposez-vous un "Programme Pilote" à prix réduit ?</h3>
+                                <span class="faq-meta">Offre</span>
+                            </div>
+                            <div class="faq-answer" id="faq-panel-5" role="region">
+                                <p>Pour asseoir notre réputation en Suisse Romande, nous sélectionnons <strong>3 organisations par trimestre</strong> pour bénéficier d'une implémentation à tarif préférentiel. En échange, nous demandons simplement un retour d'expérience détaillé (étude de cas).</p>
+                            </div>
+                        </div>
+                    </button>
+                </li>
+            </ul>
+
+            <!-- FAQ CTA -->
+            <div class="faq-cta">
+                <p class="faq-cta-text">Une question spécifique à votre structure ?</p>
+                <a href="mailto:alec.diaconescu@a2z-consulting.ch" class="btn-primary">
+                    <i data-lucide="mail" style="width: 20px; height: 20px;"></i>
+                    <span>ALEC.DIACONESCU@A2Z-CONSULTING.CH</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
     <!-- CTA Section -->
     <section class="cta-section" id="contact">
         <div class="container">
@@ -3460,6 +4161,7 @@
                     <a href="#constat" class="footer-link">Vos défis</a>
                     <a href="#infrastructure" class="footer-link">Nos solutions</a>
                     <a href="#security" class="footer-link">Sécurité</a>
+                    <a href="#faq" class="footer-link">FAQ</a>
                     <a href="#contact" class="footer-link">Contact</a>
                 </div>
 
@@ -3474,6 +4176,27 @@
     <script>
         // Initialize Lucide Icons
         lucide.createIcons();
+
+        // ========================================
+        // BLUR IN ANIMATION - Hero Stats
+        // ========================================
+        const heroStats = document.querySelectorAll('.hero-stat');
+
+        const blurInObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('blur-animated');
+                    blurInObserver.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.3,
+            rootMargin: '0px 0px -50px 0px'
+        });
+
+        heroStats.forEach(stat => {
+            blurInObserver.observe(stat);
+        });
 
 
         // Scroll reveal animations
@@ -3534,6 +4257,46 @@
 
                 card.style.setProperty('--mouse-x', `${x}px`);
                 card.style.setProperty('--mouse-y', `${y}px`);
+            });
+        });
+
+        // ========================================
+        // FAQ ACCORDION - Monochrome Style
+        // ========================================
+        const faqItems = document.querySelectorAll('.faq-item');
+
+        // Glow effect on mouse move
+        faqItems.forEach(item => {
+            item.addEventListener('mousemove', (e) => {
+                const rect = item.getBoundingClientRect();
+                item.style.setProperty('--faq-x', `${e.clientX - rect.left}px`);
+                item.style.setProperty('--faq-y', `${e.clientY - rect.top}px`);
+            });
+
+            item.addEventListener('mouseleave', () => {
+                item.style.removeProperty('--faq-x');
+                item.style.removeProperty('--faq-y');
+            });
+        });
+
+        // Accordion toggle
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', function(e) {
+                e.preventDefault();
+                const currentItem = this.closest('.faq-item');
+                const isCurrentlyActive = currentItem.classList.contains('active');
+
+                // Close ALL FAQ items first
+                faqItems.forEach(item => {
+                    item.classList.remove('active');
+                    item.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+                });
+
+                // If it wasn't active, open it
+                if (!isCurrentlyActive) {
+                    currentItem.classList.add('active');
+                    this.setAttribute('aria-expanded', 'true');
+                }
             });
         });
 
@@ -3903,7 +4666,7 @@
                 </div>
                 <h3 class="success-title">Demande envoyée avec succès !</h3>
                 <p class="success-message">
-                    Merci pour votre confiance. Alec vous contactera sous 24h pour planifier votre audit de processus personnalisé.
+                    Merci pour votre confiance. Notre équipe vous contactera sous 24h pour planifier votre audit de processus personnalisé.
                 </p>
                 <button class="success-close" onclick="closeAuditModal()">Fermer</button>
             </div>
