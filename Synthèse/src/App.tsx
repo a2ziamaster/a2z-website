@@ -99,9 +99,9 @@ export default function App() {
         </header>
 
         {/* Section 1 */}
-        <section className="mb-40">
+        <section className="mb-40 flex flex-col items-center">
           <motion.h2 
-            className="font-display font-bold text-3xl md:text-4xl mb-16 flex items-center gap-5"
+            className="font-display font-bold text-3xl md:text-4xl mb-20 flex items-center gap-5 w-full max-w-[900px]"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
@@ -111,77 +111,145 @@ export default function App() {
             3 GOULOTS D'ÉTRANGLEMENT & SOLUTIONS
           </motion.h2>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
+          <div className="w-full max-w-[900px] flex flex-col gap-16">
             {/* Bloc 1 */}
             <motion.div 
-              className="bg-card-bg/80 border border-white/5 p-8 md:p-10 rounded-3xl hover:border-glow-accent/30 hover:bg-card-bg hover:-translate-y-2 transition-all duration-500 ease-out shadow-lg group backdrop-blur-sm"
+              className="bg-[#111111] border border-white/5 p-8 md:p-12 rounded-[2rem] hover:border-glow-accent/30 transition-all duration-500 ease-out shadow-2xl relative overflow-hidden group"
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ ...smoothTransition, delay: 0.1 }}
             >
-              <div className="w-16 h-16 rounded-2xl bg-dark-bg/80 border border-white/10 flex items-center justify-center mb-8 group-hover:border-lavender-blue/50 group-hover:scale-110 transition-all duration-500 ease-out shadow-[0_0_15px_rgba(168,200,240,0.1)] group-hover:shadow-[0_0_25px_rgba(168,200,240,0.3)]">
-                <Bot className="w-8 h-8 text-lavender-blue glow-icon" />
-              </div>
-              <h3 className="font-display font-bold text-xl mb-6 leading-snug">
-                1. LA COLLECTE ET LE TRI DES PIÈCES EN DIVORCE / MPUC
-              </h3>
-              <div className="space-y-5 text-sm md:text-base">
-                <p className="text-grey-text">
-                  <strong className="text-soft-pink font-extrabold brightness-125">Le Constat :</strong> La réception fragmentée des fiches de salaires, impôts et décomptes LPP impose à votre back-office (Mmes Dridah, Heleno, Menoud) un travail de tri et de relance manuel extrêmement chronophage.
-                </p>
-                <p className="text-grey-text">
-                  <strong className="text-lavender-blue">Le Processus Automatisé :</strong> Un portail d'onboarding chiffré. Le système détecte la nature des documents, valide la complétude du dossier et relance le client automatiquement sans intervention humaine.
-                </p>
+              <div className="absolute top-0 right-0 w-64 h-64 bg-lavender-blue/5 rounded-full blur-[80px] group-hover:bg-lavender-blue/10 transition-all duration-500 pointer-events-none"></div>
+              
+              <div className="flex flex-col md:flex-row gap-12 md:gap-16 items-start relative z-10">
+                {/* Icône et Titre */}
+                <div className="md:w-5/12 flex-shrink-0">
+                  <div className="w-16 h-16 rounded-2xl bg-dark-bg border border-white/10 flex items-center justify-center mb-8 shadow-inner">
+                    <Bot className="w-8 h-8 text-lavender-blue" />
+                  </div>
+                  <h3 className="font-display font-bold text-2xl md:text-3xl leading-snug">
+                    1. LA COLLECTE ET LE TRI DES PIÈCES EN DIVORCE / MPUC
+                  </h3>
+                </div>
+
+                {/* Constat / Solution */}
+                <div className="md:w-7/12 flex flex-col gap-8 text-base md:text-[1.1rem] leading-[1.7] font-sans">
+                  
+                  <div className="flex flex-col gap-3">
+                    <span className="text-soft-pink font-extrabold tracking-widest uppercase text-xs flex items-center gap-3">
+                      <div className="w-1.5 h-1.5 rounded-full bg-soft-pink glow-icon" /> LE CONSTAT
+                    </span>
+                    <p className="text-grey-text">
+                      La réception fragmentée des fiches de salaires, impôts et décomptes LPP impose à votre back-office (Mmes Dridah, Heleno, Menoud) un travail de tri et de relance manuel extrêmement chronophage.
+                    </p>
+                  </div>
+
+                  <div className="w-full h-[1px] bg-white/5"></div>
+
+                  <div className="flex flex-col gap-3">
+                    <span className="text-lavender-blue font-extrabold tracking-widest uppercase text-xs flex items-center gap-3">
+                      <div className="w-1.5 h-1.5 rounded-full bg-lavender-blue glow-icon" /> LE PROCESSUS AUTOMATISÉ
+                    </span>
+                    <p className="text-white font-medium">
+                      Un portail d'onboarding chiffré. Le système détecte la nature des documents, valide la complétude du dossier et relance le client automatiquement sans intervention humaine.
+                    </p>
+                  </div>
+
+                </div>
               </div>
             </motion.div>
 
             {/* Bloc 2 */}
             <motion.div 
-              className="bg-card-bg/80 border border-white/5 p-8 md:p-10 rounded-3xl hover:border-glow-accent/30 hover:bg-card-bg hover:-translate-y-2 transition-all duration-500 ease-out shadow-lg group backdrop-blur-sm"
+              className="bg-[#111111] border border-white/5 p-8 md:p-12 rounded-[2rem] hover:border-glow-accent/30 transition-all duration-500 ease-out shadow-2xl relative overflow-hidden group"
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ ...smoothTransition, delay: 0.2 }}
             >
-              <div className="w-16 h-16 rounded-2xl bg-dark-bg/80 border border-white/10 flex items-center justify-center mb-8 group-hover:border-soft-pink/50 group-hover:scale-110 transition-all duration-500 ease-out relative overflow-hidden shadow-[0_0_15px_rgba(232,160,192,0.1)] group-hover:shadow-[0_0_25px_rgba(232,160,192,0.3)]">
-                <Calendar className="w-8 h-8 text-soft-pink glow-icon relative z-10" />
-                <Zap className="w-4 h-4 text-glow-accent absolute top-2 right-2 opacity-50" />
-              </div>
-              <h3 className="font-display font-bold text-xl mb-6 leading-snug">
-                2. LA SÉCURISATION DES DÉLAIS PROCÉDURAUX (TRIBUNAUX VAUDOIS)
-              </h3>
-              <div className="space-y-5 text-sm md:text-base">
-                <p className="text-grey-text">
-                  <strong className="text-soft-pink font-extrabold brightness-125">Le Constat :</strong> La transcription manuelle des ordonnances et convocations judiciaires dans vos agendas partagés est le processus le plus critique, nécessitant une vigilance de tous les instants.
-                </p>
-                <p className="text-grey-text">
-                  <strong className="text-lavender-blue">Le Processus Automatisé :</strong> Une IA lit le courrier entrant, extrait les dates butoirs, calcule le <em className="not-italic text-white">dies a quo</em>, et injecte directement les délais dans les agendas de l'équipe (Mmes Abbas, Corthay) avec une cascade de rappels.
-                </p>
+              <div className="absolute top-0 right-0 w-64 h-64 bg-glow-accent/5 rounded-full blur-[80px] group-hover:bg-glow-accent/10 transition-all duration-500 pointer-events-none"></div>
+
+              <div className="flex flex-col md:flex-row gap-12 md:gap-16 items-start relative z-10">
+                <div className="md:w-5/12 flex-shrink-0">
+                  <div className="w-16 h-16 rounded-2xl bg-dark-bg border border-white/10 flex items-center justify-center mb-8 shadow-inner relative">
+                    <Calendar className="w-8 h-8 text-soft-pink relative z-10" />
+                    <Zap className="w-4 h-4 text-glow-accent absolute top-2 right-2 opacity-50" />
+                  </div>
+                  <h3 className="font-display font-bold text-2xl md:text-3xl leading-snug">
+                    2. LA SÉCURISATION DES DÉLAIS PROCÉDURAUX (TRIBUNAUX VAUDOIS)
+                  </h3>
+                </div>
+
+                <div className="md:w-7/12 flex flex-col gap-8 text-base md:text-[1.1rem] leading-[1.7] font-sans">
+                  
+                  <div className="flex flex-col gap-3">
+                    <span className="text-soft-pink font-extrabold tracking-widest uppercase text-xs flex items-center gap-3">
+                      <div className="w-1.5 h-1.5 rounded-full bg-soft-pink glow-icon" /> LE CONSTAT
+                    </span>
+                    <p className="text-grey-text">
+                      La transcription manuelle des ordonnances et convocations judiciaires dans vos agendas partagés est le processus le plus critique, nécessitant une vigilance de tous les instants.
+                    </p>
+                  </div>
+
+                  <div className="w-full h-[1px] bg-white/5"></div>
+
+                  <div className="flex flex-col gap-3">
+                    <span className="text-lavender-blue font-extrabold tracking-widest uppercase text-xs flex items-center gap-3">
+                      <div className="w-1.5 h-1.5 rounded-full bg-lavender-blue glow-icon" /> LE PROCESSUS AUTOMATISÉ
+                    </span>
+                    <p className="text-white font-medium">
+                      Une IA lit le courrier entrant, extrait les dates butoirs, calcule le <em className="not-italic text-[#E8A0C0]">dies a quo</em>, et injecte directement les délais dans les agendas de l'équipe (Mmes Abbas, Corthay) avec une cascade de rappels.
+                    </p>
+                  </div>
+
+                </div>
               </div>
             </motion.div>
 
             {/* Bloc 3 */}
             <motion.div 
-              className="bg-card-bg/80 border border-white/5 p-8 md:p-10 rounded-3xl hover:border-glow-accent/30 hover:bg-card-bg hover:-translate-y-2 transition-all duration-500 ease-out shadow-lg group backdrop-blur-sm"
+              className="bg-[#111111] border border-white/5 p-8 md:p-12 rounded-[2rem] hover:border-glow-accent/30 transition-all duration-500 ease-out shadow-2xl relative overflow-hidden group"
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ ...smoothTransition, delay: 0.3 }}
             >
-              <div className="w-16 h-16 rounded-2xl bg-dark-bg/80 border border-white/10 flex items-center justify-center mb-8 group-hover:border-violet-mid/50 group-hover:scale-110 transition-all duration-500 ease-out shadow-[0_0_15px_rgba(196,160,220,0.1)] group-hover:shadow-[0_0_25px_rgba(196,160,220,0.3)]">
-                <FolderHeart className="w-8 h-8 text-violet-mid glow-icon" />
-              </div>
-              <h3 className="font-display font-bold text-xl mb-6 leading-snug">
-                3. L'INDUSTRIALISATION DES CONVENTIONS DE MÉDIATION
-              </h3>
-              <div className="space-y-5 text-sm md:text-base">
-                <p className="text-grey-text">
-                  <strong className="text-soft-pink font-extrabold brightness-125">Le Constat :</strong> Bien que les accords de principe soient trouvés en séance, formaliser les calculs de contributions d'entretien et le partage LPP exige encore des heures de double saisie.
-                </p>
-                <p className="text-grey-text">
-                  <strong className="text-lavender-blue">Le Processus Automatisé :</strong> Un flux génère instantanément le squelette juridique de la convention en s'appuyant sur des tableaux financiers dynamiques, vous livrant un document prêt pour la validation finale.
-                </p>
+              <div className="absolute top-0 right-0 w-64 h-64 bg-violet-mid/5 rounded-full blur-[80px] group-hover:bg-violet-mid/10 transition-all duration-500 pointer-events-none"></div>
+
+              <div className="flex flex-col md:flex-row gap-12 md:gap-16 items-start relative z-10">
+                <div className="md:w-5/12 flex-shrink-0">
+                  <div className="w-16 h-16 rounded-2xl bg-dark-bg border border-white/10 flex items-center justify-center mb-8 shadow-inner">
+                    <FolderHeart className="w-8 h-8 text-violet-mid" />
+                  </div>
+                  <h3 className="font-display font-bold text-2xl md:text-3xl leading-snug">
+                    3. L'INDUSTRIALISATION DES CONVENTIONS DE MÉDIATION
+                  </h3>
+                </div>
+
+                <div className="md:w-7/12 flex flex-col gap-8 text-base md:text-[1.1rem] leading-[1.7] font-sans">
+                  
+                  <div className="flex flex-col gap-3">
+                    <span className="text-soft-pink font-extrabold tracking-widest uppercase text-xs flex items-center gap-3">
+                      <div className="w-1.5 h-1.5 rounded-full bg-soft-pink glow-icon" /> LE CONSTAT
+                    </span>
+                    <p className="text-grey-text">
+                       Bien que les accords de principe soient trouvés en séance, formaliser les calculs de contributions d'entretien et le partage LPP exige encore des heures de double saisie.
+                    </p>
+                  </div>
+
+                  <div className="w-full h-[1px] bg-white/5"></div>
+
+                  <div className="flex flex-col gap-3">
+                    <span className="text-lavender-blue font-extrabold tracking-widest uppercase text-xs flex items-center gap-3">
+                      <div className="w-1.5 h-1.5 rounded-full bg-lavender-blue glow-icon" /> LE PROCESSUS AUTOMATISÉ
+                    </span>
+                    <p className="text-white font-medium">
+                      Un flux génère instantanément le squelette juridique de la convention en s'appuyant sur des tableaux financiers dynamiques, vous livrant un document prêt pour la validation finale.
+                    </p>
+                  </div>
+
+                </div>
               </div>
             </motion.div>
           </div>
