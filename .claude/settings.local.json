@@ -4,7 +4,11 @@
       "Bash(powershell -Command:*)",
       "Bash(git config:*)",
       "Bash(git init:*)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(git commit -m \"$(cat <<''EOF''\nInitial commit - A2Z Consulting Landing Page\n\n- Landing page pour avocats et fiduciaires en Suisse romande\n- Design dark mode premium avec animations fluides\n- Section sécurité avec animation orbitale interactive\n- Copywriting B2B orienté professions réglementées\n- Hébergement données Suisse, Art. 321 CP, chiffrement AES-256\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>\nEOF\n)\")",
+      "Bash(gh auth:*)",
+      "Bash(start:*)",
+      "Bash(curl:*)"
     ]
   }
 }

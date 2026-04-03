@@ -1,0 +1,282 @@
+import React from 'react';
+import { Bot, Calendar, Zap, FolderHeart, Lock, ShieldCheck, ArrowRight } from 'lucide-react';
+import { motion } from 'motion/react';
+
+const Logo = () => (
+  <div className="flex items-center">
+    {/* L'image du logo doit être placée dans le dossier public/ sous le nom logo.png */}
+    <img 
+      src="/logo.png" 
+      alt="A2Z Consulting Logo" 
+      className="h-16 md:h-20 object-contain mix-blend-screen"
+      onError={(e) => {
+        // Fallback visuel au cas où l'image n'est pas encore uploadée
+        e.currentTarget.style.display = 'none';
+        e.currentTarget.nextElementSibling?.classList.remove('hidden');
+      }}
+    />
+    <div className="hidden flex items-center font-display font-bold text-3xl tracking-tighter">
+      <span className="text-gradient">A</span>
+      <svg className="w-6 h-6 mx-0.5 text-soft-pink transform -rotate-45" fill="none" viewBox="0 0 24 24" stroke="url(#arrow-grad)" strokeWidth="3">
+        <defs>
+          <linearGradient id="arrow-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stopColor="#E8A0C0" />
+            <stop offset="100%" stopColor="#C4A0DC" />
+          </linearGradient>
+        </defs>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+      </svg>
+      <span className="text-gradient">Z</span>
+    </div>
+  </div>
+);
+
+export default function App() {
+  return (
+    <div className="min-h-screen bg-dark-bg text-white font-sans selection:bg-glow-accent selection:text-white overflow-x-hidden">
+      {/* Background wireframe/glow effects */}
+      <div className="fixed inset-0 z-0 pointer-events-none opacity-20">
+        <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full bg-lavender-blue blur-[120px]" />
+        <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] rounded-full bg-violet-mid blur-[120px]" />
+        
+        {/* Subtle grid */}
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)]" />
+      </div>
+
+      <div className="relative z-10 max-w-6xl mx-auto px-6 py-12 md:py-20">
+        
+        {/* Header */}
+        <header className="mb-24">
+          <motion.div 
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+          >
+            <Logo />
+          </motion.div>
+          
+          <div className="mt-20 max-w-4xl">
+            <motion.h1 
+              className="font-display font-bold text-4xl md:text-6xl leading-tight mb-6"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+            >
+              SYNTHÈSE OPÉRATIONNELLE <br/>
+              <span className="text-grey-text">— BRODARD AVOCATS SA</span>
+            </motion.h1>
+            
+            <motion.p 
+              className="text-xl md:text-2xl text-lavender-blue font-medium mb-10"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+            >
+              Désengorger votre back-office pour fluidifier la sortie des dossiers en Droit de la Famille.
+            </motion.p>
+            
+            <motion.div 
+              className="bg-card-bg/50 border border-white/10 p-6 md:p-8 rounded-2xl backdrop-blur-sm"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+            >
+              <p className="text-lg md:text-xl leading-relaxed text-grey-text">
+                <strong className="text-white">Bonjour Maître Brodard,</strong><br/><br/>
+                Avec une équipe de 11 collaborateurs (7 juristes pour 4 collaborateurs support), la friction logistique pèse sur vos opérations. Voici 3 flux sécurisés pour neutraliser ces goulots d'étranglement.
+              </p>
+            </motion.div>
+          </div>
+        </header>
+
+        {/* Section 1 */}
+        <section className="mb-32">
+          <motion.h2 
+            className="font-display font-bold text-3xl md:text-4xl mb-12 flex items-center gap-4"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+          >
+            <span className="w-12 h-1 bg-gradient-primary rounded-full"></span>
+            3 GOULOTS D'ÉTRANGLEMENT & SOLUTIONS
+          </motion.h2>
+
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            {/* Bloc 1 */}
+            <motion.div 
+              className="bg-card-bg border border-white/5 p-8 rounded-2xl hover:border-glow-accent/30 transition-colors group"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+            >
+              <div className="w-14 h-14 rounded-xl bg-dark-bg border border-white/10 flex items-center justify-center mb-6 group-hover:border-lavender-blue/50 transition-colors">
+                <Bot className="w-7 h-7 text-lavender-blue glow-icon" />
+              </div>
+              <h3 className="font-display font-bold text-xl mb-6 leading-snug">
+                1. LA COLLECTE ET LE TRI DES PIÈCES EN DIVORCE/MPUC
+              </h3>
+              <div className="space-y-4 text-sm md:text-base">
+                <p className="text-grey-text">
+                  <strong className="text-soft-pink">Le Constat :</strong> Le tri chaotique de fiches de salaires, impôts, et LPP par votre back-office (Mmes Dridah, Heleno, Menoud) est un enfer.
+                </p>
+                <p className="text-grey-text">
+                  <strong className="text-lavender-blue">Le Processus Automatisé :</strong> Un portail d'onboarding chiffré. Le système détecte, valide la complétude et relance automatiquement.
+                </p>
+              </div>
+            </motion.div>
+
+            {/* Bloc 2 */}
+            <motion.div 
+              className="bg-card-bg border border-white/5 p-8 rounded-2xl hover:border-glow-accent/30 transition-colors group"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
+            >
+              <div className="w-14 h-14 rounded-xl bg-dark-bg border border-white/10 flex items-center justify-center mb-6 group-hover:border-soft-pink/50 transition-colors relative overflow-hidden">
+                <Calendar className="w-7 h-7 text-soft-pink glow-icon relative z-10" />
+                <Zap className="w-4 h-4 text-glow-accent absolute top-2 right-2 opacity-50" />
+              </div>
+              <h3 className="font-display font-bold text-xl mb-6 leading-snug">
+                2. LA SÉCURISATION DES DÉLAIS PROCÉDURAUX (TRIBUNAUX VAUDOIS)
+              </h3>
+              <div className="space-y-4 text-sm md:text-base">
+                <p className="text-grey-text">
+                  <strong className="text-soft-pink">Le Constat :</strong> La transcription manuelle des ordonnances et convocations dans vos agendas partagés est critique et anxiogène.
+                </p>
+                <p className="text-grey-text">
+                  <strong className="text-lavender-blue">Le Processus Automatisé :</strong> Une IA lit le courrier entrant, extrait les dates, calcule les <em className="not-italic text-white">dies a quo</em>, et injecte dans vos agendas (Mmes Abbas, Corthay) avec des rappels.
+                </p>
+              </div>
+            </motion.div>
+
+            {/* Bloc 3 */}
+            <motion.div 
+              className="bg-card-bg border border-white/5 p-8 rounded-2xl hover:border-glow-accent/30 transition-colors group"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.3 }}
+            >
+              <div className="w-14 h-14 rounded-xl bg-dark-bg border border-white/10 flex items-center justify-center mb-6 group-hover:border-violet-mid/50 transition-colors">
+                <FolderHeart className="w-7 h-7 text-violet-mid glow-icon" />
+              </div>
+              <h3 className="font-display font-bold text-xl mb-6 leading-snug">
+                3. L'INDUSTRIALISATION DES CONVENTIONS DE MÉDIATION
+              </h3>
+              <div className="space-y-4 text-sm md:text-base">
+                <p className="text-grey-text">
+                  <strong className="text-soft-pink">Le Constat :</strong> Formaliser les contributions d'entretien et le partage LPP en médiation prend des heures de saisie.
+                </p>
+                <p className="text-grey-text">
+                  <strong className="text-lavender-blue">Le Processus Automatisé :</strong> Un flux génère le squelette de la convention basé sur des tableaux financiers dynamiques, prêt pour validation.
+                </p>
+              </div>
+            </motion.div>
+          </div>
+        </section>
+
+        {/* Section 2 */}
+        <section className="mb-32">
+          <motion.div 
+            className="bg-gradient-to-br from-card-bg to-dark-bg border border-white/10 p-10 md:p-16 rounded-3xl relative overflow-hidden"
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+          >
+            {/* Decorative background elements */}
+            <div className="absolute top-0 right-0 w-64 h-64 bg-glow-accent/5 rounded-full blur-3xl"></div>
+            
+            <h2 className="font-display font-bold text-3xl md:text-4xl mb-10 flex items-center gap-4">
+              <ShieldCheck className="w-10 h-10 text-glow-accent glow-icon" />
+              INFRASTRUCTURE (LE BOUCLIER LÉGAL)
+            </h2>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div className="flex gap-4">
+                <div className="mt-1">
+                  <Lock className="w-6 h-6 text-lavender-blue" />
+                </div>
+                <div>
+                  <h4 className="font-bold text-lg mb-2 text-white">Conformité nLPD & Secret Professionnel</h4>
+                  <p className="text-grey-text">Les modèles d'IA sont privés et ne s'entraînent pas sur vos données. Hermétisme total garanti.</p>
+                </div>
+              </div>
+              
+              <div className="flex gap-4">
+                <div className="mt-1">
+                  {/* Swiss Flag Icon representation */}
+                  <div className="w-6 h-6 bg-red-600 rounded-sm flex items-center justify-center">
+                    <div className="w-3 h-1 bg-white absolute"></div>
+                    <div className="w-1 h-3 bg-white absolute"></div>
+                  </div>
+                </div>
+                <div>
+                  <h4 className="font-bold text-lg mb-2 text-white">Hébergement Local</h4>
+                  <p className="text-grey-text">Serveurs situés exclusivement en Suisse (Tier IV). Intégration transparente à vos outils actuels.</p>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        </section>
+
+        {/* Section 3 (CTA) */}
+        <section className="text-center max-w-3xl mx-auto mb-20">
+          <motion.h2 
+            className="font-display font-bold text-3xl md:text-4xl mb-8"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
+            PROCHAINE ÉTAPE <br/>
+            <span className="text-glow-accent">(L'APPEL DE CADRAGE 15 MIN)</span>
+          </motion.h2>
+          
+          <motion.p 
+            className="text-lg md:text-xl text-grey-text mb-12 leading-relaxed"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+          >
+            L'automatisation de ces processus permet de récupérer environ <strong className="text-white">13 à 15 heures par semaine</strong> sur un secrétariat juridique structuré comme le vôtre. Pour valider la faisabilité technique, un audit de 15 min est nécessaire.
+          </motion.p>
+          
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+            className="flex flex-col items-center"
+          >
+            <button className="group relative px-8 py-4 bg-gradient-primary rounded-full font-bold text-white text-lg tracking-wide hover:shadow-[0_0_30px_rgba(212,160,255,0.4)] transition-all duration-300 flex items-center gap-3 overflow-hidden cursor-pointer">
+              <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out"></div>
+              <span className="relative z-10">PLANIFIER UN CADRAGE TECHNIQUE (15 MIN)</span>
+              <ArrowRight className="w-5 h-5 relative z-10 group-hover:translate-x-1 transition-transform" />
+            </button>
+            <p className="mt-4 text-sm text-grey-text/70 flex items-center gap-2">
+              <Lock className="w-3 h-3" />
+              Échange strictement confidentiel, sans engagement commercial.
+            </p>
+          </motion.div>
+        </section>
+
+        {/* Footer */}
+        <footer className="border-t border-white/10 pt-8 pb-4 text-center">
+          <motion.div 
+            className="inline-block"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+          >
+            <span className="font-mono text-sm text-violet-mid glow-icon tracking-wider">
+              a2z-ia.ch/synthese/brodard-avocats
+            </span>
+          </motion.div>
+        </footer>
+
+      </div>
+    </div>
+  );
+}
