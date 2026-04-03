@@ -286,7 +286,7 @@ export default function App() {
             viewport={{ once: true }}
           >
             <span className="font-mono text-sm text-violet-mid glow-icon tracking-wider">
-              a2z-ia.ch/synthese/brodard-avocats
+              https://a2z-ia.ch/synthese-brodard-avocats
             </span>
           </motion.div>
         </footer>
