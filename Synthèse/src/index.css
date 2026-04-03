@@ -10,10 +10,6 @@
   --color-grey-text: #AAAAAA;
   --color-glow-accent: #D4A0FF;
 
-  --color-background: #1A1A1A;
-  --color-foreground: #ffffff;
-  --color-muted-foreground: #AAAAAA;
-
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
   --font-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
 }
