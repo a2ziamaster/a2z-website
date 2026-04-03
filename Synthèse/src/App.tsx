@@ -2,6 +2,7 @@ import React from 'react';
 import { Bot, Calendar, Zap, FolderHeart, Lock, ShieldCheck, ArrowRight } from 'lucide-react';
 import { motion } from 'motion/react';
 import logoImg from './assets/logo-removebg-preview.png';
+import { CinematicHero } from './components/ui/premium-legal-hero';
 
 const Logo = () => (
   <div className="flex items-center">
@@ -45,59 +46,21 @@ export default function App() {
       </div>
 
       {/* Navbar Separée */}
-      <nav className="absolute top-0 left-0 w-full px-8 py-8 md:px-12 md:py-10 z-50 flex items-center justify-start">
+      <nav className="absolute top-0 left-0 w-full px-8 py-8 md:px-12 md:py-10 z-[100] flex items-center justify-start pointer-events-none">
         <motion.div 
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ ...smoothTransition, duration: 1 }}
+          className="pointer-events-auto"
         >
           <Logo />
         </motion.div>
       </nav>
 
-      <div className="relative z-10 max-w-6xl mx-auto px-6 pt-40 pb-20 md:pt-48 md:pb-32">
-        
-        {/* Header */}
-        <header className="mb-32">
-          
-          <div className="mt-8 max-w-4xl mx-auto text-center md:text-left">
-            <motion.h1 
-              className="font-display font-bold text-[2.5rem] leading-[1.1] sm:text-5xl md:text-7xl mb-8 text-center md:text-left break-words"
-              initial={{ opacity: 0, y: 40 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ ...smoothTransition, delay: 0.1 }}
-            >
-              <span className="block">SYNTHÈSE OPÉRATIONNELLE</span>
-              <span className="text-grey-text/70 block text-3xl sm:text-4xl md:text-7xl mt-4 md:mt-0">
-                <span className="hidden md:inline-block mr-2">—</span>
-                <span className="block md:hidden w-16 h-1 bg-gradient-to-r from-transparent via-grey-text/30 to-transparent mx-auto mb-5 rounded-full"></span>
-                BRODARD AVOCATS SA
-              </span>
-            </motion.h1>
-            
-            <motion.p 
-              className="text-xl md:text-2xl text-lavender-blue font-medium mb-12"
-              initial={{ opacity: 0, y: 40 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ ...smoothTransition, delay: 0.2 }}
-            >
-              Désengorger votre back-office pour fluidifier la sortie des dossiers en Droit de la Famille.
-            </motion.p>
-            
-            <motion.div 
-              className="bg-card-bg/40 border border-white/5 p-8 md:p-10 rounded-3xl backdrop-blur-md shadow-2xl"
-              initial={{ opacity: 0, y: 40 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ ...smoothTransition, delay: 0.3 }}
-            >
-              <p className="text-lg md:text-xl leading-relaxed text-grey-text">
-                <strong className="text-white font-semibold">Bonjour Maître Brodard,</strong><br/><br/>
-                Avec une équipe de 11 collaborateurs (7 juristes pour 4 collaborateurs support), la friction logistique pèse sur vos opérations. Voici 3 flux sécurisés pour neutraliser ces goulots d'étranglement.
-              </p>
-            </motion.div>
-          </div>
-        </header>
+      <CinematicHero />
 
+      <div className="relative z-10 max-w-6xl mx-auto px-6 py-20 md:py-32">
+        
         {/* Section 1 - Refonte Premium Verticale */}
         <section className="mb-40 max-w-5xl mx-auto">
           <motion.h2 
