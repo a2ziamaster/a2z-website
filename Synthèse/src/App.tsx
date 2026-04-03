@@ -1,11 +1,12 @@
 import React from 'react';
 import { Bot, Calendar, Zap, FolderHeart, Lock, ShieldCheck, ArrowRight } from 'lucide-react';
 import { motion } from 'motion/react';
+import logoImg from './assets/logo-removebg-preview.png';
 
 const Logo = () => (
   <div className="flex items-center">
     <img 
-      src="/logo-removebg-preview.png" 
+      src={logoImg} 
       alt="A2Z Consulting Logo" 
       className="h-24 md:h-32 object-contain"
       onError={(e) => {
