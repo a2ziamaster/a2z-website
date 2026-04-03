@@ -260,11 +260,16 @@ export default function App() {
             transition={{ ...smoothTransition, delay: 0.2 }}
             className="flex flex-col items-center"
           >
-            <button className="group relative px-8 py-4 bg-gradient-primary rounded-full font-bold text-white text-lg tracking-wide hover:shadow-[0_0_30px_rgba(212,160,255,0.4)] transition-all duration-300 flex items-center gap-3 overflow-hidden cursor-pointer">
+            <a 
+              href="https://calendly.com/a2z-iamaster/audit-de-faisabilite-a2z-consulting-clone" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="group relative px-8 py-4 bg-gradient-primary rounded-full font-bold text-white text-lg tracking-wide hover:shadow-[0_0_30px_rgba(212,160,255,0.4)] transition-all duration-300 flex items-center gap-3 overflow-hidden cursor-pointer"
+            >
               <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out"></div>
               <span className="relative z-10">PLANIFIER UN CADRAGE TECHNIQUE (15 MIN)</span>
               <ArrowRight className="w-5 h-5 relative z-10 group-hover:translate-x-1 transition-transform" />
-            </button>
+            </a>
             <p className="mt-4 text-sm text-grey-text/70 flex items-center gap-2">
               <Lock className="w-3 h-3" />
               Échange strictement confidentiel, sans engagement commercial.
