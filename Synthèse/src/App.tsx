@@ -120,14 +120,14 @@ export default function App() {
                 <Bot className="w-8 h-8 text-lavender-blue glow-icon" />
               </div>
               <h3 className="font-display font-bold text-xl mb-6 leading-snug">
-                1. LA COLLECTE ET LE TRI DES PIÈCES EN DIVORCE/MPUC
+                1. LA COLLECTE ET LE TRI DES PIÈCES EN DIVORCE / MPUC
               </h3>
               <div className="space-y-5 text-sm md:text-base">
                 <p className="text-grey-text">
-                  <strong className="text-soft-pink font-extrabold brightness-125">Le Constat :</strong> Le tri chaotique de fiches de salaires, impôts, et LPP par votre back-office (Mmes Dridah, Heleno, Menoud) est un enfer.
+                  <strong className="text-soft-pink font-extrabold brightness-125">Le Constat :</strong> La réception fragmentée des fiches de salaires, impôts et décomptes LPP impose à votre back-office (Mmes Dridah, Heleno, Menoud) un travail de tri et de relance manuel extrêmement chronophage.
                 </p>
                 <p className="text-grey-text">
-                  <strong className="text-lavender-blue">Le Processus Automatisé :</strong> Un portail d'onboarding chiffré. Le système détecte, valide la complétude et relance automatiquement.
+                  <strong className="text-lavender-blue">Le Processus Automatisé :</strong> Un portail d'onboarding chiffré. Le système détecte la nature des documents, valide la complétude du dossier et relance le client automatiquement sans intervention humaine.
                 </p>
               </div>
             </motion.div>
@@ -149,10 +149,10 @@ export default function App() {
               </h3>
               <div className="space-y-5 text-sm md:text-base">
                 <p className="text-grey-text">
-                  <strong className="text-soft-pink font-extrabold brightness-125">Le Constat :</strong> La transcription manuelle des ordonnances et convocations dans vos agendas partagés est critique et anxiogène.
+                  <strong className="text-soft-pink font-extrabold brightness-125">Le Constat :</strong> La transcription manuelle des ordonnances et convocations judiciaires dans vos agendas partagés est le processus le plus critique, nécessitant une vigilance de tous les instants.
                 </p>
                 <p className="text-grey-text">
-                  <strong className="text-lavender-blue">Le Processus Automatisé :</strong> Une IA lit le courrier entrant, extrait les dates, calcule les <em className="not-italic text-white">dies a quo</em>, et injecte dans vos agendas (Mmes Abbas, Corthay) avec des rappels.
+                  <strong className="text-lavender-blue">Le Processus Automatisé :</strong> Une IA lit le courrier entrant, extrait les dates butoirs, calcule le <em className="not-italic text-white">dies a quo</em>, et injecte directement les délais dans les agendas de l'équipe (Mmes Abbas, Corthay) avec une cascade de rappels.
                 </p>
               </div>
             </motion.div>
@@ -173,10 +173,10 @@ export default function App() {
               </h3>
               <div className="space-y-5 text-sm md:text-base">
                 <p className="text-grey-text">
-                  <strong className="text-soft-pink font-extrabold brightness-125">Le Constat :</strong> Formaliser les contributions d'entretien et le partage LPP en médiation prend des heures de saisie.
+                  <strong className="text-soft-pink font-extrabold brightness-125">Le Constat :</strong> Bien que les accords de principe soient trouvés en séance, formaliser les calculs de contributions d'entretien et le partage LPP exige encore des heures de double saisie.
                 </p>
                 <p className="text-grey-text">
-                  <strong className="text-lavender-blue">Le Processus Automatisé :</strong> Un flux génère le squelette de la convention basé sur des tableaux financiers dynamiques, prêt pour validation.
+                  <strong className="text-lavender-blue">Le Processus Automatisé :</strong> Un flux génère instantanément le squelette juridique de la convention en s'appuyant sur des tableaux financiers dynamiques, vous livrant un document prêt pour la validation finale.
                 </p>
               </div>
             </motion.div>
