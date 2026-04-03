@@ -62,13 +62,17 @@ export default function App() {
           
           <div className="mt-8 max-w-4xl mx-auto text-center md:text-left">
             <motion.h1 
-              className="font-display font-bold text-5xl md:text-7xl leading-[1.1] mb-8"
+              className="font-display font-bold text-[2.5rem] leading-[1.1] sm:text-5xl md:text-7xl mb-8 text-center md:text-left break-words"
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ ...smoothTransition, delay: 0.1 }}
             >
-              SYNTHÈSE OPÉRATIONNELLE <br/>
-              <span className="text-grey-text/70">— BRODARD AVOCATS SA</span>
+              <span className="block">SYNTHÈSE OPÉRATIONNELLE</span>
+              <span className="text-grey-text/70 block text-3xl sm:text-4xl md:text-7xl mt-4 md:mt-0">
+                <span className="hidden md:inline-block mr-2">—</span>
+                <span className="block md:hidden w-16 h-1 bg-gradient-to-r from-transparent via-grey-text/30 to-transparent mx-auto mb-5 rounded-full"></span>
+                BRODARD AVOCATS SA
+              </span>
             </motion.h1>
             
             <motion.p 
