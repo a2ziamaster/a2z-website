@@ -13,3 +13,10 @@ Thumbs.db
 # Environment
 .env
 .env.local
+
+# ScrollCraft : fichiers de travail (originaux Kie, captures, dépendances de test)
+scrollcraft/builds/*/node_modules/
+scrollcraft/builds/*/lab/
+scrollcraft/builds/*/out/
+scrollcraft/builds/*/prev/
+scrollcraft/builds/*/package-lock.json
