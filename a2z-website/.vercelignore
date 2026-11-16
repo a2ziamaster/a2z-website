@@ -1,0 +1,8 @@
+# Fichiers gardés dans le dépôt comme sauvegarde, mais jamais publiés sur le site.
+# Ancienne cible (avocats, fiduciaires) : contenu non conforme au brief régies.
+archive/
+landing2.html
+# Synthèse prospect nominative : ne doit pas être publique.
+synthese-brodard-avocats/
+# Configuration locale de l'agent.
+.claude/

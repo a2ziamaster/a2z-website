@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="A2Z Consulting - Automatisation sécurisée pour études d'avocats et fiduciaires en Suisse. Données hébergées en Suisse, respect du secret professionnel.">
-    <meta name="keywords" content="automatisation, fiduciaire, avocat, notaire, Suisse romande, secret professionnel, données Suisse, efficience opérationnelle, Vaud">
-    <title>A2Z Consulting | Automatisation Sécurisée pour Avocats & Fiduciaires</title>
+    <meta name="description" content="A2Z lit chaque demande de locataire, détecte les urgences, prépare le dossier et le transmet au bon gérant. Pour les régies immobilières de Suisse romande.">
+    <meta name="keywords" content="régie immobilière, gérance, demandes locataires, sinistre, PPE, automatisation, Suisse romande, Vaud, Genève">
+    <title>A2Z Consulting | Tri automatique des demandes locataires pour régies immobilières</title>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -2079,6 +2079,21 @@
            TESTIMONIALS SECTION
            (Masqué temporairement - réactiver avec display: block)
            ======================================== */
+        /* TODO: Réactiver après la migration de la production chez Infomaniak (brief §5.4) */
+        .swiss-hosting-banner { display: none !important; }
+
+        .form-error {
+            margin: 16px 0 0;
+            padding: 12px 14px;
+            border: 1px solid rgba(232, 160, 192, 0.5);
+            border-radius: 10px;
+            background: rgba(232, 160, 192, 0.08);
+            color: #F2D4E2;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+        .form-error a { color: #D4A0FF; word-break: break-all; }
+
         .testimonials {
             display: none; /* TODO: Réactiver quand les vrais témoignages seront disponibles */
             padding: var(--section-padding) 0;
@@ -3505,6 +3520,41 @@
             stroke-dashoffset: 0;
         }
 
+
+        /* ===== Ajouts régies ===== */
+        section#demo.testimonials { display: block; }
+        .demo-layout { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: clamp(2rem, 5vw, 4rem); align-items: center; }
+        .demo-phone { justify-self: center; width: min(340px, 100%); aspect-ratio: 9 / 16; border-radius: 36px; padding: 9px;
+            background: linear-gradient(160deg, #303030, #181818); border: 1px solid var(--glass-border);
+            box-shadow: 0 40px 100px rgba(0,0,0,.55), 0 0 70px rgba(196,160,220,.14); position: relative; }
+        .demo-phone video { width: 100%; height: 100%; object-fit: cover; border-radius: 28px; background: #EFEDE8; }
+        .demo-sound { position: absolute; right: 22px; bottom: 22px; background: rgba(18,18,18,.75); color: var(--white);
+            border: 1px solid var(--glass-border); border-radius: 999px; padding: .5rem .9rem; font: 600 .8rem 'Inter', sans-serif; cursor: pointer; }
+        .demo-cases { display: grid; gap: 1rem; }
+        .demo-case { display: grid; grid-template-columns: 1fr auto; gap: .75rem 1rem; align-items: center; }
+        .demo-case .dc-from { font-weight: 600; color: var(--white); }
+        .demo-case .dc-sub { color: var(--grey-text); font-size: .95rem; grid-column: 1 / -1; }
+        .demo-case .dc-route { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: .5rem; align-items: center; font-size: .85rem; color: var(--grey-text); }
+        .dc-tag { font-size: .75rem; font-weight: 600; padding: .3rem .7rem; border-radius: 999px; border: 1px solid var(--glass-border); color: var(--white); background: rgba(255,255,255,.04); }
+        .dc-tag.urgent { border-color: rgba(232,90,90,.5); color: #F2A0A0; background: rgba(232,90,90,.08); }
+        .dc-time { font-family: 'Space Grotesk', sans-serif; font-weight: 700; background: var(--gradient-holographic); -webkit-background-clip: text; background-clip: text; color: transparent; }
+        .demo-note { margin-top: 1rem; font-size: .85rem; color: var(--text-muted); }
+        @media (max-width: 900px) { .demo-layout { grid-template-columns: 1fr; } }
+            /* Accessibilité : réduire les animations si le visiteur le demande */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+            .reveal, [class*="blur-in"], .swiss-hosting-text-animate {
+                opacity: 1 !important;
+                transform: none !important;
+                filter: none !important;
+            }
+        }
+
     </style>
 </head>
 <body>
@@ -3515,7 +3565,7 @@
                 <img src="assets/logo-removebg-preview.png" alt="A2Z Logo" class="logo-img">
             </a>
             <button type="button" class="btn-primary" onclick="openAuditModal()">
-                <span>Audit de processus</span>
+                <span>Démo de 15 min</span>
                 <i data-lucide="arrow-right" style="width: 16px; height: 16px;"></i>
             </button>
         </div>
@@ -3532,47 +3582,47 @@
             <div class="hero-content">
                 <div class="hero-badge">
                     <span class="hero-badge-dot"></span>
-                    <span>Hébergement 100% Suisse — Secret professionnel garanti</span>
+                    <span>Pour les régies immobilières de Suisse romande</span>
                 </div>
 
                 <h1 class="hero-title">
-                    Récupérez vos<br class="mobile-break"> <span class="gradient-text">heures facturables</span>
+                    Chaque demande de locataire,<br class="mobile-break"> <span class="gradient-text">au bon gérant</span>
                 </h1>
 
                 <p class="hero-subtitle">
-                    Automatisez la gestion de vos dossiers, l'onboarding client et la facturation. Vos collaborateurs se concentrent sur le conseil, pas sur la saisie. Sécurité et confidentialité de niveau bancaire.
+                    A2Z lit les mails qui arrivent dans votre boîte de demandes, détecte les urgences, prépare le dossier et répond au locataire. Vos gérants traitent, ils ne trient plus. Sans changer de logiciel.
                 </p>
 
                 <div class="hero-targets">
-                    <span class="hero-target">Études d'avocats</span>
-                    <span class="hero-target">Fiduciaires</span>
-                    <span class="hero-target">Notaires</span>
-                    <span class="hero-target">Professions réglementées</span>
+                    <span class="hero-target">Régies immobilières</span>
+                    <span class="hero-target">Gérances</span>
+                    <span class="hero-target">Administrations PPE</span>
+                    <span class="hero-target">Services techniques</span>
                 </div>
 
                 <div class="hero-cta-group">
                     <button type="button" class="btn-primary" onclick="openAuditModal()">
                         <i data-lucide="calendar" style="width: 20px; height: 20px;"></i>
-                        <span>Réserver un audit de processus (30 min)</span>
+                        <span>Réserver une démo (15 min)</span>
                     </button>
-                    <a href="#infrastructure" class="btn-ghost">
-                        <span>Découvrir nos solutions sécurisées</span>
+                    <a href="#demo" class="btn-ghost">
+                        <span>Voir le tri en action</span>
                         <i data-lucide="chevron-down" style="width: 20px; height: 20px;"></i>
                     </a>
                 </div>
 
                 <div class="hero-stats">
                     <div class="hero-stat">
-                        <div class="hero-stat-value gradient-text">+15h</div>
-                        <div class="hero-stat-label">facturables récupérées / semaine</div>
+                        <div class="hero-stat-value gradient-text">13 s</div>
+                        <div class="hero-stat-label">du mail reçu à la réponse au locataire (démo)</div>
                     </div>
                     <div class="hero-stat">
-                        <div class="hero-stat-value gradient-text">100%</div>
-                        <div class="hero-stat-label">données hébergées en <span class="swiss-flag-text">Suisse</span></div>
+                        <div class="hero-stat-value gradient-text">24/7</div>
+                        <div class="hero-stat-label">urgences repérées, week-ends compris</div>
                     </div>
                     <div class="hero-stat">
-                        <div class="hero-stat-value gradient-text">Art. 321 CP</div>
-                        <div class="hero-stat-label">secret professionnel respecté</div>
+                        <div class="hero-stat-value gradient-text">0</div>
+                        <div class="hero-stat-label">nouveau logiciel pour vos gérants</div>
                     </div>
                 </div>
             </div>
@@ -3587,86 +3637,127 @@
                     <i data-lucide="alert-triangle" style="width: 16px; height: 16px;"></i>
                     <span>Le constat</span>
                 </div>
-                <h2 class="section-title reveal">Ce qui freine votre efficience</h2>
+                <h2 class="section-title reveal">Lundi, 7h42. Une fuite chez un locataire.</h2>
                 <p class="section-subtitle reveal reveal-delay-1">
-                    Chaque jour, vos collaborateurs perdent des heures facturables sur des tâches administratives qui pourraient être automatisées.
+                    Son mail arrive au milieu de dizaines d'autres : attestations, décomptes, résiliations, questions de PPE. Quelqu'un doit tout lire avant que le bon gérant ne soit prévenu.
                 </p>
             </div>
 
             <div class="pain-cards">
-                <!-- Pain Card 1 -->
                 <div class="pain-card reveal reveal-delay-1">
                     <div class="pain-icon">
-                        <i data-lucide="user-plus" style="width: 28px; height: 28px;"></i>
+                        <i data-lucide="siren" style="width: 28px; height: 28px;"></i>
                     </div>
-                    <h3>L'onboarding client prend des heures</h3>
+                    <h3>Les urgences sont noyées</h3>
                     <p>
-                        Collecte des pièces d'identité, vérifications KYC, ouverture de dossier... Chaque nouveau mandat mobilise vos collaborateurs sur des tâches sans valeur ajoutée au lieu du conseil.
+                        Dans une boîte partagée, un dégât d'eau et une demande d'attestation se ressemblent. L'urgence est vue trop tard, et c'est le sinistre qui s'aggrave.
                     </p>
                     <div class="pain-examples">
                         <div class="pain-example">
                             <i data-lucide="file-text"></i>
-                            <span>Chasse aux documents par email et relances</span>
+                            <span>Fuites et pannes découvertes avec des heures de retard</span>
                         </div>
                         <div class="pain-example">
                             <i data-lucide="file-text"></i>
-                            <span>Saisie manuelle des informations client</span>
+                            <span>Demandes du vendredi soir lues le lundi</span>
                         </div>
                         <div class="pain-example">
                             <i data-lucide="file-text"></i>
-                            <span>Vérifications de conformité chronophages</span>
+                            <span>Risque de dommages et de litiges</span>
                         </div>
                     </div>
                 </div>
 
-                <!-- Pain Card 2 -->
                 <div class="pain-card reveal reveal-delay-2">
                     <div class="pain-icon">
-                        <i data-lucide="copy" style="width: 28px; height: 28px;"></i>
+                        <i data-lucide="inbox" style="width: 28px; height: 28px;"></i>
                     </div>
-                    <h3>Double saisie entre vos outils</h3>
+                    <h3>Le tri mobilise votre équipe</h3>
                     <p>
-                        Vous ressaisissez les mêmes informations entre votre boîte mail, votre logiciel métier et votre système comptable. Résultat : perte de temps et risques d'erreurs.
+                        Ouvrir, comprendre, retrouver l'immeuble, choisir le bon gérant, transférer. Plusieurs minutes par demande, des dizaines de fois par jour.
                     </p>
                     <div class="pain-examples">
                         <div class="pain-example">
                             <i data-lucide="unplug"></i>
-                            <span>Emails recopiés manuellement dans le dossier client</span>
+                            <span>Lecture et transfert manuels de chaque mail</span>
                         </div>
                         <div class="pain-example">
                             <i data-lucide="unplug"></i>
-                            <span>Temps passé non synchronisé avec la facturation</span>
+                            <span>Gérants interrompus pour des demandes hors de leur périmètre</span>
                         </div>
                         <div class="pain-example">
                             <i data-lucide="unplug"></i>
-                            <span>Données dispersées entre plusieurs systèmes</span>
+                            <span>Aucune vue d'ensemble sur les demandes en cours</span>
                         </div>
                     </div>
                 </div>
 
-                <!-- Pain Card 3 -->
                 <div class="pain-card reveal reveal-delay-3">
                     <div class="pain-icon">
-                        <i data-lucide="clock" style="width: 28px; height: 28px;"></i>
+                        <i data-lucide="phone-call" style="width: 28px; height: 28px;"></i>
                     </div>
-                    <h3>La facturation vous ralentit</h3>
+                    <h3>Les locataires relancent</h3>
                     <p>
-                        Saisie des prestations, calcul des honoraires, génération des notes d'honoraires... Chaque fin de mois, vos équipes passent des journées entières sur la facturation au lieu de travailler sur les dossiers.
+                        Sans accusé de réception, le locataire ne sait pas si sa demande a été lue. Il rappelle, renvoie un mail, contacte le propriétaire.
                     </p>
                     <div class="pain-examples">
                         <div class="pain-example">
                             <i data-lucide="trending-down"></i>
-                            <span>Heures non facturées car oubliées</span>
+                            <span>Appels de relance qui saturent la réception</span>
                         </div>
                         <div class="pain-example">
                             <i data-lucide="trending-down"></i>
-                            <span>Retard dans l'émission des notes d'honoraires</span>
+                            <span>Doublons de demandes à traiter</span>
                         </div>
                         <div class="pain-example">
                             <i data-lucide="trending-down"></i>
-                            <span>Réconciliation manuelle des paiements</span>
+                            <span>Image de la régie dégradée</span>
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Demo Section -->
+    <section class="testimonials" id="demo">
+        <div class="container">
+            <div class="testimonials-header">
+                <div class="testimonials-label">
+                    <i data-lucide="play-circle" style="width: 16px; height: 16px;"></i>
+                    <span>La démo</span>
+                </div>
+                <h2 class="section-title reveal">La boîte qui <span class="gradient-text">se trie toute seule</span></h2>
+                <p class="section-subtitle reveal reveal-delay-1">
+                    Chaque mail est lu, classé, priorisé et transmis au bon gérant. Le locataire reçoit une réponse immédiate.
+                </p>
+            </div>
+
+            <div class="demo-layout">
+                <div class="demo-phone reveal">
+                    <video id="demoVideo" src="media/a2z-regies-20s.mp4" poster="media/a2z-regies-poster.jpg" autoplay muted loop playsinline preload="metadata"></video>
+                    <button type="button" class="demo-sound" id="demoSound">Activer le son</button>
+                </div>
+
+                <div>
+                    <div class="demo-cases">
+                        <div class="testimonial-card demo-case reveal reveal-delay-1">
+                            <span class="dc-from">Sophie Rochat · Av. de Morges 12</span><span class="dc-time">13 s</span>
+                            <span class="dc-sub">« L'eau coule sous l'évier de la cuisine depuis ce matin… »</span>
+                            <span class="dc-route"><span class="dc-tag urgent">Urgent</span><span class="dc-tag">Sinistre · Technique</span>→ M. Dupuis, service technique · réponse envoyée au locataire</span>
+                        </div>
+                        <div class="testimonial-card demo-case reveal reveal-delay-2">
+                            <span class="dc-from">Jean-Pierre Favre · Ch. des Pâquerettes 4</span><span class="dc-time">11 s</span>
+                            <span class="dc-sub">« Je souhaite résilier mon bail pour la prochaine échéance… »</span>
+                            <span class="dc-route"><span class="dc-tag">Bail</span>→ M. Monnier, gérance · accusé de réception envoyé</span>
+                        </div>
+                        <div class="testimonial-card demo-case reveal reveal-delay-3">
+                            <span class="dc-from">Claire Monnet · PPE Les Tilleuls</span><span class="dc-time">12 s</span>
+                            <span class="dc-sub">« Quand aura lieu la prochaine assemblée générale ? »</span>
+                            <span class="dc-route"><span class="dc-tag">PPE</span>→ Mme Berset, administration PPE · accusé de réception envoyé</span>
+                        </div>
+                    </div>
+                    <p class="demo-note">Démonstration réalisée sur des demandes fictives. Aucune donnée réelle de locataire.</p>
                 </div>
             </div>
         </div>
@@ -3678,113 +3769,110 @@
             <div class="infrastructure-header">
                 <div class="infrastructure-label">
                     <i data-lucide="shield" style="width: 16px; height: 16px;"></i>
-                    <span>Nos Solutions</span>
+                    <span>La solution</span>
                 </div>
-                <h2 class="section-title reveal">Trois piliers. <span class="gradient-text">Efficience garantie.</span></h2>
+                <h2 class="section-title reveal">Trois étapes. <span class="gradient-text">Zéro tri manuel.</span></h2>
                 <p class="section-subtitle reveal reveal-delay-1">
-                    Des solutions d'automatisation conçues pour les professions réglementées. Sécurisées, conformes, invisibles.
+                    Les locataires écrivent comme d'habitude. Vos gérants travaillent comme d'habitude. Le tri disparaît entre les deux.
                 </p>
             </div>
 
             <div class="motors-grid">
-                <!-- Solution 1: Traitement documentaire -->
                 <div class="motor-card reveal reveal-delay-1">
                     <div class="motor-header">
                         <div class="motor-icon production">
-                            <i data-lucide="file-search" style="width: 32px; height: 32px;"></i>
+                            <i data-lucide="scan-search" style="width: 32px; height: 32px;"></i>
                         </div>
                         <div>
-                            <h3 class="motor-title">Traitement Documentaire</h3>
-                            <span class="motor-tagline">Analyse & Extraction</span>
+                            <h3 class="motor-title">Tri & Priorisation</h3>
+                            <span class="motor-tagline">Lecture & Classement</span>
                         </div>
                     </div>
 
-                    <p class="motor-quote">"Vos documents sont traités, classés et indexés automatiquement."</p>
+                    <p class="motor-quote">"Chaque demande est lue et classée dès son arrivée."</p>
 
                     <p class="motor-description">
-                        Nos solutions d'analyse documentaire extraient les informations clés de vos dossiers — conclusions adverses, pièces comptables, contrats — et les intègrent directement dans votre logiciel métier.
+                        A2Z lit chaque mail de votre boîte de demandes, pièces jointes comprises, identifie l'immeuble et le locataire, puis classe la demande et évalue son urgence.
                     </p>
 
                     <ul class="motor-features">
                         <li class="motor-feature">
                             <i data-lucide="check-circle-2" style="width: 18px; height: 18px;"></i>
-                            <span>Extraction automatique depuis PDF et scans</span>
+                            <span>Sinistre, technique, bail, comptabilité, PPE</span>
                         </li>
                         <li class="motor-feature">
                             <i data-lucide="check-circle-2" style="width: 18px; height: 18px;"></i>
-                            <span>Classement intelligent des pièces de dossier</span>
+                            <span>Urgence haute, normale ou basse</span>
                         </li>
                         <li class="motor-feature">
                             <i data-lucide="check-circle-2" style="width: 18px; height: 18px;"></i>
-                            <span>Résumés automatiques de documents volumineux</span>
+                            <span>Identification de l'immeuble et du locataire</span>
                         </li>
                     </ul>
                 </div>
 
-                <!-- Solution 2: Gestion des mandats -->
                 <div class="motor-card reveal reveal-delay-2">
                     <div class="motor-header">
                         <div class="motor-icon acquisition">
-                            <i data-lucide="briefcase" style="width: 32px; height: 32px;"></i>
+                            <i data-lucide="folder-check" style="width: 32px; height: 32px;"></i>
                         </div>
                         <div>
-                            <h3 class="motor-title">Gestion des Mandats</h3>
-                            <span class="motor-tagline">Onboarding & Suivi</span>
+                            <h3 class="motor-title">Dossier Préparé</h3>
+                            <span class="motor-tagline">Transmission au gérant</span>
                         </div>
                     </div>
 
-                    <p class="motor-quote">"L'ouverture de dossier en quelques clics, pas en quelques heures."</p>
+                    <p class="motor-quote">"Pas un mail transféré : un dossier prêt à traiter."</p>
 
                     <p class="motor-description">
-                        Automatisez l'onboarding client, la collecte documentaire et les vérifications de conformité. Vos collaborateurs se concentrent sur le conseil pendant que le système gère l'administratif.
+                        Le bon gérant reçoit la demande avec un résumé, la catégorie, l'urgence et la prochaine étape suggérée. Les urgences déclenchent une alerte immédiate.
                     </p>
 
                     <ul class="motor-features">
                         <li class="motor-feature">
                             <i data-lucide="check-circle-2" style="width: 18px; height: 18px;"></i>
-                            <span>Collecte automatisée des pièces client</span>
+                            <span>Attribution selon vos règles (gérant, immeuble, service)</span>
                         </li>
                         <li class="motor-feature">
                             <i data-lucide="check-circle-2" style="width: 18px; height: 18px;"></i>
-                            <span>Vérifications KYC et conformité intégrées</span>
+                            <span>Alerte immédiate pour les sinistres</span>
                         </li>
                         <li class="motor-feature">
                             <i data-lucide="check-circle-2" style="width: 18px; height: 18px;"></i>
-                            <span>Suivi des échéances et rappels automatiques</span>
+                            <span>Résumé du matin pour la direction</span>
                         </li>
                     </ul>
                 </div>
 
-                <!-- Solution 3: Automatisation des flux -->
                 <div class="motor-card reveal reveal-delay-3">
                     <div class="motor-header">
                         <div class="motor-icon operations">
-                            <i data-lucide="workflow" style="width: 32px; height: 32px;"></i>
+                            <i data-lucide="message-square-reply" style="width: 32px; height: 32px;"></i>
                         </div>
                         <div>
-                            <h3 class="motor-title">Automatisation des Flux</h3>
-                            <span class="motor-tagline">Synchronisation & Facturation</span>
+                            <h3 class="motor-title">Réponse au Locataire</h3>
+                            <span class="motor-tagline">Accusé & Suivi</span>
                         </div>
                     </div>
 
-                    <p class="motor-quote">"Vos systèmes communiquent enfin entre eux."</p>
+                    <p class="motor-quote">"Le locataire sait que sa demande est prise en charge."</p>
 
                     <p class="motor-description">
-                        Nous connectons vos outils existants pour éliminer la double saisie. Emails, agenda, logiciel métier et comptabilité synchronisés. La facturation devient automatique.
+                        Un accusé de réception clair part en quelques secondes, dans le ton de votre régie. Les cas sensibles sont toujours remontés à un humain.
                     </p>
 
                     <ul class="motor-features">
                         <li class="motor-feature">
                             <i data-lucide="check-circle-2" style="width: 18px; height: 18px;"></i>
-                            <span>Intégration avec vos logiciels existants</span>
+                            <span>Accusé de réception personnalisé</span>
                         </li>
                         <li class="motor-feature">
                             <i data-lucide="check-circle-2" style="width: 18px; height: 18px;"></i>
-                            <span>Synchronisation email ↔ dossier client</span>
+                            <span>Moins de relances téléphoniques</span>
                         </li>
                         <li class="motor-feature">
                             <i data-lucide="check-circle-2" style="width: 18px; height: 18px;"></i>
-                            <span>Facturation et notes d'honoraires automatisées</span>
+                            <span>Export vers votre logiciel de gérance (option)</span>
                         </li>
                     </ul>
                 </div>
@@ -3800,9 +3888,9 @@
                     <i data-lucide="brain-circuit" style="width: 16px; height: 16px;"></i>
                     <span>Intelligence Artificielle</span>
                 </div>
-                <h2 class="section-title reveal">L'IA, <span class="gradient-text">domptée</span> pour votre cabinet</h2>
+                <h2 class="section-title reveal">L'IA, <span class="gradient-text">encadrée</span> pour votre régie</h2>
                 <p class="section-subtitle reveal reveal-delay-1">
-                    Toute la puissance algorithmique, avec la rigueur et la sécurité qu'exige votre profession.
+                    Elle trie et prépare. Vos gérants décident. Rien n'est envoyé au locataire en dehors de vos règles.
                 </p>
             </div>
 
@@ -3812,9 +3900,9 @@
                     <div class="ia-card-icon">
                         <i data-lucide="shield-check" style="width: 32px; height: 32px;"></i>
                     </div>
-                    <h3 class="ia-card-title">Zéro Hallucination</h3>
+                    <h3 class="ia-card-title">Aucune consigne improvisée</h3>
                     <p class="ia-card-text">
-                        Nos modèles sont restreints pour travailler uniquement sur vos propres documents internes. L'IA ne devine pas, elle analyse vos faits.
+                        Les réponses suivent vos modèles validés. Pour une odeur de gaz ou un incendie, le locataire est renvoyé vers les numéros d'urgence officiels et votre équipe est alertée.
                     </p>
                 </div>
 
@@ -3825,7 +3913,7 @@
                     </div>
                     <h3 class="ia-card-title">Le contrôle reste humain</h3>
                     <p class="ia-card-text">
-                        L'IA prépare, rédige et trie, mais vous validez. Un système où la machine abat le travail chronophage tout en vous laissant le contrôle final.
+                        En cas de doute sur la catégorie ou l'urgence, la demande est signalée pour vérification humaine. Un gérant peut réattribuer une demande en un clic.
                     </p>
                 </div>
 
@@ -3836,7 +3924,7 @@
                     </div>
                     <h3 class="ia-card-title">Hermétique et Privé</h3>
                     <p class="ia-card-text">
-                        Vos requêtes et les données de vos clients ne servent jamais à entraîner l'IA. Chaque flux est cloisonné pour le secret professionnel.
+                        Les mails de vos locataires ne servent jamais à entraîner un modèle d'IA. Chaque régie dispose de son propre environnement, cloisonné.
                     </p>
                 </div>
             </div>
@@ -3851,9 +3939,9 @@
                     <i data-lucide="route" style="width: 16px; height: 16px;"></i>
                     <span>Comment ça marche</span>
                 </div>
-                <h2 class="section-title reveal">Du diagnostic au déploiement, <span class="gradient-text">en toute transparence</span></h2>
+                <h2 class="section-title reveal">De la démo au pilote, <span class="gradient-text">sans risque</span></h2>
                 <p class="section-subtitle reveal reveal-delay-1">
-                    Un processus clair, sans jargon technique, adapté à votre rythme.
+                    Vous voyez le tri fonctionner avant de vous engager.
                 </p>
             </div>
 
@@ -3866,11 +3954,11 @@
                             <i data-lucide="search" style="width: 16px; height: 16px;"></i>
                         </div>
                     </div>
-                    <h3 class="step-title">Audit de vos processus</h3>
+                    <h3 class="step-title">Démo de 15 minutes</h3>
                     <p class="step-description">
-                        Nous analysons vos flux de travail actuels, identifions les tâches chronophages et définissons ensemble les priorités d'automatisation avec un retour sur investissement mesurable.
+                        Vous voyez le tri sur des demandes types de régie, et nous faisons le point sur votre boîte de demandes : volume, catégories, gérants, logiciel.
                     </p>
-                    <span class="step-duration">Confidentiel • 30 min</span>
+                    <span class="step-duration">Sans engagement • 15 min</span>
                 </div>
 
                 <!-- Step 2 -->
@@ -3881,11 +3969,11 @@
                             <i data-lucide="wrench" style="width: 16px; height: 16px;"></i>
                         </div>
                     </div>
-                    <h3 class="step-title">Configuration sécurisée</h3>
+                    <h3 class="step-title">Paramétrage sur vos règles</h3>
                     <p class="step-description">
-                        Notre équipe développe votre solution sur-mesure dans un environnement sécurisé. Vos opérations continuent normalement, sans perturbation pour vos collaborateurs.
+                        Catégories, règles d'attribution par gérant et par immeuble, ton des réponses aux locataires. Votre boîte mail actuelle reste en place.
                     </p>
-                    <span class="step-duration">Données protégées</span>
+                    <span class="step-duration">Quelques jours</span>
                 </div>
 
                 <!-- Step 3 -->
@@ -3896,11 +3984,11 @@
                             <i data-lucide="check-circle" style="width: 16px; height: 16px;"></i>
                         </div>
                     </div>
-                    <h3 class="step-title">Déploiement & Formation</h3>
+                    <h3 class="step-title">Pilote sur votre boîte</h3>
                     <p class="step-description">
-                        Activation progressive des automatisations. Vos équipes sont formées à utiliser le système. Accompagnement continu pour ajuster et optimiser.
+                        Le tri tourne sur vos vraies demandes. Vous mesurez le temps gagné et la réactivité, puis vous décidez de continuer.
                     </p>
-                    <span class="step-duration">Support dédié inclus</span>
+                    <span class="step-duration">Accompagnement direct</span>
                 </div>
             </div>
         </div>
@@ -3914,9 +4002,9 @@
                     <i data-lucide="shield-check" style="width: 16px; height: 16px;"></i>
                     <span>Sécurité & Conformité Suisse</span>
                 </div>
-                <h2 class="section-title reveal">Vos données restent en <span class="swiss-flag-text">Suisse<img src="Temp_screen/image copy 11.png" alt="" class="swiss-flag-img"><svg class="swiss-underline" viewBox="0 0 300 20" preserveAspectRatio="none"><defs><linearGradient id="swiss-gradient" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" style="stop-color:#E85A5A"/><stop offset="50%" style="stop-color:#C94040"/><stop offset="100%" style="stop-color:#A82E2E"/></linearGradient></defs><path d="M 0,10 Q 75,0 150,10 Q 225,20 300,10"/></svg></span></h2>
+                <h2 class="section-title reveal">Une production hébergée en <span class="swiss-flag-text">Suisse<img src="Temp_screen/image copy 11.png" alt="" class="swiss-flag-img"><svg class="swiss-underline" viewBox="0 0 300 20" preserveAspectRatio="none"><defs><linearGradient id="swiss-gradient" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" style="stop-color:#E85A5A"/><stop offset="50%" style="stop-color:#C94040"/><stop offset="100%" style="stop-color:#A82E2E"/></linearGradient></defs><path d="M 0,10 Q 75,0 150,10 Q 225,20 300,10"/></svg></span></h2>
                 <p class="section-subtitle reveal reveal-delay-1">
-                    La confidentialité de vos dossiers est notre priorité absolue. Infrastructure suisse, protocoles bancaires.
+                    Les données de vos locataires sont traitées avec le niveau de soin que la nLPD exige.
                 </p>
             </div>
 
@@ -3955,16 +4043,16 @@
                             <!-- Expanded Card -->
                             <div class="node-card">
                                 <div class="node-card-header">
-                                    <span class="node-card-badge">Certifié</span>
+                                    <span class="node-card-badge">Production</span>
                                 </div>
-                                <h4 class="node-card-title">Hébergement 100% Suisse</h4>
+                                <h4 class="node-card-title">Hébergement en Suisse</h4>
                                 <p class="node-card-content">
-                                    Toutes vos données sont stockées exclusivement dans des centres de données situés en Suisse. Aucun transfert vers l'étranger, aucune exception.
+                                    En production, l'automatisation et le modèle d'IA tournent sur une infrastructure hébergée en Suisse (Infomaniak). La démo publique n'utilise que des demandes fictives.
                                 </p>
                                 <div class="node-energy">
                                     <div class="node-energy-header">
-                                        <span>Niveau de protection</span>
-                                        <span>100%</span>
+                                        <span>Démo publique</span>
+                                        <span>Données fictives</span>
                                     </div>
                                     <div class="node-energy-bar">
                                         <div class="node-energy-fill" style="width: 100%"></div>
@@ -3980,21 +4068,21 @@
                             <div class="node-circle">
                                 <i data-lucide="scale" style="width: 28px; height: 28px;"></i>
                             </div>
-                            <span class="node-label">Art. 321 CP</span>
+                            <span class="node-label">nLPD</span>
 
                             <!-- Expanded Card -->
                             <div class="node-card">
                                 <div class="node-card-header">
-                                    <span class="node-card-badge">Conforme</span>
+                                    <span class="node-card-badge">Cadre</span>
                                 </div>
-                                <h4 class="node-card-title">Secret professionnel garanti</h4>
+                                <h4 class="node-card-title">Conçu pour la nLPD</h4>
                                 <p class="node-card-content">
-                                    Nos solutions sont conçues dans le respect absolu de l'Art. 321 CP. Vos dossiers clients et communications restent strictement confidentiels.
+                                    Traitement limité au tri des demandes, contrat de sous-traitance et registre des traitements. Vous restez maître des données de vos locataires.
                                 </p>
                                 <div class="node-energy">
                                     <div class="node-energy-header">
-                                        <span>Conformité légale</span>
-                                        <span>100%</span>
+                                        <span>Cadre légal</span>
+                                        <span>nLPD</span>
                                     </div>
                                     <div class="node-energy-bar">
                                         <div class="node-energy-fill" style="width: 100%"></div>
@@ -4010,21 +4098,21 @@
                             <div class="node-circle">
                                 <i data-lucide="lock" style="width: 28px; height: 28px;"></i>
                             </div>
-                            <span class="node-label">AES-256</span>
+                            <span class="node-label">Accès</span>
 
                             <!-- Expanded Card -->
                             <div class="node-card">
                                 <div class="node-card-header">
-                                    <span class="node-card-badge">Bancaire</span>
+                                    <span class="node-card-badge">Contrôlé</span>
                                 </div>
-                                <h4 class="node-card-title">Sécurité niveau bancaire</h4>
+                                <h4 class="node-card-title">Accès restreint</h4>
                                 <p class="node-card-content">
-                                    Chiffrement de bout en bout, authentification multi-facteurs, audits de sécurité réguliers. Les mêmes standards que les institutions financières suisses.
+                                    Connexions chiffrées, accès limité aux seules boîtes concernées, actions journalisées. Aucun mail n'est conservé au-delà de ce qui est nécessaire.
                                 </p>
                                 <div class="node-energy">
                                     <div class="node-energy-header">
-                                        <span>Niveau de chiffrement</span>
-                                        <span>256-bit</span>
+                                        <span>Accès</span>
+                                        <span>Limité</span>
                                     </div>
                                     <div class="node-energy-bar">
                                         <div class="node-energy-fill" style="width: 100%"></div>
@@ -4033,76 +4121,6 @@
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Testimonials Section -->
-    <section class="testimonials" id="testimonials">
-        <div class="container">
-            <div class="testimonials-header">
-                <div class="testimonials-label">
-                    <i data-lucide="quote" style="width: 16px; height: 16px;"></i>
-                    <span>Témoignages</span>
-                </div>
-                <h2 class="section-title reveal">Ce qu'en disent <span class="gradient-text">nos clients</span></h2>
-                <p class="section-subtitle reveal reveal-delay-1">
-                    Des études et fiduciaires qui ont transformé leur efficience opérationnelle.
-                </p>
-            </div>
-
-            <div class="testimonials-grid">
-                <!-- Testimonial 1 -->
-                <div class="testimonial-card reveal reveal-delay-1">
-                    <p class="testimonial-quote">
-                        Nous avons récupéré près de 12 heures par semaine sur la gestion documentaire. L'onboarding client qui prenait une demi-journée se fait maintenant en 30 minutes. Et surtout, la sécurité des données était leur priorité dès le départ.
-                    </p>
-                    <div class="testimonial-author">
-                        <div class="testimonial-avatar">MR</div>
-                        <div class="testimonial-info">
-                            <h4>Me R., Associé</h4>
-                            <span>Étude d'avocats • Lausanne</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Testimonial 2 -->
-                <div class="testimonial-card reveal reveal-delay-2">
-                    <p class="testimonial-quote">
-                        La double saisie entre notre logiciel comptable et notre CRM nous coûtait un temps fou. Aujourd'hui, tout est synchronisé automatiquement. Nos collaborateurs peuvent enfin se concentrer sur le conseil aux clients.
-                    </p>
-                    <div class="testimonial-author">
-                        <div class="testimonial-avatar">SD</div>
-                        <div class="testimonial-info">
-                            <h4>S. D., Directrice</h4>
-                            <span>Fiduciaire • Genève</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Testimonial 3 -->
-                <div class="testimonial-card reveal reveal-delay-3">
-                    <p class="testimonial-quote">
-                        Ce qui m'a convaincu, c'est leur approche discrète et professionnelle. Pas de jargon technique, une compréhension réelle de nos contraintes réglementaires. L'hébergement suisse était non-négociable pour nous.
-                    </p>
-                    <div class="testimonial-author">
-                        <div class="testimonial-avatar">PB</div>
-                        <div class="testimonial-info">
-                            <h4>P. B., Expert-comptable</h4>
-                            <span>Fiduciaire • Fribourg</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="partners-section">
-                <p class="partners-label">Ils nous font confiance</p>
-                <div class="partners-logos">
-                    <span class="partner-logo">Étude Blanc & Associés</span>
-                    <span class="partner-logo">Fiduciaire du Léman</span>
-                    <span class="partner-logo">Cabinet juridique Vaudois</span>
-                    <span class="partner-logo">Notaires Réunis SA</span>
                 </div>
             </div>
         </div>
@@ -4130,7 +4148,7 @@
                     <p class="faq-label">Questions fréquentes</p>
                     <h2 class="faq-title">Tout ce que vous devez <span class="gradient-text">savoir</span>.</h2>
                     <p class="faq-subtitle">
-                        Les réponses aux questions les plus courantes sur nos solutions d'automatisation et notre approche.
+                        Les questions que les gérants nous posent le plus souvent.
                     </p>
                 </div>
             </header>
@@ -4150,11 +4168,11 @@
                         </span>
                         <div class="faq-question-text">
                             <div class="faq-question-header">
-                                <h3 class="faq-question-title">Quel est le gain de temps concret pour mon organisation ?</h3>
-                                <span class="faq-meta">Efficacité</span>
+                                <h3 class="faq-question-title">Faut-il changer de logiciel de gérance ?</h3>
+                                <span class="faq-meta">Intégration</span>
                             </div>
                             <div class="faq-answer" id="faq-panel-0" role="region">
-                                <p>En moyenne, nos automatisations permettent de libérer <strong>10 à 15 heures par semaine et par collaborateur</strong> sur les tâches administratives répétitives (saisie, classement, génération de documents).</p>
+                                <p>Non. L'intégration se fait en trois niveaux :<br>1. <strong>Votre messagerie actuelle</strong> (Outlook / Microsoft 365, Gmail, Infomaniak) : disponible aujourd'hui.<br>2. <strong>Export</strong> des demandes triées vers votre logiciel de gérance (CSV ou Excel).<br>3. <strong>Connexion directe</strong> à votre logiciel de gérance (Abacus, GARAIO REM, etc.), évaluée au cas par cas selon les accès disponibles.</p>
                             </div>
                         </div>
                     </button>
@@ -4173,11 +4191,11 @@
                         </span>
                         <div class="faq-question-text">
                             <div class="faq-question-header">
-                                <h3 class="faq-question-title">Où sont stockées nos données et celles de nos clients ?</h3>
+                                <h3 class="faq-question-title">Où sont traitées les données de nos locataires ?</h3>
                                 <span class="faq-meta">Souveraineté</span>
                             </div>
                             <div class="faq-answer" id="faq-panel-1" role="region">
-                                <p>La souveraineté est notre priorité. Toutes nos infrastructures de production sont <strong>hébergées en Suisse chez Infomaniak</strong> (Genève/Lausanne). Aucune donnée sensible n'est stockée de manière permanente sur des serveurs étrangers.</p>
+                                <p>En production, sur une <strong>infrastructure hébergée en Suisse</strong> (Infomaniak). La démo publique utilise uniquement des demandes fictives, jamais de données réelles.</p>
                             </div>
                         </div>
                     </button>
@@ -4196,11 +4214,11 @@
                         </span>
                         <div class="faq-question-text">
                             <div class="faq-question-header">
-                                <h3 class="faq-question-title">Vos solutions sont-elles conformes à la nouvelle LPD suisse ?</h3>
+                                <h3 class="faq-question-title">Et la nLPD ?</h3>
                                 <span class="faq-meta">Conformité</span>
                             </div>
                             <div class="faq-answer" id="faq-panel-2" role="region">
-                                <p>Oui. Nos architectures sont conçues <strong>"Privacy by Design"</strong>. Nous intégrons les exigences de la Loi sur la Protection des Données (LPD) dès la phase d'audit pour garantir une conformité totale, particulièrement pour les professions soumises au secret professionnel.</p>
+                                <p>Le traitement est conçu pour la nLPD : limité au tri des demandes, encadré par un <strong>contrat de sous-traitance</strong> signé avant le pilote, avec un accès restreint et journalisé.</p>
                             </div>
                         </div>
                     </button>
@@ -4219,11 +4237,11 @@
                         </span>
                         <div class="faq-question-text">
                             <div class="faq-question-header">
-                                <h3 class="faq-question-title">Est-ce que l'IA peut faire des erreurs dans mes documents ?</h3>
+                                <h3 class="faq-question-title">Et si l'IA se trompe de catégorie ou d'urgence ?</h3>
                                 <span class="faq-meta">Fiabilité</span>
                             </div>
                             <div class="faq-answer" id="faq-panel-3" role="region">
-                                <p>Nous implémentons des systèmes <strong>"Human-in-the-loop"</strong>. L'IA pré-construit, extrait et structure, mais une validation humaine (via une interface simple comme Slack ou un tableau de bord) reste toujours l'étape finale pour garantir une précision à 100%.</p>
+                                <p>Le gérant peut <strong>réattribuer la demande en un clic</strong>, et vos règles sont affinées pendant le pilote. En cas de doute, la demande est signalée pour vérification humaine plutôt que classée au hasard.</p>
                             </div>
                         </div>
                     </button>
@@ -4242,11 +4260,11 @@
                         </span>
                         <div class="faq-question-text">
                             <div class="faq-question-header">
-                                <h3 class="faq-question-title">Pouvez-vous automatiser nos logiciels actuels (Outlook, OneDrive, CRM) ?</h3>
-                                <span class="faq-meta">Intégration</span>
+                                <h3 class="faq-question-title">Comment sont gérées les vraies urgences ?</h3>
+                                <span class="faq-meta">Urgences</span>
                             </div>
                             <div class="faq-answer" id="faq-panel-4" role="region">
-                                <p>Absolument. Notre expertise avec n8n nous permet de <strong>connecter plus de 400 applications professionnelles</strong> entre elles sans changer vos habitudes de travail.</p>
+                                <p>Fuite, panne d'ascenseur, chauffage coupé : la demande passe en tête et le gérant concerné est <strong>alerté immédiatement</strong>. Pour une situation dangereuse comme une odeur de gaz, le locataire est renvoyé vers les numéros d'urgence officiels.</p>
                             </div>
                         </div>
                     </button>
@@ -4265,11 +4283,11 @@
                         </span>
                         <div class="faq-question-text">
                             <div class="faq-question-header">
-                                <h3 class="faq-question-title">Pourquoi proposez-vous un "Programme Pilote" à prix réduit ?</h3>
+                                <h3 class="faq-question-title">Pourquoi un "Programme Pilote" ?</h3>
                                 <span class="faq-meta">Offre</span>
                             </div>
                             <div class="faq-answer" id="faq-panel-5" role="region">
-                                <p>Pour asseoir notre réputation en Suisse Romande, nous sélectionnons <strong>3 organisations par trimestre</strong> pour bénéficier d'une implémentation à tarif préférentiel. En échange, nous demandons simplement un retour d'expérience détaillé (étude de cas).</p>
+                                <p>Nous accompagnons <strong>3 régies romandes par trimestre</strong> avec des conditions de lancement. En échange, nous demandons un retour d'expérience détaillé sur les résultats obtenus.</p>
                             </div>
                         </div>
                     </button>
@@ -4278,7 +4296,7 @@
 
             <!-- FAQ CTA -->
             <div class="faq-cta">
-                <p class="faq-cta-text">Une question spécifique à votre structure ?</p>
+                <p class="faq-cta-text">Une question spécifique à votre régie ?</p>
                 <a href="mailto:alec.diaconescu@a2z-consulting.ch" class="btn-primary">
                     <i data-lucide="mail" style="width: 20px; height: 20px;"></i>
                     <span>ALEC.DIACONESCU@A2Z-CONSULTING.CH</span>
@@ -4295,14 +4313,14 @@
                     <span class="swiss-hosting-icon">
                         <i data-lucide="shield-check" style="width: 18px; height: 18px;"></i>
                     </span>
-                    <span>Infrastructures</span>
-                    <span style="font-weight: 600;">100% suisses</span>
+                    <span>Mise en production</span>
+                    <span style="font-weight: 600;">en Suisse</span>
                 </div>
 
                 <span class="swiss-hosting-divider swiss-hosting-text-animate"></span>
 
                 <div class="swiss-hosting-text swiss-hosting-text-animate">
-                    <span>Nos solutions sont hébergées et sécurisées localement chez</span>
+                    <span>Infrastructure hébergée chez</span>
                 </div>
 
                 <a href="https://www.infomaniak.com" target="_blank" rel="noopener noreferrer" class="swiss-hosting-text-animate">
@@ -4321,16 +4339,16 @@
 
                 <div class="cta-content">
                     <h2 class="cta-title reveal">
-                        Récupérez vos heures facturables <span class="gradient-text">dès maintenant</span>
+                        Voyez votre boîte <span class="gradient-text">se trier toute seule</span>
                     </h2>
                     <p class="cta-subtitle reveal reveal-delay-1">
-                        Réservez un entretien confidentiel de 30 minutes. Nous analyserons vos processus et identifierons les gains d'efficience concrets pour votre étude — sans engagement.
+                        Réservez une démo de 15 minutes. Vous voyez le tri sur des demandes types de régie et nous évaluons ensemble ce qu'il changerait pour votre équipe. Sans engagement.
                     </p>
 
                     <div class="cta-buttons reveal reveal-delay-2">
                         <button type="button" class="btn-primary" onclick="openAuditModal()">
                             <i data-lucide="calendar" style="width: 20px; height: 20px;"></i>
-                            <span>Réserver un audit de processus (30 min)</span>
+                            <span>Réserver une démo (15 min)</span>
                         </button>
                         <a href="mailto:alec.diaconescu@a2z-consulting.ch" class="btn-secondary">
                             <i data-lucide="mail" style="width: 20px; height: 20px;"></i>
@@ -4341,15 +4359,15 @@
                     <div class="cta-trust reveal reveal-delay-3">
                         <div class="trust-item">
                             <i data-lucide="shield-check" style="width: 18px; height: 18px;"></i>
-                            <span>Hébergement 100% Suisse</span>
+                            <span>Production hébergée en Suisse</span>
                         </div>
                         <div class="trust-item">
                             <i data-lucide="scale" style="width: 18px; height: 18px;"></i>
-                            <span>Secret professionnel (Art. 321 CP)</span>
+                            <span>Conçu pour la nLPD</span>
                         </div>
                         <div class="trust-item">
                             <i data-lucide="lock" style="width: 18px; height: 18px;"></i>
-                            <span>Sécurité niveau bancaire</span>
+                            <span>Votre messagerie actuelle</span>
                         </div>
                     </div>
                 </div>
@@ -4370,8 +4388,9 @@
                 </div>
 
                 <div class="footer-links">
-                    <a href="#constat" class="footer-link">Vos défis</a>
-                    <a href="#infrastructure" class="footer-link">Nos solutions</a>
+                    <a href="#constat" class="footer-link">Le constat</a>
+                    <a href="#demo" class="footer-link">La démo</a>
+                    <a href="#infrastructure" class="footer-link">La solution</a>
                     <a href="#security" class="footer-link">Sécurité</a>
                     <a href="#faq" class="footer-link">FAQ</a>
                     <a href="#contact" class="footer-link">Contact</a>
@@ -4388,6 +4407,13 @@
     <script>
         // Initialize Lucide Icons
         lucide.createIcons();
+
+        // Vidéo de démo : son
+        (function () {
+            const v = document.getElementById('demoVideo'), b = document.getElementById('demoSound');
+            if (!v || !b) return;
+            b.addEventListener('click', function () { v.muted = !v.muted; if (!v.muted) { v.currentTime = 0; v.play(); } b.textContent = v.muted ? 'Activer le son' : 'Son activé'; });
+        })();
 
         // ========================================
         // BLUR IN ANIMATION - Hero Stats
@@ -4619,8 +4645,8 @@
 
             <!-- Header -->
             <div class="modal-header">
-                <h2 class="modal-title">Demande d'audit <span class="gradient-text">de processus</span></h2>
-                <p class="modal-subtitle">Répondez à quelques questions pour préparer notre entretien de 30 minutes.</p>
+                <h2 class="modal-title">Demande de démo <span class="gradient-text">pour votre régie</span></h2>
+                <p class="modal-subtitle">Quelques questions pour préparer une démo de 15 minutes adaptée à votre régie.</p>
             </div>
 
             <!-- Progress -->
@@ -4660,72 +4686,66 @@
                     <div class="form-step active" data-step="1">
                         <div class="form-group">
                             <label class="form-label">Nom complet <span class="required">*</span></label>
-                            <input type="text" class="form-input" name="name" placeholder="Me Jean Dupont" data-required="true">
+                            <input type="text" class="form-input" name="name" placeholder="Jean Dupont" data-required="true">
                         </div>
                         <div class="form-group">
                             <label class="form-label">Email professionnel <span class="required">*</span></label>
-                            <input type="email" class="form-input" name="email" placeholder="jean.dupont@etude.ch" data-required="true">
+                            <input type="email" class="form-input" name="email" placeholder="jean.dupont@regie.ch" data-required="true">
                         </div>
                         <div class="form-group">
                             <label class="form-label">Téléphone</label>
                             <input type="tel" class="form-input" name="phone" placeholder="+41 21 XXX XX XX">
                         </div>
                         <div class="form-group">
-                            <label class="form-label">Nom de l'étude / société</label>
-                            <input type="text" class="form-input" name="company" placeholder="Étude Dupont & Associés">
+                            <label class="form-label">Nom de la régie</label>
+                            <input type="text" class="form-input" name="company" placeholder="Régie du Léman SA">
                         </div>
                     </div>
 
                     <!-- Step 2: Structure -->
                     <div class="form-step" data-step="2">
                         <div class="form-group">
-                            <label class="form-label">Type d'activité <span class="required">*</span></label>
+                            <label class="form-label">Type de structure <span class="required">*</span></label>
                             <div class="form-options">
                                 <label class="form-option">
-                                    <input type="radio" name="activity_type" value="avocat" data-required="true">
-                                    <span class="form-option-radio"></span>
-                                    <span class="form-option-text">
-                                        <span class="form-option-title">Étude d'avocats</span>
-                                    </span>
-                                </label>
-                                <label class="form-option">
-                                    <input type="radio" name="activity_type" value="fiduciaire">
-                                    <span class="form-option-radio"></span>
-                                    <span class="form-option-text">
-                                        <span class="form-option-title">Fiduciaire / Expert-comptable</span>
-                                    </span>
-                                </label>
-                                <label class="form-option">
-                                    <input type="radio" name="activity_type" value="notaire">
-                                    <span class="form-option-radio"></span>
-                                    <span class="form-option-text">
-                                        <span class="form-option-title">Notaire</span>
-                                    </span>
-                                </label>
-                                <label class="form-option">
-                                    <input type="radio" name="activity_type" value="regie">
+                                    <input type="radio" name="activity_type" value="regie" data-required="true">
                                     <span class="form-option-radio"></span>
                                     <span class="form-option-text">
                                         <span class="form-option-title">Régie immobilière</span>
                                     </span>
                                 </label>
                                 <label class="form-option">
+                                    <input type="radio" name="activity_type" value="gerance_ppe">
+                                    <span class="form-option-radio"></span>
+                                    <span class="form-option-text">
+                                        <span class="form-option-title">Gérance et administration PPE</span>
+                                    </span>
+                                </label>
+                                <label class="form-option">
+                                    <input type="radio" name="activity_type" value="ppe">
+                                    <span class="form-option-radio"></span>
+                                    <span class="form-option-text">
+                                        <span class="form-option-title">Administration PPE uniquement</span>
+                                    </span>
+                                </label>
+                                <label class="form-option">
                                     <input type="radio" name="activity_type" value="autre">
                                     <span class="form-option-radio"></span>
                                     <span class="form-option-text">
-                                        <span class="form-option-title">Autre profession réglementée</span>
+                                        <span class="form-option-title">Autre</span>
                                     </span>
                                 </label>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="form-label">Taille de l'équipe <span class="required">*</span></label>
+                            <label class="form-label">Demandes de locataires par jour <span class="required">*</span></label>
                             <select class="form-select" name="team_size" data-required="true">
                                 <option value="" disabled selected>Sélectionnez...</option>
-                                <option value="1-5">1 à 5 collaborateurs</option>
-                                <option value="6-15">6 à 15 collaborateurs</option>
-                                <option value="16-30">16 à 30 collaborateurs</option>
-                                <option value="30+">Plus de 30 collaborateurs</option>
+                                <option value="<20">Moins de 20</option>
+                                <option value="20-50">20 à 50</option>
+                                <option value="50-100">50 à 100</option>
+                                <option value="100+">Plus de 100</option>
+                                <option value="inconnu">Je ne sais pas</option>
                             </select>
                         </div>
                     </div>
@@ -4736,35 +4756,35 @@
                             <label class="form-label">Quel est votre principal défi actuel ? <span class="required">*</span></label>
                             <div class="form-options">
                                 <label class="form-option">
-                                    <input type="radio" name="main_challenge" value="onboarding" data-required="true">
+                                    <input type="radio" name="main_challenge" value="urgences" data-required="true">
                                     <span class="form-option-radio"></span>
                                     <span class="form-option-text">
-                                        <span class="form-option-title">Onboarding client trop long</span>
-                                        <span class="form-option-desc">Collecte documentaire, KYC, ouverture de dossier</span>
+                                        <span class="form-option-title">Urgences repérées trop tard</span>
+                                        <span class="form-option-desc">Sinistres, pannes, demandes du week-end</span>
                                     </span>
                                 </label>
                                 <label class="form-option">
-                                    <input type="radio" name="main_challenge" value="double_saisie">
+                                    <input type="radio" name="main_challenge" value="tri">
                                     <span class="form-option-radio"></span>
                                     <span class="form-option-text">
-                                        <span class="form-option-title">Double saisie entre outils</span>
-                                        <span class="form-option-desc">Ressaisie manuelle, outils non connectés</span>
+                                        <span class="form-option-title">Tri et transfert manuels</span>
+                                        <span class="form-option-desc">Quelqu'un lit et redistribue chaque mail</span>
                                     </span>
                                 </label>
                                 <label class="form-option">
-                                    <input type="radio" name="main_challenge" value="facturation">
+                                    <input type="radio" name="main_challenge" value="relances">
                                     <span class="form-option-radio"></span>
                                     <span class="form-option-text">
-                                        <span class="form-option-title">Facturation chronophage</span>
-                                        <span class="form-option-desc">Notes d'honoraires, suivi des heures</span>
+                                        <span class="form-option-title">Relances des locataires</span>
+                                        <span class="form-option-desc">Appels et mails de relance, doublons</span>
                                     </span>
                                 </label>
                                 <label class="form-option">
-                                    <input type="radio" name="main_challenge" value="documents">
+                                    <input type="radio" name="main_challenge" value="suivi">
                                     <span class="form-option-radio"></span>
                                     <span class="form-option-text">
-                                        <span class="form-option-title">Gestion documentaire</span>
-                                        <span class="form-option-desc">Classement, recherche, analyse de documents</span>
+                                        <span class="form-option-title">Pas de vue d'ensemble</span>
+                                        <span class="form-option-desc">Difficile de savoir qui traite quoi</span>
                                     </span>
                                 </label>
                                 <label class="form-option">
@@ -4785,34 +4805,34 @@
                             <label class="form-label">Quelles fonctionnalités vous intéressent ?</label>
                             <div class="form-checkbox-grid">
                                 <label class="form-checkbox-item">
-                                    <input type="checkbox" name="features" value="document_extraction">
+                                    <input type="checkbox" name="features" value="tri_auto">
                                     <span class="form-checkbox-box"></span>
-                                    <span class="form-checkbox-label">Extraction documentaire IA</span>
+                                    <span class="form-checkbox-label">Tri automatique des demandes</span>
                                 </label>
                                 <label class="form-checkbox-item">
-                                    <input type="checkbox" name="features" value="auto_onboarding">
+                                    <input type="checkbox" name="features" value="alerte_urgence">
                                     <span class="form-checkbox-box"></span>
-                                    <span class="form-checkbox-label">Onboarding automatisé</span>
+                                    <span class="form-checkbox-label">Alertes urgences</span>
                                 </label>
                                 <label class="form-checkbox-item">
-                                    <input type="checkbox" name="features" value="sync_tools">
+                                    <input type="checkbox" name="features" value="accuse_reception">
                                     <span class="form-checkbox-box"></span>
-                                    <span class="form-checkbox-label">Synchronisation outils</span>
+                                    <span class="form-checkbox-label">Accusé de réception locataire</span>
                                 </label>
                                 <label class="form-checkbox-item">
-                                    <input type="checkbox" name="features" value="auto_billing">
+                                    <input type="checkbox" name="features" value="dossier_gerant">
                                     <span class="form-checkbox-box"></span>
-                                    <span class="form-checkbox-label">Facturation automatique</span>
+                                    <span class="form-checkbox-label">Dossier préparé pour le gérant</span>
                                 </label>
                                 <label class="form-checkbox-item">
-                                    <input type="checkbox" name="features" value="document_summary">
+                                    <input type="checkbox" name="features" value="resume_direction">
                                     <span class="form-checkbox-box"></span>
-                                    <span class="form-checkbox-label">Résumés automatiques</span>
+                                    <span class="form-checkbox-label">Résumé quotidien direction</span>
                                 </label>
                                 <label class="form-checkbox-item">
-                                    <input type="checkbox" name="features" value="reminders">
+                                    <input type="checkbox" name="features" value="export_logiciel">
                                     <span class="form-checkbox-box"></span>
-                                    <span class="form-checkbox-label">Rappels & échéances</span>
+                                    <span class="form-checkbox-label">Export vers logiciel de gérance</span>
                                 </label>
                             </div>
                         </div>
@@ -4847,12 +4867,12 @@
                     <!-- Step 5: Détails additionnels -->
                     <div class="form-step" data-step="5">
                         <div class="form-group">
-                            <label class="form-label">Logiciels actuellement utilisés</label>
-                            <input type="text" class="form-input" name="current_software" placeholder="Ex: Abacus, Sage, Winbiz, Crésus...">
+                            <label class="form-label">Logiciel de gérance et messagerie</label>
+                            <input type="text" class="form-input" name="current_software" placeholder="Ex : Abacus, GARAIO REM, Quorum, ImmoTop2 · Outlook, Gmail...">
                         </div>
                         <div class="form-group">
                             <label class="form-label">Décrivez brièvement votre situation</label>
-                            <textarea class="form-textarea" name="additional_info" placeholder="Parlez-nous de vos défis quotidiens, vos attentes, ou toute information utile pour préparer notre entretien..."></textarea>
+                            <textarea class="form-textarea" name="additional_info" placeholder="Ex : nos urgences arrivent souvent le week-end, une seule personne trie la boîte demandes@..."></textarea>
                         </div>
                         <div class="form-group">
                             <label class="form-label">Comment avez-vous entendu parler de nous ?</label>
@@ -4888,6 +4908,7 @@
                         <span class="spinner" style="display: none;"></span>
                     </button>
                 </div>
+                <p class="form-error" id="formError" role="alert" hidden>L'envoi n'a pas fonctionné. Réessayez dans un instant ou écrivez-nous directement à <a href="mailto:alec.diaconescu@a2z-consulting.ch">alec.diaconescu@a2z-consulting.ch</a>.</p>
             </form>
 
             <!-- Success State -->
@@ -4899,7 +4920,7 @@
                 </div>
                 <h3 class="success-title">Demande envoyée avec succès !</h3>
                 <p class="success-message">
-                    Merci pour votre confiance. Notre équipe vous contactera sous 24h pour planifier votre audit de processus personnalisé.
+                    Merci pour votre confiance. Nous vous recontactons sous 48 h ouvrées pour fixer votre démo.
                 </p>
                 <button class="success-close" onclick="closeAuditModal()">Fermer</button>
             </div>
@@ -4912,7 +4933,7 @@
         // AUDIT MODAL - Multi-step Form
         // ========================================
 
-        const WEBHOOK_URL = 'https://n8n-uvyi.srv1516256.hstgr.cloud/webhook/audit-lead';
+        const WEBHOOK_URL = 'https://n8n-uvyi.srv1516256.hstgr.cloud/webhook/a2z-demo-regie';
 
         let currentFormStep = 1;
         const totalSteps = 5;
@@ -5113,7 +5134,12 @@
 
             // Add timestamp
             data.submitted_at = new Date().toISOString();
-            data.source = 'a2z-website-audit-form';
+            data.source = 'site-regies-modal';
+
+            const formError = document.getElementById('formError');
+            formError.hidden = true;
+            const controller = new AbortController();
+            const timeoutId = setTimeout(() => controller.abort(), 15000);
 
             try {
                 // Send to webhook
@@ -5122,8 +5148,10 @@
                     headers: {
                         'Content-Type': 'application/json',
                     },
-                    body: JSON.stringify(data)
+                    body: JSON.stringify(data),
+                    signal: controller.signal
                 });
+                clearTimeout(timeoutId);
 
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
@@ -5133,11 +5161,13 @@
                 showSuccess();
 
             } catch (error) {
+                clearTimeout(timeoutId);
                 console.error('Error submitting form:', error);
 
-                // Still show success (fallback - you might want to handle this differently)
-                // Or send via email backup
-                showSuccess();
+                submitBtn.disabled = false;
+                btnText.textContent = "Réessayer l'envoi";
+                spinner.style.display = 'none';
+                formError.hidden = false;
             }
         }
 
@@ -5154,6 +5184,12 @@
         }
 
         // Initialize form UI
+        // Accessibilité : pas de lecture automatique de la vidéo si mouvement réduit
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            const v = document.getElementById('demoVideo');
+            if (v) { v.removeAttribute('autoplay'); v.pause(); }
+        }
+
         document.addEventListener('DOMContentLoaded', function() {
             // Re-init lucide icons for modal
             if (typeof lucide !== 'undefined') {
