@@ -2079,6 +2079,21 @@
            TESTIMONIALS SECTION
            (Masqué temporairement - réactiver avec display: block)
            ======================================== */
+        /* TODO: Réactiver après la migration de la production chez Infomaniak (brief §5.4) */
+        .swiss-hosting-banner { display: none !important; }
+
+        .form-error {
+            margin: 16px 0 0;
+            padding: 12px 14px;
+            border: 1px solid rgba(232, 160, 192, 0.5);
+            border-radius: 10px;
+            background: rgba(232, 160, 192, 0.08);
+            color: #F2D4E2;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+        .form-error a { color: #D4A0FF; word-break: break-all; }
+
         .testimonials {
             display: none; /* TODO: Réactiver quand les vrais témoignages seront disponibles */
             padding: var(--section-padding) 0;
@@ -3525,6 +3540,21 @@
         .dc-time { font-family: 'Space Grotesk', sans-serif; font-weight: 700; background: var(--gradient-holographic); -webkit-background-clip: text; background-clip: text; color: transparent; }
         .demo-note { margin-top: 1rem; font-size: .85rem; color: var(--text-muted); }
         @media (max-width: 900px) { .demo-layout { grid-template-columns: 1fr; } }
+            /* Accessibilité : réduire les animations si le visiteur le demande */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+            .reveal, [class*="blur-in"], .swiss-hosting-text-animate {
+                opacity: 1 !important;
+                transform: none !important;
+                filter: none !important;
+            }
+        }
+
     </style>
 </head>
 <body>
@@ -3714,7 +3744,7 @@
                         <div class="testimonial-card demo-case reveal reveal-delay-1">
                             <span class="dc-from">Sophie Rochat · Av. de Morges 12</span><span class="dc-time">13 s</span>
                             <span class="dc-sub">« L'eau coule sous l'évier de la cuisine depuis ce matin… »</span>
-                            <span class="dc-route"><span class="dc-tag urgent">Urgent</span><span class="dc-tag">Sinistre · Technique</span>→ M. Rochat, service technique · réponse envoyée au locataire</span>
+                            <span class="dc-route"><span class="dc-tag urgent">Urgent</span><span class="dc-tag">Sinistre · Technique</span>→ M. Dupuis, service technique · réponse envoyée au locataire</span>
                         </div>
                         <div class="testimonial-card demo-case reveal reveal-delay-2">
                             <span class="dc-from">Jean-Pierre Favre · Ch. des Pâquerettes 4</span><span class="dc-time">11 s</span>
@@ -4017,12 +4047,12 @@
                                 </div>
                                 <h4 class="node-card-title">Hébergement en Suisse</h4>
                                 <p class="node-card-content">
-                                    En production, l'automatisation et le modèle d'IA tournent sur une infrastructure hébergée en Suisse. L'hébergement exact est documenté avant le démarrage.
+                                    En production, l'automatisation et le modèle d'IA tournent sur une infrastructure hébergée en Suisse (Infomaniak). La démo publique n'utilise que des demandes fictives.
                                 </p>
                                 <div class="node-energy">
                                     <div class="node-energy-header">
-                                        <span>Niveau de protection</span>
-                                        <span>100%</span>
+                                        <span>Démo publique</span>
+                                        <span>Données fictives</span>
                                     </div>
                                     <div class="node-energy-bar">
                                         <div class="node-energy-fill" style="width: 100%"></div>
@@ -4043,9 +4073,9 @@
                             <!-- Expanded Card -->
                             <div class="node-card">
                                 <div class="node-card-header">
-                                    <span class="node-card-badge">Conforme</span>
+                                    <span class="node-card-badge">Cadre</span>
                                 </div>
-                                <h4 class="node-card-title">Conformité nLPD</h4>
+                                <h4 class="node-card-title">Conçu pour la nLPD</h4>
                                 <p class="node-card-content">
                                     Traitement limité au tri des demandes, contrat de sous-traitance et registre des traitements. Vous restez maître des données de vos locataires.
                                 </p>
@@ -4142,7 +4172,7 @@
                                 <span class="faq-meta">Intégration</span>
                             </div>
                             <div class="faq-answer" id="faq-panel-0" role="region">
-                                <p>Non. A2Z fonctionne avec <strong>votre messagerie actuelle</strong> (Outlook / Microsoft 365, Gmail, Infomaniak). L'export ou la connexion à votre logiciel de gérance (Abacus, GARAIO REM, etc.) est une option, évaluée selon les accès disponibles.</p>
+                                <p>Non. L'intégration se fait en trois niveaux :<br>1. <strong>Votre messagerie actuelle</strong> (Outlook / Microsoft 365, Gmail, Infomaniak) : disponible aujourd'hui.<br>2. <strong>Export</strong> des demandes triées vers votre logiciel de gérance (CSV ou Excel).<br>3. <strong>Connexion directe</strong> à votre logiciel de gérance (Abacus, GARAIO REM, etc.), évaluée au cas par cas selon les accès disponibles.</p>
                             </div>
                         </div>
                     </button>
@@ -4165,7 +4195,7 @@
                                 <span class="faq-meta">Souveraineté</span>
                             </div>
                             <div class="faq-answer" id="faq-panel-1" role="region">
-                                <p>En production, sur une <strong>infrastructure hébergée en Suisse</strong>. La démo publique utilise uniquement des demandes fictives, jamais de données réelles.</p>
+                                <p>En production, sur une <strong>infrastructure hébergée en Suisse</strong> (Infomaniak). La démo publique utilise uniquement des demandes fictives, jamais de données réelles.</p>
                             </div>
                         </div>
                     </button>
@@ -4184,11 +4214,11 @@
                         </span>
                         <div class="faq-question-text">
                             <div class="faq-question-header">
-                                <h3 class="faq-question-title">Est-ce conforme à la nLPD ?</h3>
+                                <h3 class="faq-question-title">Et la nLPD ?</h3>
                                 <span class="faq-meta">Conformité</span>
                             </div>
                             <div class="faq-answer" id="faq-panel-2" role="region">
-                                <p>Oui. Le traitement est limité au tri des demandes, encadré par un <strong>contrat de sous-traitance</strong>, avec un accès restreint et journalisé.</p>
+                                <p>Le traitement est conçu pour la nLPD : limité au tri des demandes, encadré par un <strong>contrat de sous-traitance</strong> signé avant le pilote, avec un accès restreint et journalisé.</p>
                             </div>
                         </div>
                     </button>
@@ -4333,7 +4363,7 @@
                         </div>
                         <div class="trust-item">
                             <i data-lucide="scale" style="width: 18px; height: 18px;"></i>
-                            <span>Conforme nLPD</span>
+                            <span>Conçu pour la nLPD</span>
                         </div>
                         <div class="trust-item">
                             <i data-lucide="lock" style="width: 18px; height: 18px;"></i>
@@ -4878,6 +4908,7 @@
                         <span class="spinner" style="display: none;"></span>
                     </button>
                 </div>
+                <p class="form-error" id="formError" role="alert" hidden>L'envoi n'a pas fonctionné. Réessayez dans un instant ou écrivez-nous directement à <a href="mailto:alec.diaconescu@a2z-consulting.ch">alec.diaconescu@a2z-consulting.ch</a>.</p>
             </form>
 
             <!-- Success State -->
@@ -5105,6 +5136,11 @@
             data.submitted_at = new Date().toISOString();
             data.source = 'site-regies-modal';
 
+            const formError = document.getElementById('formError');
+            formError.hidden = true;
+            const controller = new AbortController();
+            const timeoutId = setTimeout(() => controller.abort(), 15000);
+
             try {
                 // Send to webhook
                 const response = await fetch(WEBHOOK_URL, {
@@ -5112,8 +5148,10 @@
                     headers: {
                         'Content-Type': 'application/json',
                     },
-                    body: JSON.stringify(data)
+                    body: JSON.stringify(data),
+                    signal: controller.signal
                 });
+                clearTimeout(timeoutId);
 
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
@@ -5123,9 +5161,13 @@
                 showSuccess();
 
             } catch (error) {
+                clearTimeout(timeoutId);
                 console.error('Error submitting form:', error);
 
-                alert("L'envoi n'a pas fonctionné. Écrivez-nous directement à alec.diaconescu@a2z-consulting.ch, nous répondons rapidement.");
+                submitBtn.disabled = false;
+                btnText.textContent = "Réessayer l'envoi";
+                spinner.style.display = 'none';
+                formError.hidden = false;
             }
         }
 
@@ -5142,6 +5184,12 @@
         }
 
         // Initialize form UI
+        // Accessibilité : pas de lecture automatique de la vidéo si mouvement réduit
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            const v = document.getElementById('demoVideo');
+            if (v) { v.removeAttribute('autoplay'); v.pause(); }
+        }
+
         document.addEventListener('DOMContentLoaded', function() {
             // Re-init lucide icons for modal
             if (typeof lucide !== 'undefined') {
