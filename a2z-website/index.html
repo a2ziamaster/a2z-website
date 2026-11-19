@@ -222,7 +222,9 @@
 
   /* ------------------------------------------------- ch4 dossier ------- */
   .dossier { padding-block: var(--sc-8) var(--sc-9); }
-  .dossier__grid { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: clamp(2rem, 6vw, 6rem); align-items: center; }
+  .dossier__grid { display: grid; grid-template-columns: 1fr; gap: clamp(2.5rem, 5vw, 4.5rem); }
+  .dossier__top { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(2rem, 6vw, 6rem); align-items: start; }
+  .dossier__file { margin-top: 0; }
   .file { background: #F4F1F6; color: #1B1820; border-radius: var(--sc-r-md); padding: clamp(1.5rem, 3vw, 2.5rem); box-shadow: var(--sc-e3); }
   .file__top { display: flex; justify-content: space-between; align-items: baseline; gap: var(--sc-4); border-bottom: 1px solid #D9D2DF; padding-bottom: var(--sc-4); margin-bottom: var(--sc-5); }
   .file__top strong { font: 600 var(--sc-t-lg)/1.2 var(--sc-font-display); }
@@ -230,7 +232,7 @@
   .file dl { display: grid; grid-template-columns: 9.5rem minmax(0, 1fr); gap: var(--sc-3) var(--sc-5); margin: 0; font-size: var(--sc-t-sm); }
   .file dt { color: #5D5566; }
   .file dd { margin: 0; font-weight: 500; }
-  .dossier__media { position: relative; display: grid; justify-items: center; align-self: center; }
+  .dossier__media { position: relative; display: grid; justify-items: center; width: 100%; }
   .dossier__photo { margin: 0; width: 82%; }
   .dossier__photo img { width: 100%; height: auto; border-radius: var(--sc-r-lg); display: block; box-shadow: var(--sc-e2); }
   .phone { position: relative; width: min(100%, 260px); aspect-ratio: 9 / 16; border-radius: 28px; padding: 7px; background: #0E0E10; box-shadow: var(--sc-e3), 0 0 0 1px var(--sc-hairline-strong); }
@@ -344,7 +346,7 @@
     .leak__copy { top: auto; bottom: 18%; translate: none; width: auto; right: var(--sc-gutter); }
     .leak__time { font-size: var(--sc-t-2xl); }
     .leak__second { width: auto; right: var(--sc-gutter); bottom: 5%; font-size: var(--sc-t-base); }
-    .manual__grid, .dossier__grid, .guard__grid, .close__grid { grid-template-columns: 1fr; }
+    .manual__grid, .dossier__grid, .guard__grid, .close__grid, .dossier__top { grid-template-columns: 1fr; }
     .gestures li { font-size: var(--sc-t-lg); grid-template-columns: 2.4rem 1fr; }
     .costs { grid-template-columns: 1fr; gap: var(--sc-5); }
     .silence { min-height: 70svh; }
@@ -508,13 +510,13 @@
   <!-- 4 · clarté · reveal -->
   <section class="dossier chap" data-sc-act="flow" data-chapter="04" data-title="Le dossier du gérant">
     <div class="sc-wrap dossier__grid">
-      <div>
+      <div class="dossier__top">
         <div class="sc-stack" data-sc-in data-sc-stagger="60">
           <p class="chap__num">04 · Ce que reçoit le gérant</p>
           <h2 class="sc-display sc-display--md">Le gérant reçoit un dossier prêt à traiter.</h2>
           <p class="sc-body">Le dossier contient un résumé de la demande, sa catégorie, son urgence et la prochaine étape suggérée. Pour un sinistre, le gérant reçoit aussi une alerte immédiate.</p>
         </div>
-        <div data-sc-reveal="up" data-sc-reveal-at="0.28 0.56" style="margin-top: var(--sc-7);">
+        <div class="dossier__file" data-sc-reveal="up" data-sc-reveal-at="0.1 0.4">
           <article class="file" aria-label="Exemple de dossier préparé, données fictives">
             <div class="file__top"><strong>Fuite sous l'évier de cuisine</strong><span class="file__badge">Sinistre · Urgent</span></div>
             <dl>
