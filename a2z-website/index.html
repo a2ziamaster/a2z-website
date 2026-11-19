@@ -11,7 +11,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap"></noscript>
-<link rel="preload" as="image" href="media/v2/hero-facade-800.webp" imagesrcset="media/v2/hero-facade-800.webp 800w, media/v2/hero-facade.webp 1200w" imagesizes="(max-width: 860px) 92vw, 40vw" fetchpriority="high">
+<link rel="preload" as="image" href="media/v2/hero-soleil-800.webp" imagesrcset="media/v2/hero-soleil-800.webp 800w, media/v2/hero-soleil.webp 1200w" imagesizes="(max-width: 860px) 92vw, 40vw" fetchpriority="high">
 <link rel="stylesheet" href="sc/scrollcraft.css">
 <style>
   :root {
@@ -105,7 +105,35 @@
   .title__sub { font-size: var(--sc-t-lg); line-height: 1.5; color: var(--sc-ink-soft); max-width: 34ch; margin: 0 0 var(--sc-7); text-wrap: pretty; }
   .title__actions { display: flex; flex-wrap: wrap; align-items: center; gap: var(--sc-5) var(--sc-6); }
 
-  .plate { margin: 0; }
+  .trust { list-style: none; margin: var(--sc-7) 0 0; padding: var(--sc-5) 0 0; border-top: 1px solid var(--sc-hairline); display: flex; flex-wrap: wrap; gap: var(--sc-3) var(--sc-6); font-size: var(--sc-t-sm); color: var(--sc-ink-soft); }
+  .trust li { display: inline-flex; align-items: center; gap: .5em; }
+  .trust svg { width: 15px; height: 15px; fill: none; stroke: var(--a2z-lav); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; flex: none; }
+
+  .plate { margin: 0; position: relative; }
+  .plate__far > img, .plate__far > video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+  .plate__far > video { opacity: 0; transition: opacity 900ms var(--sc-ease-out); }
+  .plate__far.is-live > video { opacity: 1; }
+  .plate__sun { position: absolute; inset: 0; z-index: 2; pointer-events: none; background: radial-gradient(120% 60% at 85% -5%, rgba(255, 214, 170, .22), transparent 60%), linear-gradient(to top, rgba(18,18,18,.35), transparent 26%); }
+  .feed { position: absolute; z-index: 5; left: -12%; bottom: 12%; width: min(78%, 21rem); list-style: none; margin: 0; padding: 0; display: grid; gap: var(--sc-3); }
+  .note {
+    display: grid; grid-template-columns: 2.1rem minmax(0, 1fr); gap: var(--sc-3); align-items: center;
+    padding: .8rem .95rem; border-radius: var(--sc-r-md);
+    background: rgba(250, 248, 252, .94); color: #1B1820;
+    box-shadow: 0 10px 24px -6px rgba(20, 10, 30, .45), 0 2px 6px rgba(20, 10, 30, .2);
+    opacity: 0; transform: translateY(10px) scale(.97);
+    transition: opacity 420ms var(--sc-ease-out), transform 520ms var(--sc-ease-out);
+  }
+  .note.is-in { opacity: 1; transform: none; }
+  .note__ico { width: 2.1rem; height: 2.1rem; border-radius: 50%; display: grid; place-items: center; background: #E7E0F2; }
+  .note__ico svg { width: 15px; height: 15px; fill: none; stroke: #4B3A66; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+  .note__ico--urgent { background: var(--a2z-urgent); }
+  .note__ico--urgent svg { stroke: #3A1220; stroke-width: 2.4; }
+  .note__ico--ok { background: var(--a2z-holo); }
+  .note__ico--ok svg { stroke: #1B1820; stroke-width: 2.2; }
+  .note__body { min-width: 0; display: grid; gap: 2px; font-size: 12.5px; line-height: 1.35; }
+  .note__body b { font-weight: 600; font-size: 13px; }
+  .note__body span { color: #5D5566; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  @media (prefers-reduced-motion: reduce) { .note { opacity: 1; transform: none; transition: none; } }
   .plate__frame {
     position: relative; overflow: hidden; border-radius: var(--sc-r-lg);
     aspect-ratio: 3 / 4; max-height: 76svh; margin-left: auto;
@@ -113,12 +141,8 @@
     isolation: isolate;
   }
   .plate__layer { position: absolute; left: 0; width: 100%; max-width: none; pointer-events: none; }
-  .plate__far  { top: -6%; height: 112%; object-fit: cover; }
-  .plate__glow { top: -14%; left: 8%; width: 120%; height: 70%; object-fit: cover; mix-blend-mode: screen; opacity: .5; filter: blur(14px);
-    -webkit-mask-image: radial-gradient(closest-side, #000 30%, transparent 100%); mask-image: radial-gradient(closest-side, #000 30%, transparent 100%); }
-  .plate__near { bottom: -7%; left: -6%; width: 78%; height: auto; filter: brightness(.82) saturate(.9); }
-  .plate__floor { position: absolute; inset: auto 0 0 0; height: 22%; background: linear-gradient(to top, rgba(18,18,18,.55), transparent); z-index: 4; }
-  .plate__far { z-index: 1; } .plate__glow { z-index: 2; } .plate__near { z-index: 3; }
+  .plate__far  { top: -6%; height: 112%; }
+  .plate__far { z-index: 1; }
 
   /* ------------------------------------------------- ch1 scrub (leak) --- */
   .leak .sc-stage { background: var(--sc-canvas); }
@@ -304,7 +328,10 @@
     .title__grid { grid-template-columns: 1fr; gap: var(--sc-7); }
     .title h1 { font-size: clamp(2.3rem, 1.6rem + 3.4vw, 3rem); max-width: 14ch; }
     .title__sub { font-size: var(--sc-t-base); margin-bottom: var(--sc-6); }
-    .plate__frame { aspect-ratio: 4 / 4.4; max-height: none; }
+    .plate__frame { aspect-ratio: 4 / 4.6; max-height: none; }
+    .feed { left: 4%; right: 4%; width: auto; bottom: 6%; }
+    .trust { gap: var(--sc-2) var(--sc-4); margin-top: var(--sc-5); padding-top: var(--sc-4); font-size: 12.5px; }
+    .title__actions { gap: var(--sc-4) var(--sc-5); }
     .leak__frame { width: 100%; bottom: 46%; top: 3.6rem; }
     .leak__frame::after { background: linear-gradient(0deg, var(--sc-canvas) 0%, rgba(18,18,18,0) 30%); }
     .leak__copy { top: auto; bottom: 18%; translate: none; width: auto; right: var(--sc-gutter); }
@@ -368,15 +395,35 @@
           <button class="btn" type="button" data-open-demo>Réserver une démo</button>
           <a class="link-arrow" href="#ch3">Voir le tri en 13 secondes</a>
         </div>
+        <ul class="trust" aria-label="En bref">
+          <li><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7"/></svg>Basé à Crissier (VD)</li>
+          <li><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7"/></svg>Démo de 15 min, sans engagement</li>
+          <li><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7"/></svg>En production, hébergé en Suisse</li>
+        </ul>
       </div>
       <figure class="plate">
         <div class="plate__frame">
-          <img class="plate__layer plate__far" data-sc-parallax="0.9" src="media/v2/hero-facade-800.webp" srcset="media/v2/hero-facade-800.webp 800w, media/v2/hero-facade.webp 1200w" sizes="(max-width: 860px) 92vw, 40vw" fetchpriority="high" width="1200" height="1600" alt="Façade d'un immeuble d'habitation lausannois à l'aube, quelques fenêtres allumées.">
-          <img class="plate__layer plate__glow" data-sc-parallax="-0.6" src="media/v2/holo.webp" width="1600" height="889" alt="" aria-hidden="true">
-          <img class="plate__layer plate__near" data-sc-parallax="-1.8" src="media/v2/hero-boites-aube.webp" width="1000" height="662" decoding="async" alt="" aria-hidden="true">
-          <div class="plate__floor" aria-hidden="true"></div>
+          <div class="plate__layer plate__far" data-sc-parallax="0.9">
+            <img src="media/v2/hero-soleil-800.webp" srcset="media/v2/hero-soleil-800.webp 800w, media/v2/hero-soleil.webp 1200w" sizes="(max-width: 860px) 92vw, 40vw" fetchpriority="high" width="1200" height="1600" alt="Façade d'un immeuble d'habitation lausannois bien entretenu, au soleil du matin.">
+            <video id="heroVid" muted playsinline preload="none" aria-hidden="true" data-src="media/v2/hero-soleil.mp4" data-src-mobile="media/v2/hero-soleil-m.mp4"></video>
+          </div>
+          <div class="plate__sun" aria-hidden="true"></div>
         </div>
-        <figcaption>Lausanne, lundi, 7h41. Image d'illustration.</figcaption>
+        <ol class="feed" data-sc-parallax="-1.4" aria-label="Exemple fictif de demande traitée par A2Z">
+          <li class="note">
+            <span class="note__ico" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M2 4h12v8H2z M2 4l6 5 6-5"/></svg></span>
+            <span class="note__body"><b>Nouvelle demande · 7h42</b><span>Sophie Rochat, Av. de Morges 12 : « L'eau coule sous l'évier… »</span></span>
+          </li>
+          <li class="note">
+            <span class="note__ico note__ico--urgent" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M8 3v6 M8 12v.5"/></svg></span>
+            <span class="note__body"><b>Classée : sinistre, urgent</b><span>Alerte envoyée au service technique</span></span>
+          </li>
+          <li class="note">
+            <span class="note__ico note__ico--ok" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M3 8.5l3 3 7-7"/></svg></span>
+            <span class="note__body"><b>Dossier prêt pour M. Dupuis</b><span>Locataire informé · 13 s après réception</span></span>
+          </li>
+        </ol>
+        <figcaption>Lausanne, lundi matin. Image d'illustration, notifications fictives.</figcaption>
       </figure>
     </div>
   </section>
@@ -640,6 +687,31 @@ ScrollCraft.mount(document.body);
 (function () {
   var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
   var clamp = function (v) { return v < 0 ? 0 : v > 1 ? 1 : v; };
+
+  /* ---------- Titre : la façade s'éclaire, une demande se traite ------- */
+  var far = document.querySelector('.plate__far'), hv = document.getElementById('heroVid');
+  if (hv && !reduce && !(navigator.connection && navigator.connection.saveData)) {
+    addEventListener('load', function () {
+      setTimeout(function () {
+        hv.src = matchMedia('(max-width: 860px)').matches ? hv.dataset.srcMobile : hv.dataset.src;
+        hv.addEventListener('playing', function () { far.classList.add('is-live'); }, { once: true });
+        hv.play().catch(function () {});
+      }, 400);
+    });
+  }
+  var notes = Array.prototype.slice.call(document.querySelectorAll('.feed .note'));
+  if (reduce) { notes.forEach(function (n) { n.classList.add('is-in'); }); }
+  else if (notes.length) {
+    var step = 0, feedTimer = null;
+    var tick = function () {
+      if (step < notes.length) { notes[step].classList.add('is-in'); step++; feedTimer = setTimeout(tick, step === notes.length ? 5200 : 1700); }
+      else { notes.forEach(function (n) { n.classList.remove('is-in'); }); step = 0; feedTimer = setTimeout(tick, 900); }
+    };
+    var fio = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (e.isIntersecting) { if (!feedTimer) feedTimer = setTimeout(tick, 600); } else { clearTimeout(feedTimer); feedTimer = null; } });
+    });
+    fio.observe(document.querySelector('.feed'));
+  }
 
   /* ---------- Folio : le chapitre courant ----------------------------- */
   var num = document.getElementById('folioNum'), ttl = document.getElementById('folioTitle');
