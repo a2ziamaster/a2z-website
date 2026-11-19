@@ -6,7 +6,7 @@
 <title>A2Z Consulting · Tri automatique des demandes de locataires pour régies immobilières</title>
 <meta name="description" content="A2Z lit chaque demande de locataire, détecte les urgences, prépare le dossier du bon gérant et répond au locataire. Pour les régies immobilières de Suisse romande.">
 <meta name="theme-color" content="#121212">
-<link rel="icon" type="image/png" href="assets/logo-a2z.png">
+<link rel="icon" href="data:,">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
@@ -222,7 +222,7 @@
 
   /* ------------------------------------------------- ch4 dossier ------- */
   .dossier { padding-block: var(--sc-8) var(--sc-9); }
-  .dossier__grid { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(0, 0.65fr); gap: clamp(2rem, 6vw, 6rem); align-items: center; }
+  .dossier__grid { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: clamp(2rem, 6vw, 6rem); align-items: center; }
   .file { background: #F4F1F6; color: #1B1820; border-radius: var(--sc-r-md); padding: clamp(1.5rem, 3vw, 2.5rem); box-shadow: var(--sc-e3); }
   .file__top { display: flex; justify-content: space-between; align-items: baseline; gap: var(--sc-4); border-bottom: 1px solid #D9D2DF; padding-bottom: var(--sc-4); margin-bottom: var(--sc-5); }
   .file__top strong { font: 600 var(--sc-t-lg)/1.2 var(--sc-font-display); }
@@ -230,12 +230,19 @@
   .file dl { display: grid; grid-template-columns: 9.5rem minmax(0, 1fr); gap: var(--sc-3) var(--sc-5); margin: 0; font-size: var(--sc-t-sm); }
   .file dt { color: #5D5566; }
   .file dd { margin: 0; font-weight: 500; }
-  .dossier__media { position: relative; display: grid; justify-items: center; align-self: end; }
+  .dossier__media { position: relative; display: grid; justify-items: center; align-self: center; }
   .dossier__photo { margin: 0; width: 82%; }
   .dossier__photo img { width: 100%; height: auto; border-radius: var(--sc-r-lg); display: block; box-shadow: var(--sc-e2); }
   .phone { position: relative; width: min(100%, 260px); aspect-ratio: 9 / 16; border-radius: 28px; padding: 7px; background: #0E0E10; box-shadow: var(--sc-e3), 0 0 0 1px var(--sc-hairline-strong); }
   .phone video { width: 100%; height: 100%; object-fit: cover; border-radius: 22px; display: block; background: #EFEDE8; }
-  .phone__cap { position: absolute; left: 0; right: 0; top: calc(100% + .7rem); text-align: center; font-size: var(--sc-t-xs); color: var(--sc-ink-soft); }
+  .phone { display: none; }
+  .screen { width: 100%; border-radius: 14px; padding: 0 8px 8px; background: #0E0E10; box-shadow: var(--sc-e3), 0 0 0 1px var(--sc-hairline-strong); }
+  .screen__bar { display: flex; align-items: center; gap: 6px; height: 34px; padding: 0 6px; }
+  .screen__bar i { width: 10px; height: 10px; border-radius: 50%; background: #3A3740; flex: none; }
+  .screen__bar span { flex: 1; text-align: center; font-size: 11px; color: #8E8796; margin-right: 36px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .screen__view { position: relative; aspect-ratio: 16 / 9; border-radius: 6px; overflow: hidden; background: #EEEDE6; }
+  .screen__view video { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .demo-cap { margin: var(--sc-4) 0 0; font-size: var(--sc-t-xs); color: var(--sc-ink-soft); text-align: center; }
   .mute { position: absolute; left: 50%; bottom: 14px; translate: -50% 0; font: 600 11px/1 var(--sc-font-text); padding: .55em .9em; border-radius: var(--sc-r-pill); border: 0; background: rgba(14,14,16,.78); color: #fff; cursor: pointer; }
 
   /* ------------------------------------------------- ch5 guard rails --- */
@@ -357,7 +364,8 @@
     .sort__bg img { width: 160%; right: -60%; }
     .ledger li { grid-template-columns: 1fr; gap: var(--sc-3); }
     .guard__media { position: relative; top: 0; max-width: 22rem; }
-    .phone { width: min(62%, 240px); margin-bottom: 2.5rem; }
+    .screen { display: none; }
+    .phone { display: block; width: min(62%, 240px); }
     .file dl { grid-template-columns: 1fr; gap: var(--sc-1); }
     .file dd { margin-bottom: var(--sc-3); }
     .row2 { grid-template-columns: 1fr; }
@@ -521,11 +529,18 @@
         </div>
       </div>
       <div class="dossier__media">
-        <div class="phone">
-          <video id="demoVideo" src="media/a2z-regies-20s.mp4" poster="media/a2z-regies-poster.jpg" muted loop playsinline preload="none" aria-label="Vidéo de la démo réelle sur données fictives"></video>
-          <button class="mute" type="button" id="muteBtn">Activer le son</button>
-          <p class="phone__cap">La démo réelle, filmée. Données fictives.</p>
+        <div class="screen">
+          <div class="screen__bar" aria-hidden="true"><i></i><i></i><i></i><span>demandes@votre-regie.ch · tri A2Z</span></div>
+          <div class="screen__view">
+            <video class="demo-vid" src="media/a2z-regies-20s-ecran.mp4" poster="media/a2z-regies-ecran-poster.jpg" muted loop playsinline preload="none" aria-label="Vidéo de la démo sur données fictives, format écran"></video>
+            <button class="mute" type="button">Activer le son</button>
+          </div>
         </div>
+        <div class="phone">
+          <video class="demo-vid" src="media/a2z-regies-20s.mp4" poster="media/a2z-regies-poster.jpg" muted loop playsinline preload="none" aria-label="Vidéo de la démo sur données fictives, format téléphone"></video>
+          <button class="mute" type="button">Activer le son</button>
+        </div>
+        <p class="demo-cap">La démo, filmée. Données fictives.</p>
       </div>
     </div>
   </section>
@@ -800,21 +815,22 @@ ScrollCraft.mount(document.body);
   requestAnimationFrame(frame);
 
   /* ---------- Vidéo de démo : lecture seulement quand elle est visible -- */
-  var vid = document.getElementById('demoVideo'), mute = document.getElementById('muteBtn');
-  if (vid) {
-    var vio = new IntersectionObserver(function (es) {
-      es.forEach(function (e) {
-        if (e.isIntersecting && !reduce) { vid.play().catch(function () {}); }
-        else vid.pause();
-      });
-    }, { threshold: 0.35 });
-    vio.observe(vid);
-    mute.addEventListener('click', function () {
-      vid.muted = !vid.muted;
-      if (!vid.muted) vid.play().catch(function () {});
-      mute.textContent = vid.muted ? 'Activer le son' : 'Couper le son';
+  // Deux formats : écran sur ordinateur, téléphone sur mobile. Seule la vidéo visible joue.
+  var vio = new IntersectionObserver(function (es) {
+    es.forEach(function (e) {
+      if (e.isIntersecting && !reduce) { e.target.play().catch(function () {}); }
+      else e.target.pause();
     });
-  }
+  }, { threshold: 0.35 });
+  document.querySelectorAll('.demo-vid').forEach(function (v) {
+    vio.observe(v);
+    var btn = v.parentNode.querySelector('.mute');
+    btn.addEventListener('click', function () {
+      v.muted = !v.muted;
+      if (!v.muted) v.play().catch(function () {});
+      btn.textContent = v.muted ? 'Activer le son' : 'Couper le son';
+    });
+  });
 
   /* ---------- Demande de démo ----------------------------------------- */
   var WEBHOOK = 'https://n8n-uvyi.srv1516256.hstgr.cloud/webhook/a2z-demo-regie';
