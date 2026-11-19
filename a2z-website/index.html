@@ -232,13 +232,15 @@
   .bridge__text { margin: 0 0 var(--sc-5); text-align: center; color: var(--sc-ink-soft); font-size: var(--sc-t-base); max-width: 46ch; }
   .dossier__top { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(2rem, 6vw, 6rem); align-items: start; }
   .dossier__file { margin-top: 0; }
-  .file { background: #F4F1F6; color: #1B1820; border-radius: var(--sc-r-md); padding: clamp(1.5rem, 3vw, 2.5rem); box-shadow: var(--sc-e3); }
-  .file__top { display: flex; justify-content: space-between; align-items: baseline; gap: var(--sc-4); border-bottom: 1px solid #D9D2DF; padding-bottom: var(--sc-4); margin-bottom: var(--sc-5); }
+  .file { position: relative; overflow: hidden; background: linear-gradient(180deg, #25232B 0%, #1D1C21 100%); color: var(--sc-ink); border: 1px solid var(--sc-hairline); border-radius: var(--sc-r-lg); padding: clamp(1.5rem, 3vw, 2.5rem); box-shadow: var(--sc-e3), var(--sc-edge); }
+  .file::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 2px; background: var(--a2z-holo); opacity: .85; }
+  .file__meta { display: block; font-size: var(--sc-t-xs); letter-spacing: .06em; text-transform: uppercase; color: var(--a2z-vio); margin-bottom: var(--sc-2); }
+  .file__top { display: flex; justify-content: space-between; align-items: baseline; gap: var(--sc-4); border-bottom: 1px solid var(--sc-hairline); padding-bottom: var(--sc-4); margin-bottom: var(--sc-5); }
   .file__top strong { font: 600 var(--sc-t-lg)/1.2 var(--sc-font-display); }
   .file__badge { font-size: 12px; font-weight: 600; letter-spacing: .05em; padding: .35em .7em; border-radius: var(--sc-r-sm); background: var(--a2z-urgent); color: #2A1219; white-space: nowrap; }
   .file dl { display: grid; grid-template-columns: 9.5rem minmax(0, 1fr); gap: var(--sc-3) var(--sc-5); margin: 0; font-size: var(--sc-t-sm); }
-  .file dt { color: #5D5566; }
-  .file dd { margin: 0; font-weight: 500; }
+  .file dt { color: var(--sc-ink-soft); }
+  .file dd { margin: 0; font-weight: 500; color: var(--sc-ink); }
   .dossier__media { position: relative; display: grid; justify-items: center; width: 100%;
     opacity: calc(0.35 + var(--k) * 0.65); transform: translateY(calc((1 - var(--k)) * 48px)) scale(calc(0.94 + var(--k) * 0.06)); transform-origin: center top; }
   .dossier__media::before { content: ""; position: absolute; inset: 8% 4% -6%; z-index: -1; pointer-events: none;
@@ -530,10 +532,10 @@
           <h2 class="sc-display sc-display--md">Le gérant reçoit un dossier prêt à traiter.</h2>
           <p class="sc-body">Le dossier contient un résumé de la demande, sa catégorie, son urgence et la prochaine étape suggérée. Pour un sinistre, le gérant reçoit aussi une alerte immédiate.</p>
         </div>
-        <div class="dossier__file" data-sc-reveal="up" data-sc-reveal-at="0.1 0.4">
+        <div class="dossier__file" data-sc-in>
           <article class="file" aria-label="Exemple de dossier préparé, données fictives">
-            <div class="file__top"><strong>Fuite sous l'évier de cuisine</strong><span class="file__badge">Sinistre · Urgent</span></div>
-            <dl>
+            <div class="file__top"><div><span class="file__meta">Dossier préparé · reçu à 7h42</span><strong>Fuite sous l'évier de cuisine</strong></div><span class="file__badge">Sinistre · Urgent</span></div>
+            <dl data-sc-in data-sc-stagger="45">
               <dt>Locataire</dt><dd>Sophie Rochat</dd>
               <dt>Immeuble</dt><dd>Av. de Morges 12, 1004 Lausanne</dd>
               <dt>Résumé</dt><dd>Fuite d'eau sous l'évier de la cuisine depuis ce matin. Risque de dégât chez le voisin du dessous.</dd>
