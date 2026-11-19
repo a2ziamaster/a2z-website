@@ -222,7 +222,9 @@
 
   /* ------------------------------------------------- ch4 dossier ------- */
   .dossier { padding-block: var(--sc-8) var(--sc-9); }
-  .dossier__grid { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: clamp(2rem, 6vw, 6rem); align-items: center; }
+  .dossier__grid { display: grid; grid-template-columns: 1fr; gap: clamp(2.5rem, 5vw, 4.5rem); }
+  .dossier__top { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(2rem, 6vw, 6rem); align-items: start; }
+  .dossier__file { margin-top: 0; }
   .file { background: #F4F1F6; color: #1B1820; border-radius: var(--sc-r-md); padding: clamp(1.5rem, 3vw, 2.5rem); box-shadow: var(--sc-e3); }
   .file__top { display: flex; justify-content: space-between; align-items: baseline; gap: var(--sc-4); border-bottom: 1px solid #D9D2DF; padding-bottom: var(--sc-4); margin-bottom: var(--sc-5); }
   .file__top strong { font: 600 var(--sc-t-lg)/1.2 var(--sc-font-display); }
@@ -230,7 +232,7 @@
   .file dl { display: grid; grid-template-columns: 9.5rem minmax(0, 1fr); gap: var(--sc-3) var(--sc-5); margin: 0; font-size: var(--sc-t-sm); }
   .file dt { color: #5D5566; }
   .file dd { margin: 0; font-weight: 500; }
-  .dossier__media { position: relative; display: grid; justify-items: center; align-self: center; }
+  .dossier__media { position: relative; display: grid; justify-items: center; width: 100%; }
   .dossier__photo { margin: 0; width: 82%; }
   .dossier__photo img { width: 100%; height: auto; border-radius: var(--sc-r-lg); display: block; box-shadow: var(--sc-e2); }
   .phone { position: relative; width: min(100%, 260px); aspect-ratio: 9 / 16; border-radius: 28px; padding: 7px; background: #0E0E10; box-shadow: var(--sc-e3), 0 0 0 1px var(--sc-hairline-strong); }
@@ -344,7 +346,7 @@
     .leak__copy { top: auto; bottom: 18%; translate: none; width: auto; right: var(--sc-gutter); }
     .leak__time { font-size: var(--sc-t-2xl); }
     .leak__second { width: auto; right: var(--sc-gutter); bottom: 5%; font-size: var(--sc-t-base); }
-    .manual__grid, .dossier__grid, .guard__grid, .close__grid { grid-template-columns: 1fr; }
+    .manual__grid, .dossier__grid, .guard__grid, .close__grid, .dossier__top { grid-template-columns: 1fr; }
     .gestures li { font-size: var(--sc-t-lg); grid-template-columns: 2.4rem 1fr; }
     .costs { grid-template-columns: 1fr; gap: var(--sc-5); }
     .silence { min-height: 70svh; }
@@ -398,7 +400,7 @@
       <div>
         <p class="title__kicker">Pour les régies immobilières de Suisse romande</p>
         <h1>Chaque demande de locataire, <em>au bon gérant.</em></h1>
-        <p class="title__sub">A2Z lit les mails de votre boîte de demandes, repère les urgences et prépare le dossier du bon gérant.</p>
+        <p class="title__sub">Chaque mail de votre boîte de demandes est lu, les urgences sont repérées et le bon gérant reçoit un dossier prêt à traiter.</p>
         <div class="title__actions">
           <button class="btn" type="button" data-open-demo>Réserver une démo</button>
           <a class="link-arrow" href="#ch3">Voir le tri en 13 secondes</a>
@@ -449,7 +451,7 @@
         <h2 class="sc-display sc-display--md">Une fuite chez un locataire.</h2>
         <p class="sc-body">Son mail arrive dans la boîte de demandes au milieu de dizaines d'autres : attestations, décomptes, résiliations, questions de PPE.</p>
       </div>
-      <p class="leak__second" data-sc-cue="0.46 1">Personne ne l'a encore lu. L'eau, elle, continue de couler.</p>
+      <p class="leak__second" data-sc-cue="0.46 1">Personne ne l'a encore lu, et l'eau continue de couler.</p>
     </div>
   </section>
 
@@ -459,7 +461,7 @@
       <div class="sc-stack" data-sc-in data-sc-stagger="60">
         <p class="chap__num">02 · Le tri</p>
         <h2 class="sc-display sc-display--md">Avant que le bon gérant soit prévenu, quelqu'un doit tout lire.</h2>
-        <p class="sc-body">Plusieurs minutes par demande, des dizaines de fois par jour. Et pendant ce temps, les demandes urgentes ressemblent aux autres.</p>
+        <p class="sc-body">Chaque demande prend plusieurs minutes, des dizaines de fois par jour, et dans la pile rien ne distingue une urgence d'une demande ordinaire.</p>
       </div>
       <ol class="gestures" data-sc-in data-sc-stagger="70">
         <li>Ouvrir le mail</li>
@@ -488,7 +490,7 @@
       <div class="sort__grid">
         <div class="sort__head">
           <p class="chap__num">03 · La démo</p>
-          <h2 class="sc-display">La boîte qui se trie toute seule.</h2>
+          <h2 class="sc-display">Les mêmes mails, triés automatiquement.</h2>
           <p class="clock" id="clock" aria-live="off"><span id="clockVal">0,0</span><small>s</small></p>
           <p class="clock__label">Fuite d'eau, Av. de Morges 12 : du mail reçu à la réponse au locataire.</p>
           <ol class="steps" id="steps">
@@ -508,13 +510,13 @@
   <!-- 4 · clarté · reveal -->
   <section class="dossier chap" data-sc-act="flow" data-chapter="04" data-title="Le dossier du gérant">
     <div class="sc-wrap dossier__grid">
-      <div>
+      <div class="dossier__top">
         <div class="sc-stack" data-sc-in data-sc-stagger="60">
           <p class="chap__num">04 · Ce que reçoit le gérant</p>
-          <h2 class="sc-display sc-display--md">Pas un mail transféré. Un dossier prêt à traiter.</h2>
-          <p class="sc-body">Le bon gérant reçoit la demande avec un résumé, la catégorie, l'urgence et la prochaine étape suggérée. Les sinistres déclenchent une alerte immédiate.</p>
+          <h2 class="sc-display sc-display--md">Le gérant reçoit un dossier prêt à traiter.</h2>
+          <p class="sc-body">Le dossier contient un résumé de la demande, sa catégorie, son urgence et la prochaine étape suggérée. Pour un sinistre, le gérant reçoit aussi une alerte immédiate.</p>
         </div>
-        <div data-sc-reveal="up" data-sc-reveal-at="0.28 0.56" style="margin-top: var(--sc-7);">
+        <div class="dossier__file" data-sc-reveal="up" data-sc-reveal-at="0.1 0.4">
           <article class="file" aria-label="Exemple de dossier préparé, données fictives">
             <div class="file__top"><strong>Fuite sous l'évier de cuisine</strong><span class="file__badge">Sinistre · Urgent</span></div>
             <dl>
@@ -552,7 +554,7 @@
         <div class="sc-stack" data-sc-in data-sc-stagger="60">
           <p class="chap__num">05 · Le cadre</p>
           <h2 class="sc-display sc-display--md">L'IA trie et prépare. Vos gérants décident.</h2>
-          <p class="sc-body">Rien n'est envoyé au locataire en dehors de vos règles et de vos modèles validés.</p>
+          <p class="sc-body">Le locataire ne reçoit que des réponses tirées de vos modèles validés, selon vos règles.</p>
         </div>
         <ul class="ledger" data-sc-in data-sc-stagger="80">
           <li><h3>Aucune consigne improvisée</h3><p>Les réponses suivent vos modèles. Pour une odeur de gaz ou un incendie, le locataire est renvoyé vers les numéros d'urgence officiels et votre équipe est alertée.</p></li>
@@ -573,13 +575,13 @@
         <div class="rail__lead">
           <p class="chap__num">06 · Intégration</p>
           <h2 class="sc-display sc-display--md">Sans changer de logiciel.</h2>
-          <p class="sc-body">Trois niveaux, présentés tels qu'ils sont aujourd'hui.</p>
+          <p class="sc-body">Il existe trois niveaux d'intégration. Seul le premier est disponible aujourd'hui.</p>
         </div>
         <article class="level" style="--i:0">
           <span class="level__n">Niveau 1</span>
           <h3>Messagerie</h3>
           <span class="status status--live">Disponible aujourd'hui</span>
-          <p>A2Z travaille directement sur votre boîte de demandes actuelle. Rien à installer pour vos gérants.</p>
+          <p>Le tri se fait directement dans votre boîte de demandes actuelle. Rien à installer pour vos gérants.</p>
           <ul class="level__list"><li>Outlook / Microsoft 365</li><li>Gmail</li><li>Infomaniak</li></ul>
         </article>
         <article class="level" style="--i:1">
@@ -596,7 +598,7 @@
           <p>Connexion directe à votre logiciel de gérance, évaluée selon les accès disponibles.</p>
           <ul class="level__list"><li>Abacus</li><li>GARAIO REM</li><li>Autres, sur demande</li></ul>
         </article>
-        <p class="rail__note">Vos gérants gardent leurs outils. Le tri disparaît entre la boîte et eux.</p>
+        <p class="rail__note">Vos gérants gardent leurs outils habituels. Les mails leur arrivent déjà triés.</p>
       </div>
     </div>
   </section>
@@ -615,7 +617,7 @@
         <p class="ask"><button type="button" data-open-demo>Réserver une démo</button> de 15 minutes, sans engagement. Ou écrivez à <a href="mailto:alec.diaconescu@a2z-consulting.ch">alec.diaconescu@a2z-consulting.ch</a>.</p>
       </div>
       <div class="faq" data-sc-in data-sc-stagger="50">
-        <details><summary>Faut-il changer de logiciel de gérance ?</summary><p>Non. A2Z part de votre messagerie actuelle (niveau 1). L'export CSV ou Excel et la connexion directe à votre logiciel sont des options, la seconde évaluée au cas par cas.</p></details>
+        <details><summary>Faut-il changer de logiciel de gérance ?</summary><p>Non. Le tri part de votre messagerie actuelle (niveau 1). L'export CSV ou Excel et la connexion directe à votre logiciel sont des options, la seconde évaluée au cas par cas.</p></details>
         <details><summary>Où sont traitées les données des locataires ?</summary><p>En production, sur une infrastructure hébergée en Suisse (Infomaniak). La démo publique n'utilise que des demandes fictives.</p></details>
         <details><summary>Et la nLPD ?</summary><p>Le traitement est conçu pour la nLPD : limité au tri des demandes, encadré par un contrat de sous-traitance signé avant le pilote, avec un accès restreint et journalisé.</p></details>
         <details><summary>Et si l'IA se trompe de catégorie ?</summary><p>Le gérant réattribue la demande en un clic, et les règles sont affinées pendant le pilote. En cas de doute, la demande est signalée pour vérification plutôt que classée au hasard.</p></details>

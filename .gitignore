@@ -20,3 +20,6 @@ scrollcraft/builds/*/lab/
 scrollcraft/builds/*/out/
 scrollcraft/builds/*/prev/
 scrollcraft/builds/*/package-lock.json
+
+# Playwright CLI (snapshots locaux)
+.playwright-cli/
